@@ -1,0 +1,7 @@
+C:\Users\Pujan\Documents\Visual Studio 2010\Projects\imageprocessing1\imageprocessing1\bin\Release\imageprocessing1.exe
+C:\Users\Pujan\Documents\Visual Studio 2010\Projects\imageprocessing1\imageprocessing1\bin\Release\imageprocessing1.pdb
+C:\Users\Pujan\Documents\Visual Studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Release\imageprocessing1.Form1.resources
+C:\Users\Pujan\Documents\Visual Studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Release\imageprocessing1.Properties.Resources.resources
+C:\Users\Pujan\Documents\Visual Studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Release\imageprocessing1.csproj.GenerateResource.Cache
+C:\Users\Pujan\Documents\Visual Studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Release\imageprocessing1.exe
+C:\Users\Pujan\Documents\Visual Studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Release\imageprocessing1.pdb

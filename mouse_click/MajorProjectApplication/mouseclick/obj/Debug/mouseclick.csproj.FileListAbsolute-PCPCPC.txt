@@ -1,0 +1,18 @@
+E:\Major Project\OneDrive\Major project\visual studio\mouse_click\mouseclick\mouseclick\bin\Debug\mouseclick.exe.config
+E:\Major Project\OneDrive\Major project\visual studio\mouse_click\mouseclick\mouseclick\bin\Debug\mouseclick.exe
+E:\Major Project\OneDrive\Major project\visual studio\mouse_click\mouseclick\mouseclick\bin\Debug\mouseclick.pdb
+E:\Major Project\OneDrive\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.csprojResolveAssemblyReference.cache
+E:\Major Project\OneDrive\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.Form1.resources
+E:\Major Project\OneDrive\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.Properties.Resources.resources
+E:\Major Project\OneDrive\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.csproj.GenerateResource.Cache
+E:\Major Project\OneDrive\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.exe
+E:\Major Project\OneDrive\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.pdb
+C:\Users\Pujan.000\OneDrive\root\Major project\visual studio\mouse_click\mouseclick\mouseclick\bin\Debug\mouseclick.exe.config
+C:\Users\Pujan.000\OneDrive\root\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.exe
+C:\Users\Pujan.000\OneDrive\root\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.pdb
+C:\Users\Pujan.000\OneDrive\root\Major project\visual studio\mouse_click\mouseclick\mouseclick\bin\Debug\mouseclick.exe
+C:\Users\Pujan.000\OneDrive\root\Major project\visual studio\mouse_click\mouseclick\mouseclick\bin\Debug\mouseclick.pdb
+C:\Users\Pujan.000\OneDrive\root\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.csprojResolveAssemblyReference.cache
+C:\Users\Pujan.000\OneDrive\root\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.Form1.resources
+C:\Users\Pujan.000\OneDrive\root\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.Properties.Resources.resources
+C:\Users\Pujan.000\OneDrive\root\Major project\visual studio\mouse_click\mouseclick\mouseclick\obj\Debug\mouseclick.csproj.GenerateResource.Cache

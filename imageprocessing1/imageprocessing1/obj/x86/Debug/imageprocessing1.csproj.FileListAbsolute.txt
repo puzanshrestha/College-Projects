@@ -1,0 +1,16 @@
+c:\users\pujan\documents\visual studio 2010\Projects\imageprocessing1\imageprocessing1\bin\Debug\imageprocessing1.exe
+c:\users\pujan\documents\visual studio 2010\Projects\imageprocessing1\imageprocessing1\bin\Debug\imageprocessing1.pdb
+c:\users\pujan\documents\visual studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.Form1.resources
+c:\users\pujan\documents\visual studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.Properties.Resources.resources
+c:\users\pujan\documents\visual studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.csproj.GenerateResource.Cache
+c:\users\pujan\documents\visual studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.exe
+c:\users\pujan\documents\visual studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.pdb
+C:\Users\Pujan\Documents\Visual Studio 2010\Projects\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.csprojResolveAssemblyReference.cache
+E:\Major Project\Major project\visual studio\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.exe
+E:\Major Project\Major project\visual studio\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.pdb
+E:\Major Project\Major project\visual studio\imageprocessing1\imageprocessing1\bin\Debug\imageprocessing1.exe
+E:\Major Project\Major project\visual studio\imageprocessing1\imageprocessing1\bin\Debug\imageprocessing1.pdb
+E:\Major Project\Major project\visual studio\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.csprojResolveAssemblyReference.cache
+E:\Major Project\Major project\visual studio\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.Form1.resources
+E:\Major Project\Major project\visual studio\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.Properties.Resources.resources
+E:\Major Project\Major project\visual studio\imageprocessing1\imageprocessing1\obj\x86\Debug\imageprocessing1.csproj.GenerateResource.Cache

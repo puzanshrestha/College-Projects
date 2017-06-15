@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <loadshedding>
+    <Day>Sunday</Day>
+    <Time_x0020_-_x0020_I>10:00 - 14:00</Time_x0020_-_x0020_I>
+    <Time_x0020_-_x0020_II>18:00 - 22:00</Time_x0020_-_x0020_II>
+  </loadshedding>
+  <loadshedding>
+    <Day>Monday</Day>
+    <Time_x0020_-_x0020_I>8:00 - 11:00</Time_x0020_-_x0020_I>
+    <Time_x0020_-_x0020_II>17:00 - 20:00</Time_x0020_-_x0020_II>
+  </loadshedding>
+  <loadshedding>
+    <Day>Tuesday</Day>
+    <Time_x0020_-_x0020_I>7:00 - 10:00</Time_x0020_-_x0020_I>
+    <Time_x0020_-_x0020_II>15:00 - 18:00</Time_x0020_-_x0020_II>
+  </loadshedding>
+  <loadshedding>
+    <Day>Wednesday</Day>
+    <Time_x0020_-_x0020_I>6:00 - 9:00</Time_x0020_-_x0020_I>
+    <Time_x0020_-_x0020_II>14:00 - 17:00</Time_x0020_-_x0020_II>
+  </loadshedding>
+  <loadshedding>
+    <Day>Thursday</Day>
+    <Time_x0020_-_x0020_I>6:00 - 8:00</Time_x0020_-_x0020_I>
+    <Time_x0020_-_x0020_II>13:00 - 17:00</Time_x0020_-_x0020_II>
+  </loadshedding>
+  <loadshedding>
+    <Day>Friday</Day>
+    <Time_x0020_-_x0020_I>9:00 - 13:00</Time_x0020_-_x0020_I>
+    <Time_x0020_-_x0020_II>17:00 - 21:00</Time_x0020_-_x0020_II>
+  </loadshedding>
+  <loadshedding>
+    <Day>Saturday</Day>
+    <Time_x0020_-_x0020_I>11:00 - 15:00</Time_x0020_-_x0020_I>
+    <Time_x0020_-_x0020_II>20:00 - 23:00</Time_x0020_-_x0020_II>
+  </loadshedding>
+</NewDataSet>
