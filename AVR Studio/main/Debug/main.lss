@@ -1,0 +1,3945 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001742  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000044c  00800060  00001742  000017d6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000007  008004ac  008004ac  00001c22  2**0
+                  ALLOC
+  3 .comment      0000005c  00000000  00000000  00001c22  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000090  00000000  00000000  00001c7e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00001afe  00000000  00000000  00001d0e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000003b2  00000000  00000000  0000380c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000708  00000000  00000000  00003bbe  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000005f8  00000000  00000000  000042c8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000002e5  00000000  00000000  000048c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000306d  00000000  00000000  00004ba5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000d0  00000000  00000000  00007c12  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+       4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+      54:	11 24       	eor	r1, r1
+      56:	1f be       	out	0x3f, r1	; 63
+      58:	cf e5       	ldi	r28, 0x5F	; 95
+      5a:	d8 e0       	ldi	r29, 0x08	; 8
+      5c:	de bf       	out	0x3e, r29	; 62
+      5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+      60:	14 e0       	ldi	r17, 0x04	; 4
+      62:	a0 e6       	ldi	r26, 0x60	; 96
+      64:	b0 e0       	ldi	r27, 0x00	; 0
+      66:	e2 e4       	ldi	r30, 0x42	; 66
+      68:	f7 e1       	ldi	r31, 0x17	; 23
+      6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+      6c:	05 90       	lpm	r0, Z+
+      6e:	0d 92       	st	X+, r0
+      70:	ac 3a       	cpi	r26, 0xAC	; 172
+      72:	b1 07       	cpc	r27, r17
+      74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+      76:	24 e0       	ldi	r18, 0x04	; 4
+      78:	ac ea       	ldi	r26, 0xAC	; 172
+      7a:	b4 e0       	ldi	r27, 0x04	; 4
+      7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+      7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+      80:	a3 3b       	cpi	r26, 0xB3	; 179
+      82:	b2 07       	cpc	r27, r18
+      84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+      86:	0e 94 15 07 	call	0xe2a	; 0xe2a <main>
+      8a:	0c 94 9f 0b 	jmp	0x173e	; 0x173e <_exit>
+
+0000008e <__bad_interrupt>:
+      8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <printCHAR>:
+int printCHAR(char character, FILE *stream)
+{
+	while(!(UCSRA&0x20));
+      92:	5d 9b       	sbis	0x0b, 5	; 11
+      94:	fe cf       	rjmp	.-4      	; 0x92 <printCHAR>
+	UDR=character;
+      96:	8c b9       	out	0x0c, r24	; 12
+	return 0;
+}
+      98:	80 e0       	ldi	r24, 0x00	; 0
+      9a:	90 e0       	ldi	r25, 0x00	; 0
+      9c:	08 95       	ret
+
+0000009e <serial_read>:
+
+
+
+unsigned char serial_read()
+{
+	while ((UCSRA & (1 << RXC)) == 0) {}; // Do nothing until data have been received and is ready to be read from UDR
+      9e:	5f 9b       	sbis	0x0b, 7	; 11
+      a0:	fe cf       	rjmp	.-4      	; 0x9e <serial_read>
+	return UDR; // Fetch the received byte value into the variable "variable"
+      a2:	8c b1       	in	r24, 0x0c	; 12
+	
+}
+      a4:	08 95       	ret
+
+000000a6 <serial_write>:
+
+void serial_write(unsigned char data)
+{
+	while ((UCSRA & (1 << UDRE)) == 0) {}; // Do nothing until UDR is ready for more data to be written to it
+      a6:	5d 9b       	sbis	0x0b, 5	; 11
+      a8:	fe cf       	rjmp	.-4      	; 0xa6 <serial_write>
+	UDR=data; // Echo back the received byte back to the computer
+      aa:	8c b9       	out	0x0c, r24	; 12
+      ac:	08 95       	ret
+
+000000ae <receive_coordinate>:
+	
+}
+
+int receive_coordinate()
+{
+      ae:	ff 92       	push	r15
+      b0:	0f 93       	push	r16
+      b2:	1f 93       	push	r17
+      b4:	cf 93       	push	r28
+      b6:	df 93       	push	r29
+	UDR="";
+      b8:	89 e6       	ldi	r24, 0x69	; 105
+      ba:	90 e0       	ldi	r25, 0x00	; 0
+      bc:	8c b9       	out	0x0c, r24	; 12
+	int value=0;
+      be:	c0 e0       	ldi	r28, 0x00	; 0
+      c0:	d0 e0       	ldi	r29, 0x00	; 0
+	while(1)
+	{
+		
+		int temp=serial_read();
+      c2:	0e 94 4f 00 	call	0x9e	; 0x9e <serial_read>
+      c6:	08 2f       	mov	r16, r24
+      c8:	10 e0       	ldi	r17, 0x00	; 0
+		serial_write(temp);
+      ca:	0e 94 53 00 	call	0xa6	; 0xa6 <serial_write>
+		if(temp==13)
+      ce:	0d 30       	cpi	r16, 0x0D	; 13
+      d0:	11 05       	cpc	r17, r1
+      d2:	e1 f0       	breq	.+56     	; 0x10c <receive_coordinate+0x5e>
+		{
+			break;
+			
+		}
+		if((temp>=48)&&(temp<=57))
+      d4:	c8 01       	movw	r24, r16
+      d6:	c0 97       	sbiw	r24, 0x30	; 48
+      d8:	0a 97       	sbiw	r24, 0x0a	; 10
+      da:	80 f4       	brcc	.+32     	; 0xfc <receive_coordinate+0x4e>
+		{
+			
+			temp=temp-48;
+			value=value*10+temp;
+      dc:	ce 01       	movw	r24, r28
+      de:	88 0f       	add	r24, r24
+      e0:	99 1f       	adc	r25, r25
+      e2:	cc 0f       	add	r28, r28
+      e4:	dd 1f       	adc	r29, r29
+      e6:	cc 0f       	add	r28, r28
+      e8:	dd 1f       	adc	r29, r29
+      ea:	cc 0f       	add	r28, r28
+      ec:	dd 1f       	adc	r29, r29
+      ee:	c8 0f       	add	r28, r24
+      f0:	d9 1f       	adc	r29, r25
+			
+		}
+		if((temp>=48)&&(temp<=57))
+		{
+			
+			temp=temp-48;
+      f2:	00 53       	subi	r16, 0x30	; 48
+      f4:	11 09       	sbc	r17, r1
+			value=value*10+temp;
+      f6:	c0 0f       	add	r28, r16
+      f8:	d1 1f       	adc	r29, r17
+		else
+		{
+			printf("invalid number");
+			break;
+		}
+	}
+      fa:	e3 cf       	rjmp	.-58     	; 0xc2 <receive_coordinate+0x14>
+			
+			
+		}
+		else
+		{
+			printf("invalid number");
+      fc:	8a e6       	ldi	r24, 0x6A	; 106
+      fe:	90 e0       	ldi	r25, 0x00	; 0
+     100:	9f 93       	push	r25
+     102:	8f 93       	push	r24
+     104:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			break;
+     108:	0f 90       	pop	r0
+     10a:	0f 90       	pop	r0
+		}
+	}
+	return value;
+	
+}
+     10c:	ce 01       	movw	r24, r28
+     10e:	df 91       	pop	r29
+     110:	cf 91       	pop	r28
+     112:	1f 91       	pop	r17
+     114:	0f 91       	pop	r16
+     116:	ff 90       	pop	r15
+     118:	08 95       	ret
+
+0000011a <initialize>:
+#define z_org PIND7
+
+
+
+void initialize(int n)
+{
+     11a:	af 92       	push	r10
+     11c:	bf 92       	push	r11
+     11e:	cf 92       	push	r12
+     120:	df 92       	push	r13
+     122:	ef 92       	push	r14
+     124:	ff 92       	push	r15
+     126:	0f 93       	push	r16
+     128:	1f 93       	push	r17
+     12a:	cf 93       	push	r28
+     12c:	df 93       	push	r29
+	
+	
+		if(n==1)
+     12e:	81 30       	cpi	r24, 0x01	; 1
+     130:	91 05       	cpc	r25, r1
+     132:	09 f0       	breq	.+2      	; 0x136 <initialize+0x1c>
+     134:	8a c0       	rjmp	.+276    	; 0x24a <initialize+0x130>
+		{
+			printf("\n\rInitializing X....\n \r");	
+     136:	89 e7       	ldi	r24, 0x79	; 121
+     138:	90 e0       	ldi	r25, 0x00	; 0
+     13a:	9f 93       	push	r25
+     13c:	8f 93       	push	r24
+     13e:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     142:	0f 90       	pop	r0
+     144:	0f 90       	pop	r0
+			int delta=0;
+     146:	00 e0       	ldi	r16, 0x00	; 0
+     148:	10 e0       	ldi	r17, 0x00	; 0
+			{
+				
+				if(bit_is_clear(PINB,0))
+				break;
+				
+				PORTC=(0<<A1)|(0<<A1_)|(0<<B1)|(1<<B1_);
+     14a:	68 94       	set
+     14c:	dd 24       	eor	r13, r13
+     14e:	d3 f8       	bld	r13, 3
+				_delay_ms(30);
+				delta++;
+				printf("x-axis reverse delta=-%d \n \r",delta);
+     150:	c1 e9       	ldi	r28, 0x91	; 145
+     152:	d0 e0       	ldi	r29, 0x00	; 0
+				_delay_ms(100);
+				if(bit_is_clear(PINB,0))
+				break;
+				
+				PORTC=(0<<A1)|(1<<A1_)|(0<<B1)|(0<<B1_);
+     154:	68 94       	set
+     156:	cc 24       	eor	r12, r12
+     158:	c1 f8       	bld	r12, 1
+				printf("x-axis reverse delta=-%d \n \r",delta);
+				_delay_ms(100);
+				if(bit_is_clear(PINB,0))
+				break;
+				
+				PORTC=(0<<A1)|(0<<A1_)|(1<<B1)|(0<<B1_);
+     15a:	68 94       	set
+     15c:	bb 24       	eor	r11, r11
+     15e:	b2 f8       	bld	r11, 2
+				printf("x-axis reverse delta=-%d \n \r",delta);
+				_delay_ms(100);
+				if(bit_is_clear(PINB,0))
+				break;
+				
+				PORTC=(1<<A1)|(0<<A1_)|(0<<B1)|(0<<B1_);
+     160:	aa 24       	eor	r10, r10
+     162:	a3 94       	inc	r10
+			printf("\n\rInitializing X....\n \r");	
+			int delta=0;
+			while(1)
+			{
+				
+				if(bit_is_clear(PINB,0))
+     164:	b0 9b       	sbis	0x16, 0	; 22
+     166:	6c c0       	rjmp	.+216    	; 0x240 <initialize+0x126>
+				break;
+				
+				PORTC=(0<<A1)|(0<<A1_)|(0<<B1)|(1<<B1_);
+     168:	d5 ba       	out	0x15, r13	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     16a:	8b e4       	ldi	r24, 0x4B	; 75
+     16c:	9d e1       	ldi	r25, 0x1D	; 29
+     16e:	01 97       	sbiw	r24, 0x01	; 1
+     170:	f1 f7       	brne	.-4      	; 0x16e <initialize+0x54>
+     172:	00 c0       	rjmp	.+0      	; 0x174 <initialize+0x5a>
+     174:	00 00       	nop
+     176:	c8 01       	movw	r24, r16
+     178:	01 96       	adiw	r24, 0x01	; 1
+				_delay_ms(30);
+				delta++;
+				printf("x-axis reverse delta=-%d \n \r",delta);
+     17a:	9f 93       	push	r25
+     17c:	8f 93       	push	r24
+     17e:	df 93       	push	r29
+     180:	cf 93       	push	r28
+     182:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     186:	87 ea       	ldi	r24, 0xA7	; 167
+     188:	91 e6       	ldi	r25, 0x61	; 97
+     18a:	01 97       	sbiw	r24, 0x01	; 1
+     18c:	f1 f7       	brne	.-4      	; 0x18a <initialize+0x70>
+     18e:	00 c0       	rjmp	.+0      	; 0x190 <initialize+0x76>
+     190:	00 00       	nop
+				_delay_ms(100);
+				if(bit_is_clear(PINB,0))
+     192:	0f 90       	pop	r0
+     194:	0f 90       	pop	r0
+     196:	0f 90       	pop	r0
+     198:	0f 90       	pop	r0
+     19a:	b0 9b       	sbis	0x16, 0	; 22
+     19c:	51 c0       	rjmp	.+162    	; 0x240 <initialize+0x126>
+				break;
+				
+				PORTC=(0<<A1)|(1<<A1_)|(0<<B1)|(0<<B1_);
+     19e:	c5 ba       	out	0x15, r12	; 21
+     1a0:	8b e4       	ldi	r24, 0x4B	; 75
+     1a2:	9d e1       	ldi	r25, 0x1D	; 29
+     1a4:	01 97       	sbiw	r24, 0x01	; 1
+     1a6:	f1 f7       	brne	.-4      	; 0x1a4 <initialize+0x8a>
+     1a8:	00 c0       	rjmp	.+0      	; 0x1aa <initialize+0x90>
+     1aa:	00 00       	nop
+     1ac:	c8 01       	movw	r24, r16
+     1ae:	02 96       	adiw	r24, 0x02	; 2
+				_delay_ms(30);
+				delta++;
+				printf("x-axis reverse delta=-%d \n \r",delta);
+     1b0:	9f 93       	push	r25
+     1b2:	8f 93       	push	r24
+     1b4:	df 93       	push	r29
+     1b6:	cf 93       	push	r28
+     1b8:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     1bc:	87 ea       	ldi	r24, 0xA7	; 167
+     1be:	91 e6       	ldi	r25, 0x61	; 97
+     1c0:	01 97       	sbiw	r24, 0x01	; 1
+     1c2:	f1 f7       	brne	.-4      	; 0x1c0 <initialize+0xa6>
+     1c4:	00 c0       	rjmp	.+0      	; 0x1c6 <initialize+0xac>
+     1c6:	00 00       	nop
+				_delay_ms(100);
+				if(bit_is_clear(PINB,0))
+     1c8:	0f 90       	pop	r0
+     1ca:	0f 90       	pop	r0
+     1cc:	0f 90       	pop	r0
+     1ce:	0f 90       	pop	r0
+     1d0:	b0 9b       	sbis	0x16, 0	; 22
+     1d2:	36 c0       	rjmp	.+108    	; 0x240 <initialize+0x126>
+				break;
+				
+				PORTC=(0<<A1)|(0<<A1_)|(1<<B1)|(0<<B1_);
+     1d4:	b5 ba       	out	0x15, r11	; 21
+     1d6:	8b e4       	ldi	r24, 0x4B	; 75
+     1d8:	9d e1       	ldi	r25, 0x1D	; 29
+     1da:	01 97       	sbiw	r24, 0x01	; 1
+     1dc:	f1 f7       	brne	.-4      	; 0x1da <initialize+0xc0>
+     1de:	00 c0       	rjmp	.+0      	; 0x1e0 <initialize+0xc6>
+     1e0:	00 00       	nop
+     1e2:	c8 01       	movw	r24, r16
+     1e4:	03 96       	adiw	r24, 0x03	; 3
+				_delay_ms(30);
+				delta++;
+				printf("x-axis reverse delta=-%d \n \r",delta);
+     1e6:	9f 93       	push	r25
+     1e8:	8f 93       	push	r24
+     1ea:	df 93       	push	r29
+     1ec:	cf 93       	push	r28
+     1ee:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     1f2:	87 ea       	ldi	r24, 0xA7	; 167
+     1f4:	91 e6       	ldi	r25, 0x61	; 97
+     1f6:	01 97       	sbiw	r24, 0x01	; 1
+     1f8:	f1 f7       	brne	.-4      	; 0x1f6 <initialize+0xdc>
+     1fa:	00 c0       	rjmp	.+0      	; 0x1fc <initialize+0xe2>
+     1fc:	00 00       	nop
+				_delay_ms(100);
+				if(bit_is_clear(PINB,0))
+     1fe:	0f 90       	pop	r0
+     200:	0f 90       	pop	r0
+     202:	0f 90       	pop	r0
+     204:	0f 90       	pop	r0
+     206:	b0 9b       	sbis	0x16, 0	; 22
+     208:	1b c0       	rjmp	.+54     	; 0x240 <initialize+0x126>
+				break;
+				
+				PORTC=(1<<A1)|(0<<A1_)|(0<<B1)|(0<<B1_);
+     20a:	a5 ba       	out	0x15, r10	; 21
+     20c:	8b e4       	ldi	r24, 0x4B	; 75
+     20e:	9d e1       	ldi	r25, 0x1D	; 29
+     210:	01 97       	sbiw	r24, 0x01	; 1
+     212:	f1 f7       	brne	.-4      	; 0x210 <initialize+0xf6>
+     214:	00 c0       	rjmp	.+0      	; 0x216 <initialize+0xfc>
+     216:	00 00       	nop
+				_delay_ms(30);
+				delta++;
+     218:	0c 5f       	subi	r16, 0xFC	; 252
+     21a:	1f 4f       	sbci	r17, 0xFF	; 255
+				printf("x-axis reverse delta=-%d \n \r",delta);
+     21c:	1f 93       	push	r17
+     21e:	0f 93       	push	r16
+     220:	df 93       	push	r29
+     222:	cf 93       	push	r28
+     224:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     228:	87 ea       	ldi	r24, 0xA7	; 167
+     22a:	91 e6       	ldi	r25, 0x61	; 97
+     22c:	01 97       	sbiw	r24, 0x01	; 1
+     22e:	f1 f7       	brne	.-4      	; 0x22c <initialize+0x112>
+     230:	00 c0       	rjmp	.+0      	; 0x232 <initialize+0x118>
+     232:	00 00       	nop
+				_delay_ms(100);
+				if(bit_is_clear(PINB,0))
+     234:	0f 90       	pop	r0
+     236:	0f 90       	pop	r0
+     238:	0f 90       	pop	r0
+     23a:	0f 90       	pop	r0
+     23c:	b0 99       	sbic	0x16, 0	; 22
+     23e:	92 cf       	rjmp	.-220    	; 0x164 <initialize+0x4a>
+				break;
+				
+			}
+			printf("X-Axis Initialization Completed\n \r\n");
+     240:	8e ea       	ldi	r24, 0xAE	; 174
+     242:	90 e0       	ldi	r25, 0x00	; 0
+     244:	0e 94 c3 08 	call	0x1186	; 0x1186 <puts>
+     248:	ff c0       	rjmp	.+510    	; 0x448 <initialize+0x32e>
+		}
+		
+		
+		if(n==2)
+     24a:	82 30       	cpi	r24, 0x02	; 2
+     24c:	91 05       	cpc	r25, r1
+     24e:	09 f0       	breq	.+2      	; 0x252 <initialize+0x138>
+     250:	90 c0       	rjmp	.+288    	; 0x372 <initialize+0x258>
+		{	
+			printf("\n\rInitializing Y....\n \r");
+     252:	81 ed       	ldi	r24, 0xD1	; 209
+     254:	90 e0       	ldi	r25, 0x00	; 0
+     256:	9f 93       	push	r25
+     258:	8f 93       	push	r24
+     25a:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     25e:	0f 90       	pop	r0
+     260:	0f 90       	pop	r0
+			int delta=0;
+     262:	00 e0       	ldi	r16, 0x00	; 0
+     264:	10 e0       	ldi	r17, 0x00	; 0
+			while(1)
+			{
+				if(bit_is_clear(PINB,1))
+				break;
+				
+				PORTC=(0<<A2)|(0<<A2_)|(0<<B2)|(1<<B2_);
+     266:	68 94       	set
+     268:	dd 24       	eor	r13, r13
+     26a:	d7 f8       	bld	r13, 7
+				_delay_ms(30);
+				delta++;
+				printf("Y-axis reverse delta=-%d \n \r",delta);
+     26c:	c9 ee       	ldi	r28, 0xE9	; 233
+     26e:	d0 e0       	ldi	r29, 0x00	; 0
+				_delay_ms(100);
+				if(bit_is_clear(PINB,1))
+				break;
+				
+				PORTC=(0<<A2)|(1<<A2_)|(0<<B2)|(0<<B2_);
+     270:	68 94       	set
+     272:	cc 24       	eor	r12, r12
+     274:	c5 f8       	bld	r12, 5
+				printf("Y-axis reverse delta=-%d \n \r",delta);
+				_delay_ms(100);
+				if(bit_is_clear(PINB,1))
+				break;
+				
+				PORTC=(0<<A2)|(0<<A2_)|(1<<B2)|(0<<B2_);
+     276:	68 94       	set
+     278:	bb 24       	eor	r11, r11
+     27a:	b6 f8       	bld	r11, 6
+				printf("Y-axis reverse delta=-%d \n \r",delta);
+				_delay_ms(100);
+				if(bit_is_clear(PINB,1))
+				break;
+				
+				PORTC=(1<<A2)|(0<<A2_)|(0<<B2)|(0<<B2_);
+     27c:	68 94       	set
+     27e:	aa 24       	eor	r10, r10
+     280:	a4 f8       	bld	r10, 4
+		{	
+			printf("\n\rInitializing Y....\n \r");
+			int delta=0;
+			while(1)
+			{
+				if(bit_is_clear(PINB,1))
+     282:	b1 9b       	sbis	0x16, 1	; 22
+     284:	6c c0       	rjmp	.+216    	; 0x35e <initialize+0x244>
+				break;
+				
+				PORTC=(0<<A2)|(0<<A2_)|(0<<B2)|(1<<B2_);
+     286:	d5 ba       	out	0x15, r13	; 21
+     288:	8b e4       	ldi	r24, 0x4B	; 75
+     28a:	9d e1       	ldi	r25, 0x1D	; 29
+     28c:	01 97       	sbiw	r24, 0x01	; 1
+     28e:	f1 f7       	brne	.-4      	; 0x28c <initialize+0x172>
+     290:	00 c0       	rjmp	.+0      	; 0x292 <initialize+0x178>
+     292:	00 00       	nop
+     294:	c8 01       	movw	r24, r16
+     296:	01 96       	adiw	r24, 0x01	; 1
+				_delay_ms(30);
+				delta++;
+				printf("Y-axis reverse delta=-%d \n \r",delta);
+     298:	9f 93       	push	r25
+     29a:	8f 93       	push	r24
+     29c:	df 93       	push	r29
+     29e:	cf 93       	push	r28
+     2a0:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     2a4:	87 ea       	ldi	r24, 0xA7	; 167
+     2a6:	91 e6       	ldi	r25, 0x61	; 97
+     2a8:	01 97       	sbiw	r24, 0x01	; 1
+     2aa:	f1 f7       	brne	.-4      	; 0x2a8 <initialize+0x18e>
+     2ac:	00 c0       	rjmp	.+0      	; 0x2ae <initialize+0x194>
+     2ae:	00 00       	nop
+				_delay_ms(100);
+				if(bit_is_clear(PINB,1))
+     2b0:	0f 90       	pop	r0
+     2b2:	0f 90       	pop	r0
+     2b4:	0f 90       	pop	r0
+     2b6:	0f 90       	pop	r0
+     2b8:	b1 9b       	sbis	0x16, 1	; 22
+     2ba:	51 c0       	rjmp	.+162    	; 0x35e <initialize+0x244>
+				break;
+				
+				PORTC=(0<<A2)|(1<<A2_)|(0<<B2)|(0<<B2_);
+     2bc:	c5 ba       	out	0x15, r12	; 21
+     2be:	8b e4       	ldi	r24, 0x4B	; 75
+     2c0:	9d e1       	ldi	r25, 0x1D	; 29
+     2c2:	01 97       	sbiw	r24, 0x01	; 1
+     2c4:	f1 f7       	brne	.-4      	; 0x2c2 <initialize+0x1a8>
+     2c6:	00 c0       	rjmp	.+0      	; 0x2c8 <initialize+0x1ae>
+     2c8:	00 00       	nop
+     2ca:	c8 01       	movw	r24, r16
+     2cc:	02 96       	adiw	r24, 0x02	; 2
+				_delay_ms(30);
+				delta++;
+				printf("Y-axis reverse delta=-%d \n \r",delta);
+     2ce:	9f 93       	push	r25
+     2d0:	8f 93       	push	r24
+     2d2:	df 93       	push	r29
+     2d4:	cf 93       	push	r28
+     2d6:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     2da:	87 ea       	ldi	r24, 0xA7	; 167
+     2dc:	91 e6       	ldi	r25, 0x61	; 97
+     2de:	01 97       	sbiw	r24, 0x01	; 1
+     2e0:	f1 f7       	brne	.-4      	; 0x2de <initialize+0x1c4>
+     2e2:	00 c0       	rjmp	.+0      	; 0x2e4 <initialize+0x1ca>
+     2e4:	00 00       	nop
+				_delay_ms(100);
+				if(bit_is_clear(PINB,1))
+     2e6:	0f 90       	pop	r0
+     2e8:	0f 90       	pop	r0
+     2ea:	0f 90       	pop	r0
+     2ec:	0f 90       	pop	r0
+     2ee:	b1 9b       	sbis	0x16, 1	; 22
+     2f0:	36 c0       	rjmp	.+108    	; 0x35e <initialize+0x244>
+				break;
+				
+				PORTC=(0<<A2)|(0<<A2_)|(1<<B2)|(0<<B2_);
+     2f2:	b5 ba       	out	0x15, r11	; 21
+     2f4:	8b e4       	ldi	r24, 0x4B	; 75
+     2f6:	9d e1       	ldi	r25, 0x1D	; 29
+     2f8:	01 97       	sbiw	r24, 0x01	; 1
+     2fa:	f1 f7       	brne	.-4      	; 0x2f8 <initialize+0x1de>
+     2fc:	00 c0       	rjmp	.+0      	; 0x2fe <initialize+0x1e4>
+     2fe:	00 00       	nop
+     300:	c8 01       	movw	r24, r16
+     302:	03 96       	adiw	r24, 0x03	; 3
+				_delay_ms(30);
+				delta++;
+				printf("Y-axis reverse delta=-%d \n \r",delta);
+     304:	9f 93       	push	r25
+     306:	8f 93       	push	r24
+     308:	df 93       	push	r29
+     30a:	cf 93       	push	r28
+     30c:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     310:	87 ea       	ldi	r24, 0xA7	; 167
+     312:	91 e6       	ldi	r25, 0x61	; 97
+     314:	01 97       	sbiw	r24, 0x01	; 1
+     316:	f1 f7       	brne	.-4      	; 0x314 <initialize+0x1fa>
+     318:	00 c0       	rjmp	.+0      	; 0x31a <initialize+0x200>
+     31a:	00 00       	nop
+				_delay_ms(100);
+				if(bit_is_clear(PINB,1))
+     31c:	0f 90       	pop	r0
+     31e:	0f 90       	pop	r0
+     320:	0f 90       	pop	r0
+     322:	0f 90       	pop	r0
+     324:	b1 9b       	sbis	0x16, 1	; 22
+     326:	1b c0       	rjmp	.+54     	; 0x35e <initialize+0x244>
+				break;
+				
+				PORTC=(1<<A2)|(0<<A2_)|(0<<B2)|(0<<B2_);
+     328:	a5 ba       	out	0x15, r10	; 21
+     32a:	8b e4       	ldi	r24, 0x4B	; 75
+     32c:	9d e1       	ldi	r25, 0x1D	; 29
+     32e:	01 97       	sbiw	r24, 0x01	; 1
+     330:	f1 f7       	brne	.-4      	; 0x32e <initialize+0x214>
+     332:	00 c0       	rjmp	.+0      	; 0x334 <initialize+0x21a>
+     334:	00 00       	nop
+				_delay_ms(30);
+				delta++;
+     336:	0c 5f       	subi	r16, 0xFC	; 252
+     338:	1f 4f       	sbci	r17, 0xFF	; 255
+				printf("Y-axis reverse delta=-%d \n \r",delta);
+     33a:	1f 93       	push	r17
+     33c:	0f 93       	push	r16
+     33e:	df 93       	push	r29
+     340:	cf 93       	push	r28
+     342:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     346:	87 ea       	ldi	r24, 0xA7	; 167
+     348:	91 e6       	ldi	r25, 0x61	; 97
+     34a:	01 97       	sbiw	r24, 0x01	; 1
+     34c:	f1 f7       	brne	.-4      	; 0x34a <initialize+0x230>
+     34e:	00 c0       	rjmp	.+0      	; 0x350 <initialize+0x236>
+     350:	00 00       	nop
+				_delay_ms(100);
+				if(bit_is_clear(PINB,1))
+     352:	0f 90       	pop	r0
+     354:	0f 90       	pop	r0
+     356:	0f 90       	pop	r0
+     358:	0f 90       	pop	r0
+     35a:	b1 99       	sbic	0x16, 1	; 22
+     35c:	92 cf       	rjmp	.-220    	; 0x282 <initialize+0x168>
+				break;
+				
+			}
+			PORTC=0x00;
+     35e:	15 ba       	out	0x15, r1	; 21
+			printf("Y-Axis Initialization Completed...\n \r");
+     360:	86 e0       	ldi	r24, 0x06	; 6
+     362:	91 e0       	ldi	r25, 0x01	; 1
+     364:	9f 93       	push	r25
+     366:	8f 93       	push	r24
+     368:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     36c:	0f 90       	pop	r0
+     36e:	0f 90       	pop	r0
+     370:	6b c0       	rjmp	.+214    	; 0x448 <initialize+0x32e>
+		}
+		
+		
+	
+	if(n==3)
+     372:	03 97       	sbiw	r24, 0x03	; 3
+     374:	09 f0       	breq	.+2      	; 0x378 <initialize+0x25e>
+     376:	68 c0       	rjmp	.+208    	; 0x448 <initialize+0x32e>
+     378:	00 e0       	ldi	r16, 0x00	; 0
+     37a:	10 e0       	ldi	r17, 0x00	; 0
+		int delta=0;
+		while(1)
+		{
+			if(bit_is_clear(PIND,7))
+			break;
+			PORTA=(0<<A3)|(0<<A3_)|(0<<B3)|(1<<B3_);
+     37c:	68 94       	set
+     37e:	dd 24       	eor	r13, r13
+     380:	d3 f8       	bld	r13, 3
+			_delay_ms(30);
+			delta++;
+			printf("\n\rZ-axis reverse delta=-%d",delta);
+     382:	cc e2       	ldi	r28, 0x2C	; 44
+     384:	d1 e0       	ldi	r29, 0x01	; 1
+			if(bit_is_clear(PIND,7))
+			break;
+			
+			PORTA=(0<<A3)|(1<<A3_)|(0<<B3)|(0<<B3_);
+     386:	68 94       	set
+     388:	cc 24       	eor	r12, r12
+     38a:	c1 f8       	bld	r12, 1
+			delta++;
+			printf("\n\rZ-axis reverse delta=-%d",delta);
+			if(bit_is_clear(PIND,7))
+			break;
+			
+			PORTA=(0<<A3)|(0<<A3_)|(1<<B3)|(0<<B3_);
+     38c:	68 94       	set
+     38e:	bb 24       	eor	r11, r11
+     390:	b2 f8       	bld	r11, 2
+			delta++;
+			printf("\n\rZ-axis reverse delta=-%d",delta);
+			if(bit_is_clear(PIND,7))
+			break;
+			
+			PORTA=(1<<A3)|(0<<A3_)|(0<<B3)|(0<<B3_);
+     392:	aa 24       	eor	r10, r10
+     394:	a3 94       	inc	r10
+	if(n==3)
+	{
+		int delta=0;
+		while(1)
+		{
+			if(bit_is_clear(PIND,7))
+     396:	87 9b       	sbis	0x10, 7	; 16
+     398:	54 c0       	rjmp	.+168    	; 0x442 <initialize+0x328>
+			break;
+			PORTA=(0<<A3)|(0<<A3_)|(0<<B3)|(1<<B3_);
+     39a:	db ba       	out	0x1b, r13	; 27
+     39c:	8b e4       	ldi	r24, 0x4B	; 75
+     39e:	9d e1       	ldi	r25, 0x1D	; 29
+     3a0:	01 97       	sbiw	r24, 0x01	; 1
+     3a2:	f1 f7       	brne	.-4      	; 0x3a0 <initialize+0x286>
+     3a4:	00 c0       	rjmp	.+0      	; 0x3a6 <initialize+0x28c>
+     3a6:	00 00       	nop
+     3a8:	c8 01       	movw	r24, r16
+     3aa:	01 96       	adiw	r24, 0x01	; 1
+			_delay_ms(30);
+			delta++;
+			printf("\n\rZ-axis reverse delta=-%d",delta);
+     3ac:	9f 93       	push	r25
+     3ae:	8f 93       	push	r24
+     3b0:	df 93       	push	r29
+     3b2:	cf 93       	push	r28
+     3b4:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			if(bit_is_clear(PIND,7))
+     3b8:	0f 90       	pop	r0
+     3ba:	0f 90       	pop	r0
+     3bc:	0f 90       	pop	r0
+     3be:	0f 90       	pop	r0
+     3c0:	87 9b       	sbis	0x10, 7	; 16
+     3c2:	3f c0       	rjmp	.+126    	; 0x442 <initialize+0x328>
+			break;
+			
+			PORTA=(0<<A3)|(1<<A3_)|(0<<B3)|(0<<B3_);
+     3c4:	cb ba       	out	0x1b, r12	; 27
+     3c6:	8b e4       	ldi	r24, 0x4B	; 75
+     3c8:	9d e1       	ldi	r25, 0x1D	; 29
+     3ca:	01 97       	sbiw	r24, 0x01	; 1
+     3cc:	f1 f7       	brne	.-4      	; 0x3ca <initialize+0x2b0>
+     3ce:	00 c0       	rjmp	.+0      	; 0x3d0 <initialize+0x2b6>
+     3d0:	00 00       	nop
+     3d2:	c8 01       	movw	r24, r16
+     3d4:	02 96       	adiw	r24, 0x02	; 2
+			_delay_ms(30);
+			delta++;
+			printf("\n\rZ-axis reverse delta=-%d",delta);
+     3d6:	9f 93       	push	r25
+     3d8:	8f 93       	push	r24
+     3da:	df 93       	push	r29
+     3dc:	cf 93       	push	r28
+     3de:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			if(bit_is_clear(PIND,7))
+     3e2:	0f 90       	pop	r0
+     3e4:	0f 90       	pop	r0
+     3e6:	0f 90       	pop	r0
+     3e8:	0f 90       	pop	r0
+     3ea:	87 9b       	sbis	0x10, 7	; 16
+     3ec:	2a c0       	rjmp	.+84     	; 0x442 <initialize+0x328>
+			break;
+			
+			PORTA=(0<<A3)|(0<<A3_)|(1<<B3)|(0<<B3_);
+     3ee:	bb ba       	out	0x1b, r11	; 27
+     3f0:	8b e4       	ldi	r24, 0x4B	; 75
+     3f2:	9d e1       	ldi	r25, 0x1D	; 29
+     3f4:	01 97       	sbiw	r24, 0x01	; 1
+     3f6:	f1 f7       	brne	.-4      	; 0x3f4 <initialize+0x2da>
+     3f8:	00 c0       	rjmp	.+0      	; 0x3fa <initialize+0x2e0>
+     3fa:	00 00       	nop
+     3fc:	c8 01       	movw	r24, r16
+     3fe:	03 96       	adiw	r24, 0x03	; 3
+			_delay_ms(30);
+			delta++;
+			printf("\n\rZ-axis reverse delta=-%d",delta);
+     400:	9f 93       	push	r25
+     402:	8f 93       	push	r24
+     404:	df 93       	push	r29
+     406:	cf 93       	push	r28
+     408:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			if(bit_is_clear(PIND,7))
+     40c:	0f 90       	pop	r0
+     40e:	0f 90       	pop	r0
+     410:	0f 90       	pop	r0
+     412:	0f 90       	pop	r0
+     414:	87 9b       	sbis	0x10, 7	; 16
+     416:	15 c0       	rjmp	.+42     	; 0x442 <initialize+0x328>
+			break;
+			
+			PORTA=(1<<A3)|(0<<A3_)|(0<<B3)|(0<<B3_);
+     418:	ab ba       	out	0x1b, r10	; 27
+     41a:	8b e4       	ldi	r24, 0x4B	; 75
+     41c:	9d e1       	ldi	r25, 0x1D	; 29
+     41e:	01 97       	sbiw	r24, 0x01	; 1
+     420:	f1 f7       	brne	.-4      	; 0x41e <initialize+0x304>
+     422:	00 c0       	rjmp	.+0      	; 0x424 <initialize+0x30a>
+     424:	00 00       	nop
+			_delay_ms(30);
+			delta++;
+     426:	0c 5f       	subi	r16, 0xFC	; 252
+     428:	1f 4f       	sbci	r17, 0xFF	; 255
+			printf("\n\rZ-axis reverse delta=-%d",delta);
+     42a:	1f 93       	push	r17
+     42c:	0f 93       	push	r16
+     42e:	df 93       	push	r29
+     430:	cf 93       	push	r28
+     432:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			if(bit_is_clear(PIND,7))
+     436:	0f 90       	pop	r0
+     438:	0f 90       	pop	r0
+     43a:	0f 90       	pop	r0
+     43c:	0f 90       	pop	r0
+     43e:	87 99       	sbic	0x10, 7	; 16
+     440:	aa cf       	rjmp	.-172    	; 0x396 <initialize+0x27c>
+			break;
+		}
+		PORTA=0x01010101;
+     442:	81 e0       	ldi	r24, 0x01	; 1
+     444:	8b bb       	out	0x1b, r24	; 27
+		PORTD=(0<<PIND6);
+     446:	12 ba       	out	0x12, r1	; 18
+		
+		
+	}
+	
+	
+}
+     448:	df 91       	pop	r29
+     44a:	cf 91       	pop	r28
+     44c:	1f 91       	pop	r17
+     44e:	0f 91       	pop	r16
+     450:	ff 90       	pop	r15
+     452:	ef 90       	pop	r14
+     454:	df 90       	pop	r13
+     456:	cf 90       	pop	r12
+     458:	bf 90       	pop	r11
+     45a:	af 90       	pop	r10
+     45c:	08 95       	ret
+
+0000045e <forwardx>:
+
+
+
+void forwardx(int coordinate)
+{
+     45e:	2f 92       	push	r2
+     460:	3f 92       	push	r3
+     462:	4f 92       	push	r4
+     464:	5f 92       	push	r5
+     466:	6f 92       	push	r6
+     468:	7f 92       	push	r7
+     46a:	8f 92       	push	r8
+     46c:	9f 92       	push	r9
+     46e:	af 92       	push	r10
+     470:	bf 92       	push	r11
+     472:	cf 92       	push	r12
+     474:	df 92       	push	r13
+     476:	ef 92       	push	r14
+     478:	ff 92       	push	r15
+     47a:	0f 93       	push	r16
+     47c:	1f 93       	push	r17
+     47e:	cf 93       	push	r28
+     480:	df 93       	push	r29
+     482:	6c 01       	movw	r12, r24
+	int delta=0;
+	while(1)
+	{
+		
+		if(delta>=coordinate)
+     484:	18 16       	cp	r1, r24
+     486:	19 06       	cpc	r1, r25
+     488:	0c f0       	brlt	.+2      	; 0x48c <forwardx+0x2e>
+     48a:	ae c0       	rjmp	.+348    	; 0x5e8 <forwardx+0x18a>
+		break;
+		if(bit_is_clear(PINB,2))
+     48c:	b2 9b       	sbis	0x16, 2	; 22
+     48e:	ac c0       	rjmp	.+344    	; 0x5e8 <forwardx+0x18a>
+     490:	02 e0       	ldi	r16, 0x02	; 2
+     492:	10 e0       	ldi	r17, 0x00	; 0
+     494:	0f 2e       	mov	r0, r31
+     496:	f3 e0       	ldi	r31, 0x03	; 3
+     498:	ef 2e       	mov	r14, r31
+     49a:	f1 2c       	mov	r15, r1
+     49c:	f0 2d       	mov	r31, r0
+     49e:	c1 e0       	ldi	r28, 0x01	; 1
+     4a0:	d0 e0       	ldi	r29, 0x00	; 0
+
+
+
+void forwardx(int coordinate)
+{
+	int delta=0;
+     4a2:	81 2c       	mov	r8, r1
+     4a4:	91 2c       	mov	r9, r1
+		if(bit_is_clear(PINB,2))
+		break;
+		PORTC=(1<<A1)|(0<<A1_)|(0<<B1)|(0<<B1_);
+		_delay_ms(20);
+		delta++;
+		printf("x-axis forward delta=%d \n \r",delta);
+     4a6:	0f 2e       	mov	r0, r31
+     4a8:	f7 e4       	ldi	r31, 0x47	; 71
+     4aa:	4f 2e       	mov	r4, r31
+     4ac:	f1 e0       	ldi	r31, 0x01	; 1
+     4ae:	5f 2e       	mov	r5, r31
+     4b0:	f0 2d       	mov	r31, r0
+		break;
+		
+		PORTC=(0<<A1)|(0<<A1_)|(1<<B1)|(0<<B1_);
+		_delay_ms(20);
+		delta++;
+		printf("x-axis forward delta=%d \n\r",delta);
+     4b2:	0f 2e       	mov	r0, r31
+     4b4:	f3 e6       	ldi	r31, 0x63	; 99
+     4b6:	2f 2e       	mov	r2, r31
+     4b8:	f1 e0       	ldi	r31, 0x01	; 1
+     4ba:	3f 2e       	mov	r3, r31
+     4bc:	f0 2d       	mov	r31, r0
+		break;
+		
+		PORTC=(0<<A1)|(1<<A1_)|(0<<B1)|(0<<B1_);
+		_delay_ms(20);
+		delta++;
+		printf("x-axis forward delta=%d\n \r",delta);
+     4be:	0f 2e       	mov	r0, r31
+     4c0:	fe e7       	ldi	r31, 0x7E	; 126
+     4c2:	6f 2e       	mov	r6, r31
+     4c4:	f1 e0       	ldi	r31, 0x01	; 1
+     4c6:	7f 2e       	mov	r7, r31
+     4c8:	f0 2d       	mov	r31, r0
+     4ca:	08 c0       	rjmp	.+16     	; 0x4dc <forwardx+0x7e>
+     4cc:	24 96       	adiw	r28, 0x04	; 4
+     4ce:	24 e0       	ldi	r18, 0x04	; 4
+     4d0:	e2 0e       	add	r14, r18
+     4d2:	f1 1c       	adc	r15, r1
+     4d4:	0c 5f       	subi	r16, 0xFC	; 252
+     4d6:	1f 4f       	sbci	r17, 0xFF	; 255
+	while(1)
+	{
+		
+		if(delta>=coordinate)
+		break;
+		if(bit_is_clear(PINB,2))
+     4d8:	b2 9b       	sbis	0x16, 2	; 22
+     4da:	86 c0       	rjmp	.+268    	; 0x5e8 <forwardx+0x18a>
+		break;
+		PORTC=(1<<A1)|(0<<A1_)|(0<<B1)|(0<<B1_);
+     4dc:	81 e0       	ldi	r24, 0x01	; 1
+     4de:	85 bb       	out	0x15, r24	; 21
+     4e0:	87 e8       	ldi	r24, 0x87	; 135
+     4e2:	93 e1       	ldi	r25, 0x13	; 19
+     4e4:	01 97       	sbiw	r24, 0x01	; 1
+     4e6:	f1 f7       	brne	.-4      	; 0x4e4 <forwardx+0x86>
+     4e8:	00 c0       	rjmp	.+0      	; 0x4ea <forwardx+0x8c>
+     4ea:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+		printf("x-axis forward delta=%d \n \r",delta);
+     4ec:	df 93       	push	r29
+     4ee:	cf 93       	push	r28
+     4f0:	5f 92       	push	r5
+     4f2:	4f 92       	push	r4
+     4f4:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     4f8:	8f e9       	ldi	r24, 0x9F	; 159
+     4fa:	96 e8       	ldi	r25, 0x86	; 134
+     4fc:	21 e0       	ldi	r18, 0x01	; 1
+     4fe:	81 50       	subi	r24, 0x01	; 1
+     500:	90 40       	sbci	r25, 0x00	; 0
+     502:	20 40       	sbci	r18, 0x00	; 0
+     504:	e1 f7       	brne	.-8      	; 0x4fe <forwardx+0xa0>
+     506:	00 c0       	rjmp	.+0      	; 0x508 <forwardx+0xaa>
+     508:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,2))
+     50a:	0f 90       	pop	r0
+     50c:	0f 90       	pop	r0
+     50e:	0f 90       	pop	r0
+     510:	0f 90       	pop	r0
+     512:	b2 9b       	sbis	0x16, 2	; 22
+     514:	69 c0       	rjmp	.+210    	; 0x5e8 <forwardx+0x18a>
+		break;
+		if(delta>=coordinate)
+     516:	cc 15       	cp	r28, r12
+     518:	dd 05       	cpc	r29, r13
+     51a:	0c f0       	brlt	.+2      	; 0x51e <forwardx+0xc0>
+     51c:	65 c0       	rjmp	.+202    	; 0x5e8 <forwardx+0x18a>
+		break;
+		
+		PORTC=(0<<A1)|(0<<A1_)|(1<<B1)|(0<<B1_);
+     51e:	84 e0       	ldi	r24, 0x04	; 4
+     520:	85 bb       	out	0x15, r24	; 21
+     522:	87 e8       	ldi	r24, 0x87	; 135
+     524:	93 e1       	ldi	r25, 0x13	; 19
+     526:	01 97       	sbiw	r24, 0x01	; 1
+     528:	f1 f7       	brne	.-4      	; 0x526 <forwardx+0xc8>
+     52a:	00 c0       	rjmp	.+0      	; 0x52c <forwardx+0xce>
+     52c:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+		printf("x-axis forward delta=%d \n\r",delta);
+     52e:	1f 93       	push	r17
+     530:	0f 93       	push	r16
+     532:	3f 92       	push	r3
+     534:	2f 92       	push	r2
+     536:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     53a:	9f e9       	ldi	r25, 0x9F	; 159
+     53c:	26 e8       	ldi	r18, 0x86	; 134
+     53e:	81 e0       	ldi	r24, 0x01	; 1
+     540:	91 50       	subi	r25, 0x01	; 1
+     542:	20 40       	sbci	r18, 0x00	; 0
+     544:	80 40       	sbci	r24, 0x00	; 0
+     546:	e1 f7       	brne	.-8      	; 0x540 <forwardx+0xe2>
+     548:	00 c0       	rjmp	.+0      	; 0x54a <forwardx+0xec>
+     54a:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,2))
+     54c:	0f 90       	pop	r0
+     54e:	0f 90       	pop	r0
+     550:	0f 90       	pop	r0
+     552:	0f 90       	pop	r0
+     554:	b2 9b       	sbis	0x16, 2	; 22
+     556:	48 c0       	rjmp	.+144    	; 0x5e8 <forwardx+0x18a>
+		break;
+		if(delta>=coordinate)
+     558:	0c 15       	cp	r16, r12
+     55a:	1d 05       	cpc	r17, r13
+     55c:	0c f0       	brlt	.+2      	; 0x560 <forwardx+0x102>
+     55e:	44 c0       	rjmp	.+136    	; 0x5e8 <forwardx+0x18a>
+		break;
+		
+		PORTC=(0<<A1)|(1<<A1_)|(0<<B1)|(0<<B1_);
+     560:	92 e0       	ldi	r25, 0x02	; 2
+     562:	95 bb       	out	0x15, r25	; 21
+     564:	87 e8       	ldi	r24, 0x87	; 135
+     566:	93 e1       	ldi	r25, 0x13	; 19
+     568:	01 97       	sbiw	r24, 0x01	; 1
+     56a:	f1 f7       	brne	.-4      	; 0x568 <forwardx+0x10a>
+     56c:	00 c0       	rjmp	.+0      	; 0x56e <forwardx+0x110>
+     56e:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+		printf("x-axis forward delta=%d\n \r",delta);
+     570:	ff 92       	push	r15
+     572:	ef 92       	push	r14
+     574:	7f 92       	push	r7
+     576:	6f 92       	push	r6
+     578:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     57c:	9f e9       	ldi	r25, 0x9F	; 159
+     57e:	26 e8       	ldi	r18, 0x86	; 134
+     580:	81 e0       	ldi	r24, 0x01	; 1
+     582:	91 50       	subi	r25, 0x01	; 1
+     584:	20 40       	sbci	r18, 0x00	; 0
+     586:	80 40       	sbci	r24, 0x00	; 0
+     588:	e1 f7       	brne	.-8      	; 0x582 <forwardx+0x124>
+     58a:	00 c0       	rjmp	.+0      	; 0x58c <forwardx+0x12e>
+     58c:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,2))
+     58e:	0f 90       	pop	r0
+     590:	0f 90       	pop	r0
+     592:	0f 90       	pop	r0
+     594:	0f 90       	pop	r0
+     596:	b2 9b       	sbis	0x16, 2	; 22
+     598:	27 c0       	rjmp	.+78     	; 0x5e8 <forwardx+0x18a>
+		break;
+		if(delta>=coordinate)
+     59a:	ec 14       	cp	r14, r12
+     59c:	fd 04       	cpc	r15, r13
+     59e:	24 f5       	brge	.+72     	; 0x5e8 <forwardx+0x18a>
+		break;
+		
+		PORTC=(0<<A1)|(0<<A1_)|(0<<B1)|(1<<B1_);
+     5a0:	98 e0       	ldi	r25, 0x08	; 8
+     5a2:	95 bb       	out	0x15, r25	; 21
+     5a4:	87 e8       	ldi	r24, 0x87	; 135
+     5a6:	93 e1       	ldi	r25, 0x13	; 19
+     5a8:	01 97       	sbiw	r24, 0x01	; 1
+     5aa:	f1 f7       	brne	.-4      	; 0x5a8 <forwardx+0x14a>
+     5ac:	00 c0       	rjmp	.+0      	; 0x5ae <forwardx+0x150>
+     5ae:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+     5b0:	94 e0       	ldi	r25, 0x04	; 4
+     5b2:	89 0e       	add	r8, r25
+     5b4:	91 1c       	adc	r9, r1
+		printf("x-axis forward delta=%d\n \r",delta);
+     5b6:	9f 92       	push	r9
+     5b8:	8f 92       	push	r8
+     5ba:	7f 92       	push	r7
+     5bc:	6f 92       	push	r6
+     5be:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     5c2:	2f e9       	ldi	r18, 0x9F	; 159
+     5c4:	86 e8       	ldi	r24, 0x86	; 134
+     5c6:	91 e0       	ldi	r25, 0x01	; 1
+     5c8:	21 50       	subi	r18, 0x01	; 1
+     5ca:	80 40       	sbci	r24, 0x00	; 0
+     5cc:	90 40       	sbci	r25, 0x00	; 0
+     5ce:	e1 f7       	brne	.-8      	; 0x5c8 <forwardx+0x16a>
+     5d0:	00 c0       	rjmp	.+0      	; 0x5d2 <forwardx+0x174>
+     5d2:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,2))
+     5d4:	0f 90       	pop	r0
+     5d6:	0f 90       	pop	r0
+     5d8:	0f 90       	pop	r0
+     5da:	0f 90       	pop	r0
+     5dc:	b2 9b       	sbis	0x16, 2	; 22
+     5de:	04 c0       	rjmp	.+8      	; 0x5e8 <forwardx+0x18a>
+		break;
+		if(delta>=coordinate)
+     5e0:	8c 14       	cp	r8, r12
+     5e2:	9d 04       	cpc	r9, r13
+     5e4:	0c f4       	brge	.+2      	; 0x5e8 <forwardx+0x18a>
+     5e6:	72 cf       	rjmp	.-284    	; 0x4cc <forwardx+0x6e>
+		break;
+		
+	}
+}
+     5e8:	df 91       	pop	r29
+     5ea:	cf 91       	pop	r28
+     5ec:	1f 91       	pop	r17
+     5ee:	0f 91       	pop	r16
+     5f0:	ff 90       	pop	r15
+     5f2:	ef 90       	pop	r14
+     5f4:	df 90       	pop	r13
+     5f6:	cf 90       	pop	r12
+     5f8:	bf 90       	pop	r11
+     5fa:	af 90       	pop	r10
+     5fc:	9f 90       	pop	r9
+     5fe:	8f 90       	pop	r8
+     600:	7f 90       	pop	r7
+     602:	6f 90       	pop	r6
+     604:	5f 90       	pop	r5
+     606:	4f 90       	pop	r4
+     608:	3f 90       	pop	r3
+     60a:	2f 90       	pop	r2
+     60c:	08 95       	ret
+
+0000060e <forwardy>:
+
+
+
+void forwardy(int coordinate)
+{
+     60e:	2f 92       	push	r2
+     610:	3f 92       	push	r3
+     612:	4f 92       	push	r4
+     614:	5f 92       	push	r5
+     616:	6f 92       	push	r6
+     618:	7f 92       	push	r7
+     61a:	8f 92       	push	r8
+     61c:	9f 92       	push	r9
+     61e:	af 92       	push	r10
+     620:	bf 92       	push	r11
+     622:	cf 92       	push	r12
+     624:	df 92       	push	r13
+     626:	ef 92       	push	r14
+     628:	ff 92       	push	r15
+     62a:	0f 93       	push	r16
+     62c:	1f 93       	push	r17
+     62e:	cf 93       	push	r28
+     630:	df 93       	push	r29
+     632:	6c 01       	movw	r12, r24
+	int delta=0;
+	while(1)
+	{
+		if(delta>=coordinate)
+     634:	18 16       	cp	r1, r24
+     636:	19 06       	cpc	r1, r25
+     638:	0c f0       	brlt	.+2      	; 0x63c <forwardy+0x2e>
+     63a:	ae c0       	rjmp	.+348    	; 0x798 <forwardy+0x18a>
+		break;
+		if(bit_is_clear(PINB,3))
+     63c:	b3 9b       	sbis	0x16, 3	; 22
+     63e:	ac c0       	rjmp	.+344    	; 0x798 <forwardy+0x18a>
+     640:	02 e0       	ldi	r16, 0x02	; 2
+     642:	10 e0       	ldi	r17, 0x00	; 0
+     644:	0f 2e       	mov	r0, r31
+     646:	f3 e0       	ldi	r31, 0x03	; 3
+     648:	ef 2e       	mov	r14, r31
+     64a:	f1 2c       	mov	r15, r1
+     64c:	f0 2d       	mov	r31, r0
+     64e:	c1 e0       	ldi	r28, 0x01	; 1
+     650:	d0 e0       	ldi	r29, 0x00	; 0
+
+
+
+void forwardy(int coordinate)
+{
+	int delta=0;
+     652:	81 2c       	mov	r8, r1
+     654:	91 2c       	mov	r9, r1
+		if(bit_is_clear(PINB,3))
+		break;
+		PORTC=(1<<A2)|(0<<A2_)|(0<<B2)|(0<<B2_);
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=%d \n \r",delta);
+     656:	0f 2e       	mov	r0, r31
+     658:	f9 e9       	ldi	r31, 0x99	; 153
+     65a:	4f 2e       	mov	r4, r31
+     65c:	f1 e0       	ldi	r31, 0x01	; 1
+     65e:	5f 2e       	mov	r5, r31
+     660:	f0 2d       	mov	r31, r0
+		
+		
+		PORTC=(0<<A2)|(0<<A2_)|(1<<B2)|(0<<B2_);
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=%d \n\r",delta);
+     662:	0f 2e       	mov	r0, r31
+     664:	f5 eb       	ldi	r31, 0xB5	; 181
+     666:	2f 2e       	mov	r2, r31
+     668:	f1 e0       	ldi	r31, 0x01	; 1
+     66a:	3f 2e       	mov	r3, r31
+     66c:	f0 2d       	mov	r31, r0
+		
+		
+		PORTC=(0<<A2)|(1<<A2_)|(0<<B2)|(0<<B2_);
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=%d\n \r",delta);
+     66e:	0f 2e       	mov	r0, r31
+     670:	f0 ed       	ldi	r31, 0xD0	; 208
+     672:	6f 2e       	mov	r6, r31
+     674:	f1 e0       	ldi	r31, 0x01	; 1
+     676:	7f 2e       	mov	r7, r31
+     678:	f0 2d       	mov	r31, r0
+     67a:	08 c0       	rjmp	.+16     	; 0x68c <forwardy+0x7e>
+     67c:	24 96       	adiw	r28, 0x04	; 4
+     67e:	24 e0       	ldi	r18, 0x04	; 4
+     680:	e2 0e       	add	r14, r18
+     682:	f1 1c       	adc	r15, r1
+     684:	0c 5f       	subi	r16, 0xFC	; 252
+     686:	1f 4f       	sbci	r17, 0xFF	; 255
+	int delta=0;
+	while(1)
+	{
+		if(delta>=coordinate)
+		break;
+		if(bit_is_clear(PINB,3))
+     688:	b3 9b       	sbis	0x16, 3	; 22
+     68a:	86 c0       	rjmp	.+268    	; 0x798 <forwardy+0x18a>
+		break;
+		PORTC=(1<<A2)|(0<<A2_)|(0<<B2)|(0<<B2_);
+     68c:	80 e1       	ldi	r24, 0x10	; 16
+     68e:	85 bb       	out	0x15, r24	; 21
+     690:	87 e8       	ldi	r24, 0x87	; 135
+     692:	93 e1       	ldi	r25, 0x13	; 19
+     694:	01 97       	sbiw	r24, 0x01	; 1
+     696:	f1 f7       	brne	.-4      	; 0x694 <forwardy+0x86>
+     698:	00 c0       	rjmp	.+0      	; 0x69a <forwardy+0x8c>
+     69a:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=%d \n \r",delta);
+     69c:	df 93       	push	r29
+     69e:	cf 93       	push	r28
+     6a0:	5f 92       	push	r5
+     6a2:	4f 92       	push	r4
+     6a4:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     6a8:	8f e9       	ldi	r24, 0x9F	; 159
+     6aa:	96 e8       	ldi	r25, 0x86	; 134
+     6ac:	21 e0       	ldi	r18, 0x01	; 1
+     6ae:	81 50       	subi	r24, 0x01	; 1
+     6b0:	90 40       	sbci	r25, 0x00	; 0
+     6b2:	20 40       	sbci	r18, 0x00	; 0
+     6b4:	e1 f7       	brne	.-8      	; 0x6ae <forwardy+0xa0>
+     6b6:	00 c0       	rjmp	.+0      	; 0x6b8 <forwardy+0xaa>
+     6b8:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,3))
+     6ba:	0f 90       	pop	r0
+     6bc:	0f 90       	pop	r0
+     6be:	0f 90       	pop	r0
+     6c0:	0f 90       	pop	r0
+     6c2:	b3 9b       	sbis	0x16, 3	; 22
+     6c4:	69 c0       	rjmp	.+210    	; 0x798 <forwardy+0x18a>
+		break;
+		if(delta>=coordinate)
+     6c6:	cc 15       	cp	r28, r12
+     6c8:	dd 05       	cpc	r29, r13
+     6ca:	0c f0       	brlt	.+2      	; 0x6ce <forwardy+0xc0>
+     6cc:	65 c0       	rjmp	.+202    	; 0x798 <forwardy+0x18a>
+		break;
+		
+		
+		PORTC=(0<<A2)|(0<<A2_)|(1<<B2)|(0<<B2_);
+     6ce:	80 e4       	ldi	r24, 0x40	; 64
+     6d0:	85 bb       	out	0x15, r24	; 21
+     6d2:	87 e8       	ldi	r24, 0x87	; 135
+     6d4:	93 e1       	ldi	r25, 0x13	; 19
+     6d6:	01 97       	sbiw	r24, 0x01	; 1
+     6d8:	f1 f7       	brne	.-4      	; 0x6d6 <forwardy+0xc8>
+     6da:	00 c0       	rjmp	.+0      	; 0x6dc <forwardy+0xce>
+     6dc:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=%d \n\r",delta);
+     6de:	1f 93       	push	r17
+     6e0:	0f 93       	push	r16
+     6e2:	3f 92       	push	r3
+     6e4:	2f 92       	push	r2
+     6e6:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     6ea:	9f e9       	ldi	r25, 0x9F	; 159
+     6ec:	26 e8       	ldi	r18, 0x86	; 134
+     6ee:	81 e0       	ldi	r24, 0x01	; 1
+     6f0:	91 50       	subi	r25, 0x01	; 1
+     6f2:	20 40       	sbci	r18, 0x00	; 0
+     6f4:	80 40       	sbci	r24, 0x00	; 0
+     6f6:	e1 f7       	brne	.-8      	; 0x6f0 <forwardy+0xe2>
+     6f8:	00 c0       	rjmp	.+0      	; 0x6fa <forwardy+0xec>
+     6fa:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,3))
+     6fc:	0f 90       	pop	r0
+     6fe:	0f 90       	pop	r0
+     700:	0f 90       	pop	r0
+     702:	0f 90       	pop	r0
+     704:	b3 9b       	sbis	0x16, 3	; 22
+     706:	48 c0       	rjmp	.+144    	; 0x798 <forwardy+0x18a>
+		break;
+		if(delta>=coordinate)
+     708:	0c 15       	cp	r16, r12
+     70a:	1d 05       	cpc	r17, r13
+     70c:	0c f0       	brlt	.+2      	; 0x710 <forwardy+0x102>
+     70e:	44 c0       	rjmp	.+136    	; 0x798 <forwardy+0x18a>
+		break;
+		
+		
+		PORTC=(0<<A2)|(1<<A2_)|(0<<B2)|(0<<B2_);
+     710:	90 e2       	ldi	r25, 0x20	; 32
+     712:	95 bb       	out	0x15, r25	; 21
+     714:	87 e8       	ldi	r24, 0x87	; 135
+     716:	93 e1       	ldi	r25, 0x13	; 19
+     718:	01 97       	sbiw	r24, 0x01	; 1
+     71a:	f1 f7       	brne	.-4      	; 0x718 <forwardy+0x10a>
+     71c:	00 c0       	rjmp	.+0      	; 0x71e <forwardy+0x110>
+     71e:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=%d\n \r",delta);
+     720:	ff 92       	push	r15
+     722:	ef 92       	push	r14
+     724:	7f 92       	push	r7
+     726:	6f 92       	push	r6
+     728:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     72c:	9f e9       	ldi	r25, 0x9F	; 159
+     72e:	26 e8       	ldi	r18, 0x86	; 134
+     730:	81 e0       	ldi	r24, 0x01	; 1
+     732:	91 50       	subi	r25, 0x01	; 1
+     734:	20 40       	sbci	r18, 0x00	; 0
+     736:	80 40       	sbci	r24, 0x00	; 0
+     738:	e1 f7       	brne	.-8      	; 0x732 <forwardy+0x124>
+     73a:	00 c0       	rjmp	.+0      	; 0x73c <forwardy+0x12e>
+     73c:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,3))
+     73e:	0f 90       	pop	r0
+     740:	0f 90       	pop	r0
+     742:	0f 90       	pop	r0
+     744:	0f 90       	pop	r0
+     746:	b3 9b       	sbis	0x16, 3	; 22
+     748:	27 c0       	rjmp	.+78     	; 0x798 <forwardy+0x18a>
+		break;
+		if(delta>=coordinate)
+     74a:	ec 14       	cp	r14, r12
+     74c:	fd 04       	cpc	r15, r13
+     74e:	24 f5       	brge	.+72     	; 0x798 <forwardy+0x18a>
+		break;
+		
+		
+		PORTC=(0<<A2)|(0<<A2_)|(0<<B2)|(1<<B2_);
+     750:	90 e8       	ldi	r25, 0x80	; 128
+     752:	95 bb       	out	0x15, r25	; 21
+     754:	87 e8       	ldi	r24, 0x87	; 135
+     756:	93 e1       	ldi	r25, 0x13	; 19
+     758:	01 97       	sbiw	r24, 0x01	; 1
+     75a:	f1 f7       	brne	.-4      	; 0x758 <forwardy+0x14a>
+     75c:	00 c0       	rjmp	.+0      	; 0x75e <forwardy+0x150>
+     75e:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+     760:	94 e0       	ldi	r25, 0x04	; 4
+     762:	89 0e       	add	r8, r25
+     764:	91 1c       	adc	r9, r1
+		printf("y axis forward delta=%d\n \r",delta);
+     766:	9f 92       	push	r9
+     768:	8f 92       	push	r8
+     76a:	7f 92       	push	r7
+     76c:	6f 92       	push	r6
+     76e:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     772:	2f e9       	ldi	r18, 0x9F	; 159
+     774:	86 e8       	ldi	r24, 0x86	; 134
+     776:	91 e0       	ldi	r25, 0x01	; 1
+     778:	21 50       	subi	r18, 0x01	; 1
+     77a:	80 40       	sbci	r24, 0x00	; 0
+     77c:	90 40       	sbci	r25, 0x00	; 0
+     77e:	e1 f7       	brne	.-8      	; 0x778 <forwardy+0x16a>
+     780:	00 c0       	rjmp	.+0      	; 0x782 <forwardy+0x174>
+     782:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,3))
+     784:	0f 90       	pop	r0
+     786:	0f 90       	pop	r0
+     788:	0f 90       	pop	r0
+     78a:	0f 90       	pop	r0
+     78c:	b3 9b       	sbis	0x16, 3	; 22
+     78e:	04 c0       	rjmp	.+8      	; 0x798 <forwardy+0x18a>
+		break;
+		if(delta>=coordinate)
+     790:	8c 14       	cp	r8, r12
+     792:	9d 04       	cpc	r9, r13
+     794:	0c f4       	brge	.+2      	; 0x798 <forwardy+0x18a>
+     796:	72 cf       	rjmp	.-284    	; 0x67c <forwardy+0x6e>
+		break;
+	}
+}
+     798:	df 91       	pop	r29
+     79a:	cf 91       	pop	r28
+     79c:	1f 91       	pop	r17
+     79e:	0f 91       	pop	r16
+     7a0:	ff 90       	pop	r15
+     7a2:	ef 90       	pop	r14
+     7a4:	df 90       	pop	r13
+     7a6:	cf 90       	pop	r12
+     7a8:	bf 90       	pop	r11
+     7aa:	af 90       	pop	r10
+     7ac:	9f 90       	pop	r9
+     7ae:	8f 90       	pop	r8
+     7b0:	7f 90       	pop	r7
+     7b2:	6f 90       	pop	r6
+     7b4:	5f 90       	pop	r5
+     7b6:	4f 90       	pop	r4
+     7b8:	3f 90       	pop	r3
+     7ba:	2f 90       	pop	r2
+     7bc:	08 95       	ret
+
+000007be <reverse_x>:
+
+
+void reverse_x(int coordinate)
+{
+     7be:	2f 92       	push	r2
+     7c0:	3f 92       	push	r3
+     7c2:	4f 92       	push	r4
+     7c4:	5f 92       	push	r5
+     7c6:	6f 92       	push	r6
+     7c8:	7f 92       	push	r7
+     7ca:	8f 92       	push	r8
+     7cc:	9f 92       	push	r9
+     7ce:	af 92       	push	r10
+     7d0:	bf 92       	push	r11
+     7d2:	cf 92       	push	r12
+     7d4:	df 92       	push	r13
+     7d6:	ef 92       	push	r14
+     7d8:	ff 92       	push	r15
+     7da:	0f 93       	push	r16
+     7dc:	1f 93       	push	r17
+     7de:	cf 93       	push	r28
+     7e0:	df 93       	push	r29
+     7e2:	6c 01       	movw	r12, r24
+	
+	int delta=0;
+	while(1)
+	{
+		if(delta>=coordinate)
+     7e4:	18 16       	cp	r1, r24
+     7e6:	19 06       	cpc	r1, r25
+     7e8:	0c f0       	brlt	.+2      	; 0x7ec <reverse_x+0x2e>
+     7ea:	ab c0       	rjmp	.+342    	; 0x942 <__stack+0xe3>
+     7ec:	02 e0       	ldi	r16, 0x02	; 2
+     7ee:	10 e0       	ldi	r17, 0x00	; 0
+     7f0:	0f 2e       	mov	r0, r31
+     7f2:	f3 e0       	ldi	r31, 0x03	; 3
+     7f4:	ef 2e       	mov	r14, r31
+     7f6:	f1 2c       	mov	r15, r1
+     7f8:	f0 2d       	mov	r31, r0
+     7fa:	c1 e0       	ldi	r28, 0x01	; 1
+     7fc:	d0 e0       	ldi	r29, 0x00	; 0
+
+
+void reverse_x(int coordinate)
+{
+	
+	int delta=0;
+     7fe:	81 2c       	mov	r8, r1
+     800:	91 2c       	mov	r9, r1
+		if(delta>=coordinate)
+		break;
+		PORTC=(0<<A1)|(0<<A1_)|(0<<B1)|(1<<B1_);
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=-%d\n \r",delta);
+     802:	0f 2e       	mov	r0, r31
+     804:	fb ee       	ldi	r31, 0xEB	; 235
+     806:	6f 2e       	mov	r6, r31
+     808:	f1 e0       	ldi	r31, 0x01	; 1
+     80a:	7f 2e       	mov	r7, r31
+     80c:	f0 2d       	mov	r31, r0
+		break;
+		
+		PORTC=(0<<A1)|(0<<A1_)|(1<<B1)|(0<<B1_);
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=-%d \n\r",delta);
+     80e:	0f 2e       	mov	r0, r31
+     810:	f7 e0       	ldi	r31, 0x07	; 7
+     812:	4f 2e       	mov	r4, r31
+     814:	f2 e0       	ldi	r31, 0x02	; 2
+     816:	5f 2e       	mov	r5, r31
+     818:	f0 2d       	mov	r31, r0
+		if(bit_is_clear(PINB,3))
+		break;
+		PORTC=(1<<A1)|(0<<A1_)|(0<<B1)|(0<<B1_);
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=-%d \n \r",delta);
+     81a:	0f 2e       	mov	r0, r31
+     81c:	f3 e2       	ldi	r31, 0x23	; 35
+     81e:	2f 2e       	mov	r2, r31
+     820:	f2 e0       	ldi	r31, 0x02	; 2
+     822:	3f 2e       	mov	r3, r31
+     824:	f0 2d       	mov	r31, r0
+	int delta=0;
+	while(1)
+	{
+		if(delta>=coordinate)
+		break;
+		PORTC=(0<<A1)|(0<<A1_)|(0<<B1)|(1<<B1_);
+     826:	28 e0       	ldi	r18, 0x08	; 8
+     828:	25 bb       	out	0x15, r18	; 21
+     82a:	87 e8       	ldi	r24, 0x87	; 135
+     82c:	93 e1       	ldi	r25, 0x13	; 19
+     82e:	01 97       	sbiw	r24, 0x01	; 1
+     830:	f1 f7       	brne	.-4      	; 0x82e <reverse_x+0x70>
+     832:	00 c0       	rjmp	.+0      	; 0x834 <reverse_x+0x76>
+     834:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=-%d\n \r",delta);
+     836:	df 93       	push	r29
+     838:	cf 93       	push	r28
+     83a:	7f 92       	push	r7
+     83c:	6f 92       	push	r6
+     83e:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     842:	8f e9       	ldi	r24, 0x9F	; 159
+     844:	96 e8       	ldi	r25, 0x86	; 134
+     846:	21 e0       	ldi	r18, 0x01	; 1
+     848:	81 50       	subi	r24, 0x01	; 1
+     84a:	90 40       	sbci	r25, 0x00	; 0
+     84c:	20 40       	sbci	r18, 0x00	; 0
+     84e:	e1 f7       	brne	.-8      	; 0x848 <reverse_x+0x8a>
+     850:	00 c0       	rjmp	.+0      	; 0x852 <reverse_x+0x94>
+     852:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,3))
+     854:	0f 90       	pop	r0
+     856:	0f 90       	pop	r0
+     858:	0f 90       	pop	r0
+     85a:	0f 90       	pop	r0
+     85c:	b3 9b       	sbis	0x16, 3	; 22
+     85e:	71 c0       	rjmp	.+226    	; 0x942 <__stack+0xe3>
+		break;
+		if(delta>=coordinate)
+     860:	cc 15       	cp	r28, r12
+     862:	dd 05       	cpc	r29, r13
+     864:	0c f0       	brlt	.+2      	; 0x868 <__stack+0x9>
+     866:	6d c0       	rjmp	.+218    	; 0x942 <__stack+0xe3>
+		break;
+		
+		
+		PORTC=(0<<A1)|(1<<A1_)|(0<<B1)|(0<<B1_);
+     868:	82 e0       	ldi	r24, 0x02	; 2
+     86a:	85 bb       	out	0x15, r24	; 21
+     86c:	87 e8       	ldi	r24, 0x87	; 135
+     86e:	93 e1       	ldi	r25, 0x13	; 19
+     870:	01 97       	sbiw	r24, 0x01	; 1
+     872:	f1 f7       	brne	.-4      	; 0x870 <__stack+0x11>
+     874:	00 c0       	rjmp	.+0      	; 0x876 <__stack+0x17>
+     876:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=-%d\n \r",delta);
+     878:	1f 93       	push	r17
+     87a:	0f 93       	push	r16
+     87c:	7f 92       	push	r7
+     87e:	6f 92       	push	r6
+     880:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     884:	9f e9       	ldi	r25, 0x9F	; 159
+     886:	26 e8       	ldi	r18, 0x86	; 134
+     888:	81 e0       	ldi	r24, 0x01	; 1
+     88a:	91 50       	subi	r25, 0x01	; 1
+     88c:	20 40       	sbci	r18, 0x00	; 0
+     88e:	80 40       	sbci	r24, 0x00	; 0
+     890:	e1 f7       	brne	.-8      	; 0x88a <__stack+0x2b>
+     892:	00 c0       	rjmp	.+0      	; 0x894 <__stack+0x35>
+     894:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,3))
+     896:	0f 90       	pop	r0
+     898:	0f 90       	pop	r0
+     89a:	0f 90       	pop	r0
+     89c:	0f 90       	pop	r0
+     89e:	b3 9b       	sbis	0x16, 3	; 22
+     8a0:	50 c0       	rjmp	.+160    	; 0x942 <__stack+0xe3>
+		break;
+		if(delta>=coordinate)
+     8a2:	0c 15       	cp	r16, r12
+     8a4:	1d 05       	cpc	r17, r13
+     8a6:	0c f0       	brlt	.+2      	; 0x8aa <__stack+0x4b>
+     8a8:	4c c0       	rjmp	.+152    	; 0x942 <__stack+0xe3>
+		break;
+		
+		PORTC=(0<<A1)|(0<<A1_)|(1<<B1)|(0<<B1_);
+     8aa:	94 e0       	ldi	r25, 0x04	; 4
+     8ac:	95 bb       	out	0x15, r25	; 21
+     8ae:	87 e8       	ldi	r24, 0x87	; 135
+     8b0:	93 e1       	ldi	r25, 0x13	; 19
+     8b2:	01 97       	sbiw	r24, 0x01	; 1
+     8b4:	f1 f7       	brne	.-4      	; 0x8b2 <__stack+0x53>
+     8b6:	00 c0       	rjmp	.+0      	; 0x8b8 <__stack+0x59>
+     8b8:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+		printf("y axis forward delta=-%d \n\r",delta);
+     8ba:	ff 92       	push	r15
+     8bc:	ef 92       	push	r14
+     8be:	5f 92       	push	r5
+     8c0:	4f 92       	push	r4
+     8c2:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     8c6:	9f e9       	ldi	r25, 0x9F	; 159
+     8c8:	26 e8       	ldi	r18, 0x86	; 134
+     8ca:	81 e0       	ldi	r24, 0x01	; 1
+     8cc:	91 50       	subi	r25, 0x01	; 1
+     8ce:	20 40       	sbci	r18, 0x00	; 0
+     8d0:	80 40       	sbci	r24, 0x00	; 0
+     8d2:	e1 f7       	brne	.-8      	; 0x8cc <__stack+0x6d>
+     8d4:	00 c0       	rjmp	.+0      	; 0x8d6 <__stack+0x77>
+     8d6:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,3))
+     8d8:	0f 90       	pop	r0
+     8da:	0f 90       	pop	r0
+     8dc:	0f 90       	pop	r0
+     8de:	0f 90       	pop	r0
+     8e0:	b3 9b       	sbis	0x16, 3	; 22
+     8e2:	2f c0       	rjmp	.+94     	; 0x942 <__stack+0xe3>
+		break;
+		if(delta>=coordinate)
+     8e4:	ec 14       	cp	r14, r12
+     8e6:	fd 04       	cpc	r15, r13
+     8e8:	64 f5       	brge	.+88     	; 0x942 <__stack+0xe3>
+		break;
+		
+		if(bit_is_clear(PINB,3))
+     8ea:	b3 9b       	sbis	0x16, 3	; 22
+     8ec:	2a c0       	rjmp	.+84     	; 0x942 <__stack+0xe3>
+		break;
+		PORTC=(1<<A1)|(0<<A1_)|(0<<B1)|(0<<B1_);
+     8ee:	91 e0       	ldi	r25, 0x01	; 1
+     8f0:	95 bb       	out	0x15, r25	; 21
+     8f2:	87 e8       	ldi	r24, 0x87	; 135
+     8f4:	93 e1       	ldi	r25, 0x13	; 19
+     8f6:	01 97       	sbiw	r24, 0x01	; 1
+     8f8:	f1 f7       	brne	.-4      	; 0x8f6 <__stack+0x97>
+     8fa:	00 c0       	rjmp	.+0      	; 0x8fc <__stack+0x9d>
+     8fc:	00 00       	nop
+		_delay_ms(20);
+		delta++;
+     8fe:	94 e0       	ldi	r25, 0x04	; 4
+     900:	89 0e       	add	r8, r25
+     902:	91 1c       	adc	r9, r1
+		printf("y axis forward delta=-%d \n \r",delta);
+     904:	9f 92       	push	r9
+     906:	8f 92       	push	r8
+     908:	3f 92       	push	r3
+     90a:	2f 92       	push	r2
+     90c:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     910:	2f e9       	ldi	r18, 0x9F	; 159
+     912:	86 e8       	ldi	r24, 0x86	; 134
+     914:	91 e0       	ldi	r25, 0x01	; 1
+     916:	21 50       	subi	r18, 0x01	; 1
+     918:	80 40       	sbci	r24, 0x00	; 0
+     91a:	90 40       	sbci	r25, 0x00	; 0
+     91c:	e1 f7       	brne	.-8      	; 0x916 <__stack+0xb7>
+     91e:	00 c0       	rjmp	.+0      	; 0x920 <__stack+0xc1>
+     920:	00 00       	nop
+		_delay_ms(500);
+		if(bit_is_clear(PINB,3))
+     922:	0f 90       	pop	r0
+     924:	0f 90       	pop	r0
+     926:	0f 90       	pop	r0
+     928:	0f 90       	pop	r0
+     92a:	b3 9b       	sbis	0x16, 3	; 22
+     92c:	0a c0       	rjmp	.+20     	; 0x942 <__stack+0xe3>
+     92e:	24 96       	adiw	r28, 0x04	; 4
+     930:	24 e0       	ldi	r18, 0x04	; 4
+     932:	e2 0e       	add	r14, r18
+     934:	f1 1c       	adc	r15, r1
+     936:	0c 5f       	subi	r16, 0xFC	; 252
+     938:	1f 4f       	sbci	r17, 0xFF	; 255
+		break;
+		if(delta>=coordinate)
+     93a:	8c 14       	cp	r8, r12
+     93c:	9d 04       	cpc	r9, r13
+     93e:	0c f4       	brge	.+2      	; 0x942 <__stack+0xe3>
+     940:	72 cf       	rjmp	.-284    	; 0x826 <reverse_x+0x68>
+		break;
+	}
+}
+     942:	df 91       	pop	r29
+     944:	cf 91       	pop	r28
+     946:	1f 91       	pop	r17
+     948:	0f 91       	pop	r16
+     94a:	ff 90       	pop	r15
+     94c:	ef 90       	pop	r14
+     94e:	df 90       	pop	r13
+     950:	cf 90       	pop	r12
+     952:	bf 90       	pop	r11
+     954:	af 90       	pop	r10
+     956:	9f 90       	pop	r9
+     958:	8f 90       	pop	r8
+     95a:	7f 90       	pop	r7
+     95c:	6f 90       	pop	r6
+     95e:	5f 90       	pop	r5
+     960:	4f 90       	pop	r4
+     962:	3f 90       	pop	r3
+     964:	2f 90       	pop	r2
+     966:	08 95       	ret
+
+00000968 <reverse_y>:
+
+
+void reverse_y(int coordinate)
+{
+     968:	2f 92       	push	r2
+     96a:	3f 92       	push	r3
+     96c:	4f 92       	push	r4
+     96e:	5f 92       	push	r5
+     970:	6f 92       	push	r6
+     972:	7f 92       	push	r7
+     974:	8f 92       	push	r8
+     976:	9f 92       	push	r9
+     978:	af 92       	push	r10
+     97a:	bf 92       	push	r11
+     97c:	cf 92       	push	r12
+     97e:	df 92       	push	r13
+     980:	ef 92       	push	r14
+     982:	ff 92       	push	r15
+     984:	0f 93       	push	r16
+     986:	1f 93       	push	r17
+     988:	cf 93       	push	r28
+     98a:	df 93       	push	r29
+     98c:	6c 01       	movw	r12, r24
+	
+		int delta=0;
+		while(1)
+		{	
+			if(delta>=coordinate)
+     98e:	18 16       	cp	r1, r24
+     990:	19 06       	cpc	r1, r25
+     992:	0c f0       	brlt	.+2      	; 0x996 <reverse_y+0x2e>
+     994:	ab c0       	rjmp	.+342    	; 0xaec <reverse_y+0x184>
+     996:	02 e0       	ldi	r16, 0x02	; 2
+     998:	10 e0       	ldi	r17, 0x00	; 0
+     99a:	0f 2e       	mov	r0, r31
+     99c:	f3 e0       	ldi	r31, 0x03	; 3
+     99e:	ef 2e       	mov	r14, r31
+     9a0:	f1 2c       	mov	r15, r1
+     9a2:	f0 2d       	mov	r31, r0
+     9a4:	c1 e0       	ldi	r28, 0x01	; 1
+     9a6:	d0 e0       	ldi	r29, 0x00	; 0
+
+
+void reverse_y(int coordinate)
+{
+	
+		int delta=0;
+     9a8:	81 2c       	mov	r8, r1
+     9aa:	91 2c       	mov	r9, r1
+			if(delta>=coordinate)
+			break;
+			PORTC=(0<<A2)|(0<<A2_)|(0<<B2)|(1<<B2_);
+			_delay_ms(20);
+			delta++;
+			printf("y axis forward delta=-%d\n \r",delta);
+     9ac:	0f 2e       	mov	r0, r31
+     9ae:	fb ee       	ldi	r31, 0xEB	; 235
+     9b0:	6f 2e       	mov	r6, r31
+     9b2:	f1 e0       	ldi	r31, 0x01	; 1
+     9b4:	7f 2e       	mov	r7, r31
+     9b6:	f0 2d       	mov	r31, r0
+			break;	
+			
+			PORTC=(0<<A2)|(0<<A2_)|(1<<B2)|(0<<B2_);
+			_delay_ms(20);
+			delta++;
+			printf("y axis forward delta=-%d \n\r",delta);
+     9b8:	0f 2e       	mov	r0, r31
+     9ba:	f7 e0       	ldi	r31, 0x07	; 7
+     9bc:	4f 2e       	mov	r4, r31
+     9be:	f2 e0       	ldi	r31, 0x02	; 2
+     9c0:	5f 2e       	mov	r5, r31
+     9c2:	f0 2d       	mov	r31, r0
+			if(bit_is_clear(PINB,3))
+			break;
+			PORTC=(1<<A2)|(0<<A2_)|(0<<B2)|(0<<B2_);
+			_delay_ms(20);
+			delta++;
+			printf("y axis forward delta=-%d \n \r",delta);
+     9c4:	0f 2e       	mov	r0, r31
+     9c6:	f3 e2       	ldi	r31, 0x23	; 35
+     9c8:	2f 2e       	mov	r2, r31
+     9ca:	f2 e0       	ldi	r31, 0x02	; 2
+     9cc:	3f 2e       	mov	r3, r31
+     9ce:	f0 2d       	mov	r31, r0
+		int delta=0;
+		while(1)
+		{	
+			if(delta>=coordinate)
+			break;
+			PORTC=(0<<A2)|(0<<A2_)|(0<<B2)|(1<<B2_);
+     9d0:	20 e8       	ldi	r18, 0x80	; 128
+     9d2:	25 bb       	out	0x15, r18	; 21
+     9d4:	87 e8       	ldi	r24, 0x87	; 135
+     9d6:	93 e1       	ldi	r25, 0x13	; 19
+     9d8:	01 97       	sbiw	r24, 0x01	; 1
+     9da:	f1 f7       	brne	.-4      	; 0x9d8 <reverse_y+0x70>
+     9dc:	00 c0       	rjmp	.+0      	; 0x9de <reverse_y+0x76>
+     9de:	00 00       	nop
+			_delay_ms(20);
+			delta++;
+			printf("y axis forward delta=-%d\n \r",delta);
+     9e0:	df 93       	push	r29
+     9e2:	cf 93       	push	r28
+     9e4:	7f 92       	push	r7
+     9e6:	6f 92       	push	r6
+     9e8:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     9ec:	8f e9       	ldi	r24, 0x9F	; 159
+     9ee:	96 e8       	ldi	r25, 0x86	; 134
+     9f0:	21 e0       	ldi	r18, 0x01	; 1
+     9f2:	81 50       	subi	r24, 0x01	; 1
+     9f4:	90 40       	sbci	r25, 0x00	; 0
+     9f6:	20 40       	sbci	r18, 0x00	; 0
+     9f8:	e1 f7       	brne	.-8      	; 0x9f2 <reverse_y+0x8a>
+     9fa:	00 c0       	rjmp	.+0      	; 0x9fc <reverse_y+0x94>
+     9fc:	00 00       	nop
+			_delay_ms(500);
+			if(bit_is_clear(PINB,3))
+     9fe:	0f 90       	pop	r0
+     a00:	0f 90       	pop	r0
+     a02:	0f 90       	pop	r0
+     a04:	0f 90       	pop	r0
+     a06:	b3 9b       	sbis	0x16, 3	; 22
+     a08:	71 c0       	rjmp	.+226    	; 0xaec <reverse_y+0x184>
+			break;
+			if(delta>=coordinate)
+     a0a:	cc 15       	cp	r28, r12
+     a0c:	dd 05       	cpc	r29, r13
+     a0e:	0c f0       	brlt	.+2      	; 0xa12 <reverse_y+0xaa>
+     a10:	6d c0       	rjmp	.+218    	; 0xaec <reverse_y+0x184>
+			break;
+			
+		
+			PORTC=(0<<A2)|(1<<A2_)|(0<<B2)|(0<<B2_);
+     a12:	80 e2       	ldi	r24, 0x20	; 32
+     a14:	85 bb       	out	0x15, r24	; 21
+     a16:	87 e8       	ldi	r24, 0x87	; 135
+     a18:	93 e1       	ldi	r25, 0x13	; 19
+     a1a:	01 97       	sbiw	r24, 0x01	; 1
+     a1c:	f1 f7       	brne	.-4      	; 0xa1a <reverse_y+0xb2>
+     a1e:	00 c0       	rjmp	.+0      	; 0xa20 <reverse_y+0xb8>
+     a20:	00 00       	nop
+			_delay_ms(20);
+			delta++;
+			printf("y axis forward delta=-%d\n \r",delta);
+     a22:	1f 93       	push	r17
+     a24:	0f 93       	push	r16
+     a26:	7f 92       	push	r7
+     a28:	6f 92       	push	r6
+     a2a:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     a2e:	9f e9       	ldi	r25, 0x9F	; 159
+     a30:	26 e8       	ldi	r18, 0x86	; 134
+     a32:	81 e0       	ldi	r24, 0x01	; 1
+     a34:	91 50       	subi	r25, 0x01	; 1
+     a36:	20 40       	sbci	r18, 0x00	; 0
+     a38:	80 40       	sbci	r24, 0x00	; 0
+     a3a:	e1 f7       	brne	.-8      	; 0xa34 <reverse_y+0xcc>
+     a3c:	00 c0       	rjmp	.+0      	; 0xa3e <reverse_y+0xd6>
+     a3e:	00 00       	nop
+			_delay_ms(500);
+			if(bit_is_clear(PINB,3))
+     a40:	0f 90       	pop	r0
+     a42:	0f 90       	pop	r0
+     a44:	0f 90       	pop	r0
+     a46:	0f 90       	pop	r0
+     a48:	b3 9b       	sbis	0x16, 3	; 22
+     a4a:	50 c0       	rjmp	.+160    	; 0xaec <reverse_y+0x184>
+			break;
+			if(delta>=coordinate)
+     a4c:	0c 15       	cp	r16, r12
+     a4e:	1d 05       	cpc	r17, r13
+     a50:	0c f0       	brlt	.+2      	; 0xa54 <reverse_y+0xec>
+     a52:	4c c0       	rjmp	.+152    	; 0xaec <reverse_y+0x184>
+			break;	
+			
+			PORTC=(0<<A2)|(0<<A2_)|(1<<B2)|(0<<B2_);
+     a54:	90 e4       	ldi	r25, 0x40	; 64
+     a56:	95 bb       	out	0x15, r25	; 21
+     a58:	87 e8       	ldi	r24, 0x87	; 135
+     a5a:	93 e1       	ldi	r25, 0x13	; 19
+     a5c:	01 97       	sbiw	r24, 0x01	; 1
+     a5e:	f1 f7       	brne	.-4      	; 0xa5c <reverse_y+0xf4>
+     a60:	00 c0       	rjmp	.+0      	; 0xa62 <reverse_y+0xfa>
+     a62:	00 00       	nop
+			_delay_ms(20);
+			delta++;
+			printf("y axis forward delta=-%d \n\r",delta);
+     a64:	ff 92       	push	r15
+     a66:	ef 92       	push	r14
+     a68:	5f 92       	push	r5
+     a6a:	4f 92       	push	r4
+     a6c:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     a70:	9f e9       	ldi	r25, 0x9F	; 159
+     a72:	26 e8       	ldi	r18, 0x86	; 134
+     a74:	81 e0       	ldi	r24, 0x01	; 1
+     a76:	91 50       	subi	r25, 0x01	; 1
+     a78:	20 40       	sbci	r18, 0x00	; 0
+     a7a:	80 40       	sbci	r24, 0x00	; 0
+     a7c:	e1 f7       	brne	.-8      	; 0xa76 <reverse_y+0x10e>
+     a7e:	00 c0       	rjmp	.+0      	; 0xa80 <reverse_y+0x118>
+     a80:	00 00       	nop
+			_delay_ms(500);
+			if(bit_is_clear(PINB,3))
+     a82:	0f 90       	pop	r0
+     a84:	0f 90       	pop	r0
+     a86:	0f 90       	pop	r0
+     a88:	0f 90       	pop	r0
+     a8a:	b3 9b       	sbis	0x16, 3	; 22
+     a8c:	2f c0       	rjmp	.+94     	; 0xaec <reverse_y+0x184>
+			break;
+			if(delta>=coordinate)
+     a8e:	ec 14       	cp	r14, r12
+     a90:	fd 04       	cpc	r15, r13
+     a92:	64 f5       	brge	.+88     	; 0xaec <reverse_y+0x184>
+			break;	
+			
+			if(bit_is_clear(PINB,3))
+     a94:	b3 9b       	sbis	0x16, 3	; 22
+     a96:	2a c0       	rjmp	.+84     	; 0xaec <reverse_y+0x184>
+			break;
+			PORTC=(1<<A2)|(0<<A2_)|(0<<B2)|(0<<B2_);
+     a98:	90 e1       	ldi	r25, 0x10	; 16
+     a9a:	95 bb       	out	0x15, r25	; 21
+     a9c:	87 e8       	ldi	r24, 0x87	; 135
+     a9e:	93 e1       	ldi	r25, 0x13	; 19
+     aa0:	01 97       	sbiw	r24, 0x01	; 1
+     aa2:	f1 f7       	brne	.-4      	; 0xaa0 <reverse_y+0x138>
+     aa4:	00 c0       	rjmp	.+0      	; 0xaa6 <reverse_y+0x13e>
+     aa6:	00 00       	nop
+			_delay_ms(20);
+			delta++;
+     aa8:	94 e0       	ldi	r25, 0x04	; 4
+     aaa:	89 0e       	add	r8, r25
+     aac:	91 1c       	adc	r9, r1
+			printf("y axis forward delta=-%d \n \r",delta);
+     aae:	9f 92       	push	r9
+     ab0:	8f 92       	push	r8
+     ab2:	3f 92       	push	r3
+     ab4:	2f 92       	push	r2
+     ab6:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     aba:	2f e9       	ldi	r18, 0x9F	; 159
+     abc:	86 e8       	ldi	r24, 0x86	; 134
+     abe:	91 e0       	ldi	r25, 0x01	; 1
+     ac0:	21 50       	subi	r18, 0x01	; 1
+     ac2:	80 40       	sbci	r24, 0x00	; 0
+     ac4:	90 40       	sbci	r25, 0x00	; 0
+     ac6:	e1 f7       	brne	.-8      	; 0xac0 <reverse_y+0x158>
+     ac8:	00 c0       	rjmp	.+0      	; 0xaca <reverse_y+0x162>
+     aca:	00 00       	nop
+			_delay_ms(500);
+			if(bit_is_clear(PINB,3))
+     acc:	0f 90       	pop	r0
+     ace:	0f 90       	pop	r0
+     ad0:	0f 90       	pop	r0
+     ad2:	0f 90       	pop	r0
+     ad4:	b3 9b       	sbis	0x16, 3	; 22
+     ad6:	0a c0       	rjmp	.+20     	; 0xaec <reverse_y+0x184>
+     ad8:	24 96       	adiw	r28, 0x04	; 4
+     ada:	24 e0       	ldi	r18, 0x04	; 4
+     adc:	e2 0e       	add	r14, r18
+     ade:	f1 1c       	adc	r15, r1
+     ae0:	0c 5f       	subi	r16, 0xFC	; 252
+     ae2:	1f 4f       	sbci	r17, 0xFF	; 255
+			break;
+			if(delta>=coordinate)
+     ae4:	8c 14       	cp	r8, r12
+     ae6:	9d 04       	cpc	r9, r13
+     ae8:	0c f4       	brge	.+2      	; 0xaec <reverse_y+0x184>
+     aea:	72 cf       	rjmp	.-284    	; 0x9d0 <reverse_y+0x68>
+			break;	
+		}
+		PORTC=0x00;
+     aec:	15 ba       	out	0x15, r1	; 21
+}
+     aee:	df 91       	pop	r29
+     af0:	cf 91       	pop	r28
+     af2:	1f 91       	pop	r17
+     af4:	0f 91       	pop	r16
+     af6:	ff 90       	pop	r15
+     af8:	ef 90       	pop	r14
+     afa:	df 90       	pop	r13
+     afc:	cf 90       	pop	r12
+     afe:	bf 90       	pop	r11
+     b00:	af 90       	pop	r10
+     b02:	9f 90       	pop	r9
+     b04:	8f 90       	pop	r8
+     b06:	7f 90       	pop	r7
+     b08:	6f 90       	pop	r6
+     b0a:	5f 90       	pop	r5
+     b0c:	4f 90       	pop	r4
+     b0e:	3f 90       	pop	r3
+     b10:	2f 90       	pop	r2
+     b12:	08 95       	ret
+
+00000b14 <delaymili>:
+
+void delaymili(int d)
+{
+	for(int i=0;i<d;i++)
+     b14:	18 16       	cp	r1, r24
+     b16:	19 06       	cpc	r1, r25
+     b18:	84 f4       	brge	.+32     	; 0xb3a <delaymili+0x26>
+     b1a:	20 e0       	ldi	r18, 0x00	; 0
+     b1c:	30 e0       	ldi	r19, 0x00	; 0
+     b1e:	4f e9       	ldi	r20, 0x9F	; 159
+     b20:	56 e8       	ldi	r21, 0x86	; 134
+     b22:	61 e0       	ldi	r22, 0x01	; 1
+     b24:	41 50       	subi	r20, 0x01	; 1
+     b26:	50 40       	sbci	r21, 0x00	; 0
+     b28:	60 40       	sbci	r22, 0x00	; 0
+     b2a:	e1 f7       	brne	.-8      	; 0xb24 <delaymili+0x10>
+     b2c:	00 c0       	rjmp	.+0      	; 0xb2e <delaymili+0x1a>
+     b2e:	00 00       	nop
+     b30:	2f 5f       	subi	r18, 0xFF	; 255
+     b32:	3f 4f       	sbci	r19, 0xFF	; 255
+     b34:	28 17       	cp	r18, r24
+     b36:	39 07       	cpc	r19, r25
+     b38:	91 f7       	brne	.-28     	; 0xb1e <delaymili+0xa>
+     b3a:	08 95       	ret
+
+00000b3c <drill_z>:
+	}
+	
+}
+
+void drill_z(int coordinate,int delaysec)
+{
+     b3c:	2f 92       	push	r2
+     b3e:	3f 92       	push	r3
+     b40:	4f 92       	push	r4
+     b42:	5f 92       	push	r5
+     b44:	6f 92       	push	r6
+     b46:	7f 92       	push	r7
+     b48:	8f 92       	push	r8
+     b4a:	9f 92       	push	r9
+     b4c:	af 92       	push	r10
+     b4e:	bf 92       	push	r11
+     b50:	cf 92       	push	r12
+     b52:	df 92       	push	r13
+     b54:	ef 92       	push	r14
+     b56:	ff 92       	push	r15
+     b58:	0f 93       	push	r16
+     b5a:	1f 93       	push	r17
+     b5c:	cf 93       	push	r28
+     b5e:	df 93       	push	r29
+     b60:	5c 01       	movw	r10, r24
+     b62:	76 2e       	mov	r7, r22
+     b64:	67 2e       	mov	r6, r23
+	
+	int delta=0;
+	
+	while(1)
+	{
+		PORTD=(1<<PIND6);
+     b66:	80 e4       	ldi	r24, 0x40	; 64
+     b68:	82 bb       	out	0x12, r24	; 18
+		
+			
+		if(delta>20)
+		delaysec=25;
+		
+		if(delta>=coordinate)
+     b6a:	1a 14       	cp	r1, r10
+     b6c:	1b 04       	cpc	r1, r11
+     b6e:	0c f0       	brlt	.+2      	; 0xb72 <drill_z+0x36>
+     b70:	7a c0       	rjmp	.+244    	; 0xc66 <drill_z+0x12a>
+}
+
+void drill_z(int coordinate,int delaysec)
+{
+	
+	int delta=0;
+     b72:	00 e0       	ldi	r16, 0x00	; 0
+     b74:	10 e0       	ldi	r17, 0x00	; 0
+     b76:	ee 24       	eor	r14, r14
+     b78:	e3 94       	inc	r14
+     b7a:	f1 2c       	mov	r15, r1
+     b7c:	0f 2e       	mov	r0, r31
+     b7e:	f3 e0       	ldi	r31, 0x03	; 3
+     b80:	8f 2e       	mov	r8, r31
+     b82:	91 2c       	mov	r9, r1
+     b84:	f0 2d       	mov	r31, r0
+     b86:	68 94       	set
+     b88:	cc 24       	eor	r12, r12
+     b8a:	c1 f8       	bld	r12, 1
+     b8c:	d1 2c       	mov	r13, r1
+		delaysec=25;
+		
+		if(delta>=coordinate)
+		break;
+		
+		PORTA=(1<<A3)|(0<<A3_)|(0<<B3)|(0<<B3_);
+     b8e:	55 24       	eor	r5, r5
+     b90:	53 94       	inc	r5
+		delaymili(delaysec);
+		printf("\n\rZ-axis down delta=%d",delta);
+     b92:	c0 e4       	ldi	r28, 0x40	; 64
+     b94:	d2 e0       	ldi	r29, 0x02	; 2
+		delta++;
+		if(delta>=coordinate)
+		break;
+		
+		PORTA=(0<<A3)|(0<<A3_)|(1<<B3)|(0<<B3_);
+     b96:	68 94       	set
+     b98:	44 24       	eor	r4, r4
+     b9a:	42 f8       	bld	r4, 2
+		printf("\n\rZ-axis down delta=%d",delta);
+		delta++;
+		if(delta>=coordinate)
+		break;
+		
+		PORTA=(0<<A3)|(1<<A3_)|(0<<B3)|(0<<B3_);
+     b9c:	68 94       	set
+     b9e:	33 24       	eor	r3, r3
+     ba0:	31 f8       	bld	r3, 1
+		printf("\n\rZ-axis down delta=%d",delta);
+		delta++;
+		if(delta>=coordinate)
+		break;
+		
+		PORTA=(0<<A3)|(0<<A3_)|(0<<B3)|(1<<B3_);
+     ba2:	68 94       	set
+     ba4:	22 24       	eor	r2, r2
+     ba6:	23 f8       	bld	r2, 3
+     ba8:	13 c0       	rjmp	.+38     	; 0xbd0 <drill_z+0x94>
+	
+	int delta=0;
+	
+	while(1)
+	{
+		PORTD=(1<<PIND6);
+     baa:	80 e4       	ldi	r24, 0x40	; 64
+     bac:	82 bb       	out	0x12, r24	; 18
+		
+			
+		if(delta>20)
+     bae:	05 31       	cpi	r16, 0x15	; 21
+     bb0:	11 05       	cpc	r17, r1
+     bb2:	2c f0       	brlt	.+10     	; 0xbbe <drill_z+0x82>
+		delaysec=25;
+     bb4:	0f 2e       	mov	r0, r31
+     bb6:	f9 e1       	ldi	r31, 0x19	; 25
+     bb8:	7f 2e       	mov	r7, r31
+     bba:	f0 2d       	mov	r31, r0
+     bbc:	61 2c       	mov	r6, r1
+     bbe:	84 e0       	ldi	r24, 0x04	; 4
+     bc0:	88 0e       	add	r8, r24
+     bc2:	91 1c       	adc	r9, r1
+     bc4:	84 e0       	ldi	r24, 0x04	; 4
+     bc6:	c8 0e       	add	r12, r24
+     bc8:	d1 1c       	adc	r13, r1
+     bca:	84 e0       	ldi	r24, 0x04	; 4
+     bcc:	e8 0e       	add	r14, r24
+     bce:	f1 1c       	adc	r15, r1
+		
+		if(delta>=coordinate)
+		break;
+		
+		PORTA=(1<<A3)|(0<<A3_)|(0<<B3)|(0<<B3_);
+     bd0:	5b ba       	out	0x1b, r5	; 27
+		delaymili(delaysec);
+     bd2:	87 2d       	mov	r24, r7
+     bd4:	96 2d       	mov	r25, r6
+     bd6:	0e 94 8a 05 	call	0xb14	; 0xb14 <delaymili>
+		printf("\n\rZ-axis down delta=%d",delta);
+     bda:	1f 93       	push	r17
+     bdc:	0f 93       	push	r16
+     bde:	df 93       	push	r29
+     be0:	cf 93       	push	r28
+     be2:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+		delta++;
+		if(delta>=coordinate)
+     be6:	0f 90       	pop	r0
+     be8:	0f 90       	pop	r0
+     bea:	0f 90       	pop	r0
+     bec:	0f 90       	pop	r0
+     bee:	ea 14       	cp	r14, r10
+     bf0:	fb 04       	cpc	r15, r11
+     bf2:	cc f5       	brge	.+114    	; 0xc66 <drill_z+0x12a>
+		break;
+		
+		PORTA=(0<<A3)|(0<<A3_)|(1<<B3)|(0<<B3_);
+     bf4:	4b ba       	out	0x1b, r4	; 27
+		delaymili(delaysec);
+     bf6:	87 2d       	mov	r24, r7
+     bf8:	96 2d       	mov	r25, r6
+     bfa:	0e 94 8a 05 	call	0xb14	; 0xb14 <delaymili>
+		printf("\n\rZ-axis down delta=%d",delta);
+     bfe:	ff 92       	push	r15
+     c00:	ef 92       	push	r14
+     c02:	df 93       	push	r29
+     c04:	cf 93       	push	r28
+     c06:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+		delta++;
+		if(delta>=coordinate)
+     c0a:	0f 90       	pop	r0
+     c0c:	0f 90       	pop	r0
+     c0e:	0f 90       	pop	r0
+     c10:	0f 90       	pop	r0
+     c12:	ca 14       	cp	r12, r10
+     c14:	db 04       	cpc	r13, r11
+     c16:	3c f5       	brge	.+78     	; 0xc66 <drill_z+0x12a>
+		break;
+		
+		PORTA=(0<<A3)|(1<<A3_)|(0<<B3)|(0<<B3_);
+     c18:	3b ba       	out	0x1b, r3	; 27
+		delaymili(delaysec);
+     c1a:	87 2d       	mov	r24, r7
+     c1c:	96 2d       	mov	r25, r6
+     c1e:	0e 94 8a 05 	call	0xb14	; 0xb14 <delaymili>
+		printf("\n\rZ-axis down delta=%d",delta);
+     c22:	df 92       	push	r13
+     c24:	cf 92       	push	r12
+     c26:	df 93       	push	r29
+     c28:	cf 93       	push	r28
+     c2a:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+		delta++;
+		if(delta>=coordinate)
+     c2e:	0f 90       	pop	r0
+     c30:	0f 90       	pop	r0
+     c32:	0f 90       	pop	r0
+     c34:	0f 90       	pop	r0
+     c36:	8a 14       	cp	r8, r10
+     c38:	9b 04       	cpc	r9, r11
+     c3a:	ac f4       	brge	.+42     	; 0xc66 <drill_z+0x12a>
+		break;
+		
+		PORTA=(0<<A3)|(0<<A3_)|(0<<B3)|(1<<B3_);
+     c3c:	2b ba       	out	0x1b, r2	; 27
+		delaymili(delaysec);
+     c3e:	87 2d       	mov	r24, r7
+     c40:	96 2d       	mov	r25, r6
+     c42:	0e 94 8a 05 	call	0xb14	; 0xb14 <delaymili>
+		printf("\n\rZ-axis down delta=%d",delta);
+     c46:	9f 92       	push	r9
+     c48:	8f 92       	push	r8
+     c4a:	df 93       	push	r29
+     c4c:	cf 93       	push	r28
+     c4e:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+		delta++;
+     c52:	0c 5f       	subi	r16, 0xFC	; 252
+     c54:	1f 4f       	sbci	r17, 0xFF	; 255
+		if(delta>=coordinate)
+     c56:	0f 90       	pop	r0
+     c58:	0f 90       	pop	r0
+     c5a:	0f 90       	pop	r0
+     c5c:	0f 90       	pop	r0
+     c5e:	0a 15       	cp	r16, r10
+     c60:	1b 05       	cpc	r17, r11
+     c62:	0c f4       	brge	.+2      	; 0xc66 <drill_z+0x12a>
+     c64:	a2 cf       	rjmp	.-188    	; 0xbaa <drill_z+0x6e>
+		break;
+		
+		
+	}
+	PORTD=(1<<PIND7);
+     c66:	80 e8       	ldi	r24, 0x80	; 128
+     c68:	82 bb       	out	0x12, r24	; 18
+	PORTC=0x00;
+     c6a:	15 ba       	out	0x15, r1	; 21
+	
+}
+     c6c:	df 91       	pop	r29
+     c6e:	cf 91       	pop	r28
+     c70:	1f 91       	pop	r17
+     c72:	0f 91       	pop	r16
+     c74:	ff 90       	pop	r15
+     c76:	ef 90       	pop	r14
+     c78:	df 90       	pop	r13
+     c7a:	cf 90       	pop	r12
+     c7c:	bf 90       	pop	r11
+     c7e:	af 90       	pop	r10
+     c80:	9f 90       	pop	r9
+     c82:	8f 90       	pop	r8
+     c84:	7f 90       	pop	r7
+     c86:	6f 90       	pop	r6
+     c88:	5f 90       	pop	r5
+     c8a:	4f 90       	pop	r4
+     c8c:	3f 90       	pop	r3
+     c8e:	2f 90       	pop	r2
+     c90:	08 95       	ret
+
+00000c92 <manual>:
+
+
+
+void manual()
+{
+     c92:	8f 92       	push	r8
+     c94:	9f 92       	push	r9
+     c96:	af 92       	push	r10
+     c98:	bf 92       	push	r11
+     c9a:	cf 92       	push	r12
+     c9c:	df 92       	push	r13
+     c9e:	ef 92       	push	r14
+     ca0:	ff 92       	push	r15
+     ca2:	0f 93       	push	r16
+     ca4:	1f 93       	push	r17
+     ca6:	cf 93       	push	r28
+     ca8:	df 93       	push	r29
+	printf("Press a s w d \n \r");
+     caa:	87 e5       	ldi	r24, 0x57	; 87
+     cac:	92 e0       	ldi	r25, 0x02	; 2
+     cae:	9f 93       	push	r25
+     cb0:	8f 93       	push	r24
+     cb2:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     cb6:	0f 90       	pop	r0
+     cb8:	0f 90       	pop	r0
+
+
+		else
+		{
+			PORTC=0x00;
+			printf("\n\rDo you want to exit? press y to exit and n to cancel:  \n \r");
+     cba:	c9 e6       	ldi	r28, 0x69	; 105
+     cbc:	d2 e0       	ldi	r29, 0x02	; 2
+			variable = serial_read();
+			if(variable=='y')
+			break;
+			else
+			
+			printf("Press a s w d \n \r");
+     cbe:	07 e5       	ldi	r16, 0x57	; 87
+     cc0:	12 e0       	ldi	r17, 0x02	; 2
+			
+		}
+
+		else if(variable=='d')
+		{
+			PORTC=(1<<PINC4)|(0<<PINC5)|(0<<PINC6)|(0<<PINC7);
+     cc2:	68 94       	set
+     cc4:	88 24       	eor	r8, r8
+     cc6:	84 f8       	bld	r8, 4
+			_delay_ms(40);
+			PORTC=(0<<PINC4)|(0<<PINC5)|(1<<PINC6)|(0<<PINC7);
+     cc8:	68 94       	set
+     cca:	99 24       	eor	r9, r9
+     ccc:	96 f8       	bld	r9, 6
+			_delay_ms(40);
+			PORTC=(0<<PINC4)|(1<<PINC5)|(0<<PINC6)|(0<<PINC7);
+     cce:	68 94       	set
+     cd0:	aa 24       	eor	r10, r10
+     cd2:	a5 f8       	bld	r10, 5
+			_delay_ms(40);
+			PORTC=(0<<PINC4)|(0<<PINC5)|(0<<PINC6)|(1<<PINC7);
+     cd4:	68 94       	set
+     cd6:	bb 24       	eor	r11, r11
+     cd8:	b7 f8       	bld	r11, 7
+			
+		}
+
+		else if(variable=='s')
+		{
+			PORTC=(1<<PINC0)|(0<<PINC1)|(0<<PINC2)|(0<<PINC3);
+     cda:	cc 24       	eor	r12, r12
+     cdc:	c3 94       	inc	r12
+			_delay_ms(40);
+			PORTC=(0<<PINC0)|(0<<PINC1)|(1<<PINC2)|(0<<PINC3);
+     cde:	68 94       	set
+     ce0:	dd 24       	eor	r13, r13
+     ce2:	d2 f8       	bld	r13, 2
+			_delay_ms(40);
+			PORTC=(0<<PINC0)|(1<<PINC1)|(0<<PINC2)|(0<<PINC3);
+     ce4:	68 94       	set
+     ce6:	ee 24       	eor	r14, r14
+     ce8:	e1 f8       	bld	r14, 1
+			_delay_ms(40);
+			PORTC=(0<<PINC0)|(0<<PINC1)|(0<<PINC2)|(1<<PINC3);
+     cea:	68 94       	set
+     cec:	ff 24       	eor	r15, r15
+     cee:	f3 f8       	bld	r15, 3
+	
+	
+	for(;;)
+	{
+		
+		unsigned char variable=serial_read();
+     cf0:	0e 94 4f 00 	call	0x9e	; 0x9e <serial_read>
+		if(variable=='w')
+     cf4:	87 37       	cpi	r24, 0x77	; 119
+     cf6:	e9 f4       	brne	.+58     	; 0xd32 <manual+0xa0>
+		{
+			
+			PORTC=(0<<PINC0)|(0<<PINC1)|(0<<PINC2)|(1<<PINC3);
+     cf8:	f5 ba       	out	0x15, r15	; 21
+     cfa:	8f e0       	ldi	r24, 0x0F	; 15
+     cfc:	97 e2       	ldi	r25, 0x27	; 39
+     cfe:	01 97       	sbiw	r24, 0x01	; 1
+     d00:	f1 f7       	brne	.-4      	; 0xcfe <manual+0x6c>
+     d02:	00 c0       	rjmp	.+0      	; 0xd04 <manual+0x72>
+     d04:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(0<<PINC0)|(1<<PINC1)|(0<<PINC2)|(0<<PINC3);
+     d06:	e5 ba       	out	0x15, r14	; 21
+     d08:	8f e0       	ldi	r24, 0x0F	; 15
+     d0a:	97 e2       	ldi	r25, 0x27	; 39
+     d0c:	01 97       	sbiw	r24, 0x01	; 1
+     d0e:	f1 f7       	brne	.-4      	; 0xd0c <manual+0x7a>
+     d10:	00 c0       	rjmp	.+0      	; 0xd12 <manual+0x80>
+     d12:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(0<<PINC0)|(0<<PINC1)|(1<<PINC2)|(0<<PINC3);
+     d14:	d5 ba       	out	0x15, r13	; 21
+     d16:	8f e0       	ldi	r24, 0x0F	; 15
+     d18:	97 e2       	ldi	r25, 0x27	; 39
+     d1a:	01 97       	sbiw	r24, 0x01	; 1
+     d1c:	f1 f7       	brne	.-4      	; 0xd1a <manual+0x88>
+     d1e:	00 c0       	rjmp	.+0      	; 0xd20 <manual+0x8e>
+     d20:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(1<<PINC0)|(0<<PINC1)|(0<<PINC2)|(0<<PINC3);
+     d22:	c5 ba       	out	0x15, r12	; 21
+     d24:	8f e0       	ldi	r24, 0x0F	; 15
+     d26:	97 e2       	ldi	r25, 0x27	; 39
+     d28:	01 97       	sbiw	r24, 0x01	; 1
+     d2a:	f1 f7       	brne	.-4      	; 0xd28 <manual+0x96>
+     d2c:	00 c0       	rjmp	.+0      	; 0xd2e <manual+0x9c>
+     d2e:	00 00       	nop
+     d30:	df cf       	rjmp	.-66     	; 0xcf0 <manual+0x5e>
+			_delay_ms(40);
+			
+			
+		}
+
+		else if(variable=='s')
+     d32:	83 37       	cpi	r24, 0x73	; 115
+     d34:	e9 f4       	brne	.+58     	; 0xd70 <manual+0xde>
+		{
+			PORTC=(1<<PINC0)|(0<<PINC1)|(0<<PINC2)|(0<<PINC3);
+     d36:	c5 ba       	out	0x15, r12	; 21
+     d38:	8f e0       	ldi	r24, 0x0F	; 15
+     d3a:	97 e2       	ldi	r25, 0x27	; 39
+     d3c:	01 97       	sbiw	r24, 0x01	; 1
+     d3e:	f1 f7       	brne	.-4      	; 0xd3c <manual+0xaa>
+     d40:	00 c0       	rjmp	.+0      	; 0xd42 <manual+0xb0>
+     d42:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(0<<PINC0)|(0<<PINC1)|(1<<PINC2)|(0<<PINC3);
+     d44:	d5 ba       	out	0x15, r13	; 21
+     d46:	8f e0       	ldi	r24, 0x0F	; 15
+     d48:	97 e2       	ldi	r25, 0x27	; 39
+     d4a:	01 97       	sbiw	r24, 0x01	; 1
+     d4c:	f1 f7       	brne	.-4      	; 0xd4a <manual+0xb8>
+     d4e:	00 c0       	rjmp	.+0      	; 0xd50 <manual+0xbe>
+     d50:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(0<<PINC0)|(1<<PINC1)|(0<<PINC2)|(0<<PINC3);
+     d52:	e5 ba       	out	0x15, r14	; 21
+     d54:	8f e0       	ldi	r24, 0x0F	; 15
+     d56:	97 e2       	ldi	r25, 0x27	; 39
+     d58:	01 97       	sbiw	r24, 0x01	; 1
+     d5a:	f1 f7       	brne	.-4      	; 0xd58 <manual+0xc6>
+     d5c:	00 c0       	rjmp	.+0      	; 0xd5e <manual+0xcc>
+     d5e:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(0<<PINC0)|(0<<PINC1)|(0<<PINC2)|(1<<PINC3);
+     d60:	f5 ba       	out	0x15, r15	; 21
+     d62:	8f e0       	ldi	r24, 0x0F	; 15
+     d64:	97 e2       	ldi	r25, 0x27	; 39
+     d66:	01 97       	sbiw	r24, 0x01	; 1
+     d68:	f1 f7       	brne	.-4      	; 0xd66 <manual+0xd4>
+     d6a:	00 c0       	rjmp	.+0      	; 0xd6c <manual+0xda>
+     d6c:	00 00       	nop
+     d6e:	c0 cf       	rjmp	.-128    	; 0xcf0 <manual+0x5e>
+			_delay_ms(40);
+			
+		}
+
+
+		else if(variable=='a')
+     d70:	81 36       	cpi	r24, 0x61	; 97
+     d72:	e9 f4       	brne	.+58     	; 0xdae <manual+0x11c>
+		{
+			
+			PORTC=(0<<PINC4)|(0<<PINC5)|(0<<PINC6)|(1<<PINC7);
+     d74:	b5 ba       	out	0x15, r11	; 21
+     d76:	8f e0       	ldi	r24, 0x0F	; 15
+     d78:	97 e2       	ldi	r25, 0x27	; 39
+     d7a:	01 97       	sbiw	r24, 0x01	; 1
+     d7c:	f1 f7       	brne	.-4      	; 0xd7a <manual+0xe8>
+     d7e:	00 c0       	rjmp	.+0      	; 0xd80 <manual+0xee>
+     d80:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(0<<PINC4)|(1<<PINC5)|(0<<PINC6)|(0<<PINC7);
+     d82:	a5 ba       	out	0x15, r10	; 21
+     d84:	8f e0       	ldi	r24, 0x0F	; 15
+     d86:	97 e2       	ldi	r25, 0x27	; 39
+     d88:	01 97       	sbiw	r24, 0x01	; 1
+     d8a:	f1 f7       	brne	.-4      	; 0xd88 <manual+0xf6>
+     d8c:	00 c0       	rjmp	.+0      	; 0xd8e <manual+0xfc>
+     d8e:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(0<<PINC4)|(0<<PINC5)|(1<<PINC6)|(0<<PINC7);
+     d90:	95 ba       	out	0x15, r9	; 21
+     d92:	8f e0       	ldi	r24, 0x0F	; 15
+     d94:	97 e2       	ldi	r25, 0x27	; 39
+     d96:	01 97       	sbiw	r24, 0x01	; 1
+     d98:	f1 f7       	brne	.-4      	; 0xd96 <manual+0x104>
+     d9a:	00 c0       	rjmp	.+0      	; 0xd9c <manual+0x10a>
+     d9c:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(1<<PINC4)|(0<<PINC5)|(0<<PINC6)|(0<<PINC7);
+     d9e:	85 ba       	out	0x15, r8	; 21
+     da0:	8f e0       	ldi	r24, 0x0F	; 15
+     da2:	97 e2       	ldi	r25, 0x27	; 39
+     da4:	01 97       	sbiw	r24, 0x01	; 1
+     da6:	f1 f7       	brne	.-4      	; 0xda4 <manual+0x112>
+     da8:	00 c0       	rjmp	.+0      	; 0xdaa <manual+0x118>
+     daa:	00 00       	nop
+     dac:	a1 cf       	rjmp	.-190    	; 0xcf0 <manual+0x5e>
+			_delay_ms(40);
+			
+		}
+
+		else if(variable=='d')
+     dae:	84 36       	cpi	r24, 0x64	; 100
+     db0:	e9 f4       	brne	.+58     	; 0xdec <manual+0x15a>
+		{
+			PORTC=(1<<PINC4)|(0<<PINC5)|(0<<PINC6)|(0<<PINC7);
+     db2:	85 ba       	out	0x15, r8	; 21
+     db4:	8f e0       	ldi	r24, 0x0F	; 15
+     db6:	97 e2       	ldi	r25, 0x27	; 39
+     db8:	01 97       	sbiw	r24, 0x01	; 1
+     dba:	f1 f7       	brne	.-4      	; 0xdb8 <manual+0x126>
+     dbc:	00 c0       	rjmp	.+0      	; 0xdbe <manual+0x12c>
+     dbe:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(0<<PINC4)|(0<<PINC5)|(1<<PINC6)|(0<<PINC7);
+     dc0:	95 ba       	out	0x15, r9	; 21
+     dc2:	8f e0       	ldi	r24, 0x0F	; 15
+     dc4:	97 e2       	ldi	r25, 0x27	; 39
+     dc6:	01 97       	sbiw	r24, 0x01	; 1
+     dc8:	f1 f7       	brne	.-4      	; 0xdc6 <manual+0x134>
+     dca:	00 c0       	rjmp	.+0      	; 0xdcc <manual+0x13a>
+     dcc:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(0<<PINC4)|(1<<PINC5)|(0<<PINC6)|(0<<PINC7);
+     dce:	a5 ba       	out	0x15, r10	; 21
+     dd0:	8f e0       	ldi	r24, 0x0F	; 15
+     dd2:	97 e2       	ldi	r25, 0x27	; 39
+     dd4:	01 97       	sbiw	r24, 0x01	; 1
+     dd6:	f1 f7       	brne	.-4      	; 0xdd4 <manual+0x142>
+     dd8:	00 c0       	rjmp	.+0      	; 0xdda <manual+0x148>
+     dda:	00 00       	nop
+			_delay_ms(40);
+			PORTC=(0<<PINC4)|(0<<PINC5)|(0<<PINC6)|(1<<PINC7);
+     ddc:	b5 ba       	out	0x15, r11	; 21
+     dde:	8f e0       	ldi	r24, 0x0F	; 15
+     de0:	97 e2       	ldi	r25, 0x27	; 39
+     de2:	01 97       	sbiw	r24, 0x01	; 1
+     de4:	f1 f7       	brne	.-4      	; 0xde2 <manual+0x150>
+     de6:	00 c0       	rjmp	.+0      	; 0xde8 <manual+0x156>
+     de8:	00 00       	nop
+     dea:	82 cf       	rjmp	.-252    	; 0xcf0 <manual+0x5e>
+		}
+
+
+		else
+		{
+			PORTC=0x00;
+     dec:	15 ba       	out	0x15, r1	; 21
+			printf("\n\rDo you want to exit? press y to exit and n to cancel:  \n \r");
+     dee:	df 93       	push	r29
+     df0:	cf 93       	push	r28
+     df2:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			variable = serial_read();
+     df6:	0e 94 4f 00 	call	0x9e	; 0x9e <serial_read>
+			if(variable=='y')
+     dfa:	0f 90       	pop	r0
+     dfc:	0f 90       	pop	r0
+     dfe:	89 37       	cpi	r24, 0x79	; 121
+     e00:	39 f0       	breq	.+14     	; 0xe10 <manual+0x17e>
+			break;
+			else
+			
+			printf("Press a s w d \n \r");
+     e02:	1f 93       	push	r17
+     e04:	0f 93       	push	r16
+     e06:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+     e0a:	0f 90       	pop	r0
+     e0c:	0f 90       	pop	r0
+     e0e:	70 cf       	rjmp	.-288    	; 0xcf0 <manual+0x5e>
+		}
+	}
+}
+     e10:	df 91       	pop	r29
+     e12:	cf 91       	pop	r28
+     e14:	1f 91       	pop	r17
+     e16:	0f 91       	pop	r16
+     e18:	ff 90       	pop	r15
+     e1a:	ef 90       	pop	r14
+     e1c:	df 90       	pop	r13
+     e1e:	cf 90       	pop	r12
+     e20:	bf 90       	pop	r11
+     e22:	af 90       	pop	r10
+     e24:	9f 90       	pop	r9
+     e26:	8f 90       	pop	r8
+     e28:	08 95       	ret
+
+00000e2a <main>:
+unsigned char mode_select;
+
+
+
+int main(void)
+{
+     e2a:	cf 93       	push	r28
+     e2c:	df 93       	push	r29
+     e2e:	cd b7       	in	r28, 0x3d	; 61
+     e30:	de b7       	in	r29, 0x3e	; 62
+     e32:	e6 97       	sbiw	r28, 0x36	; 54
+     e34:	0f b6       	in	r0, 0x3f	; 63
+     e36:	f8 94       	cli
+     e38:	de bf       	out	0x3e, r29	; 62
+     e3a:	0f be       	out	0x3f, r0	; 63
+     e3c:	cd bf       	out	0x3d, r28	; 61
+	FILE uart_str = FDEV_SETUP_STREAM(printCHAR, NULL, _FDEV_SETUP_RW);
+     e3e:	fe 01       	movw	r30, r28
+     e40:	31 96       	adiw	r30, 0x01	; 1
+     e42:	8e e0       	ldi	r24, 0x0E	; 14
+     e44:	df 01       	movw	r26, r30
+     e46:	1d 92       	st	X+, r1
+     e48:	8a 95       	dec	r24
+     e4a:	e9 f7       	brne	.-6      	; 0xe46 <main+0x1c>
+     e4c:	83 e0       	ldi	r24, 0x03	; 3
+     e4e:	8c 83       	std	Y+4, r24	; 0x04
+     e50:	89 e4       	ldi	r24, 0x49	; 73
+     e52:	90 e0       	ldi	r25, 0x00	; 0
+     e54:	9a 87       	std	Y+10, r25	; 0x0a
+     e56:	89 87       	std	Y+9, r24	; 0x09
+	
+	DDRC=0xff;
+     e58:	8f ef       	ldi	r24, 0xFF	; 255
+     e5a:	84 bb       	out	0x14, r24	; 20
+	PORTC=0x00;
+     e5c:	15 ba       	out	0x15, r1	; 21
+	
+	DDRB=0x00;
+     e5e:	17 ba       	out	0x17, r1	; 23
+	PORTB=0xff;
+     e60:	88 bb       	out	0x18, r24	; 24
+	
+	DDRA=0xff;;
+     e62:	8a bb       	out	0x1a, r24	; 26
+	PORTA=0xff;
+     e64:	8b bb       	out	0x1b, r24	; 27
+	
+	DDRD=(0<<z_org)|(1<<PIND6);
+     e66:	80 e4       	ldi	r24, 0x40	; 64
+     e68:	81 bb       	out	0x11, r24	; 17
+	PORTD=(1<<z_org)|(0<<PIND6);
+     e6a:	80 e8       	ldi	r24, 0x80	; 128
+     e6c:	82 bb       	out	0x12, r24	; 18
+	
+	UCSRA=0;
+     e6e:	1b b8       	out	0x0b, r1	; 11
+	UCSRB = (1 << RXEN) | (1 << TXEN)|(1<<RXCIE);;   // Turn on the transmission and reception circuitry
+     e70:	88 e9       	ldi	r24, 0x98	; 152
+     e72:	8a b9       	out	0x0a, r24	; 10
+	UCSRC = (1 << URSEL) | (1 << UCSZ0) | (1 << UCSZ1)|(0<<UMSEL)|(0<<USBS); // Use 8-bit character sizes
+     e74:	86 e8       	ldi	r24, 0x86	; 134
+     e76:	80 bd       	out	0x20, r24	; 32
+
+	UBRRH = (BAUDRATECALC >> 8); // Load upper 8-bits of the baud rate value into the high byte of the UBRR register
+     e78:	10 bc       	out	0x20, r1	; 32
+	UBRRL = BAUDRATECALC; // Load lower 8-bits of the baud rate value 
+     e7a:	83 e3       	ldi	r24, 0x33	; 51
+     e7c:	89 b9       	out	0x09, r24	; 9
+	
+	stdout = &uart_str; 
+     e7e:	f0 93 b0 04 	sts	0x04B0, r31
+     e82:	e0 93 af 04 	sts	0x04AF, r30
+			printf("\n\r\n\rSending X-Coordinates...\n\r");
+			points_x[0]=0;
+			points_y[0]=0;
+			for(int i=1;i<=n;i++)
+			{
+				printf("x=");	
+     e86:	0f 2e       	mov	r0, r31
+     e88:	fe ec       	ldi	r31, 0xCE	; 206
+     e8a:	ef 2e       	mov	r14, r31
+     e8c:	f3 e0       	ldi	r31, 0x03	; 3
+     e8e:	ff 2e       	mov	r15, r31
+     e90:	f0 2d       	mov	r31, r0
+	//sei();
+    while(1)
+    {
+		
+		
+			printf("\n\r----------*****----------");
+     e92:	ab ec       	ldi	r26, 0xCB	; 203
+     e94:	b2 e0       	ldi	r27, 0x02	; 2
+     e96:	bf 93       	push	r27
+     e98:	af 93       	push	r26
+     e9a:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			printf("\n\rAutomatic PCB Drilling Machine \n \r");
+     e9e:	a7 ee       	ldi	r26, 0xE7	; 231
+     ea0:	b2 e0       	ldi	r27, 0x02	; 2
+     ea2:	bf 93       	push	r27
+     ea4:	af 93       	push	r26
+     ea6:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			printf("Select Mode of Operation: \n \r a-Automatic Mode \n \r s-Semi Manual Mode \n\r m-Manual Mode");
+     eaa:	ac e0       	ldi	r26, 0x0C	; 12
+     eac:	b3 e0       	ldi	r27, 0x03	; 3
+     eae:	bf 93       	push	r27
+     eb0:	af 93       	push	r26
+     eb2:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			printf("\n\n \r\r");
+     eb6:	83 e6       	ldi	r24, 0x63	; 99
+     eb8:	93 e0       	ldi	r25, 0x03	; 3
+     eba:	9f 93       	push	r25
+     ebc:	8f 93       	push	r24
+     ebe:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			mode_select=serial_read();
+     ec2:	0e 94 4f 00 	call	0x9e	; 0x9e <serial_read>
+     ec6:	80 93 ac 04 	sts	0x04AC, r24
+				
+		if(mode_select=='a')
+     eca:	0f b6       	in	r0, 0x3f	; 63
+     ecc:	f8 94       	cli
+     ece:	de bf       	out	0x3e, r29	; 62
+     ed0:	0f be       	out	0x3f, r0	; 63
+     ed2:	cd bf       	out	0x3d, r28	; 61
+     ed4:	81 36       	cpi	r24, 0x61	; 97
+     ed6:	09 f0       	breq	.+2      	; 0xeda <main+0xb0>
+     ed8:	aa c0       	rjmp	.+340    	; 0x102e <main+0x204>
+		{
+			initialize(3);
+     eda:	83 e0       	ldi	r24, 0x03	; 3
+     edc:	90 e0       	ldi	r25, 0x00	; 0
+     ede:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+			initialize(1);
+     ee2:	81 e0       	ldi	r24, 0x01	; 1
+     ee4:	90 e0       	ldi	r25, 0x00	; 0
+     ee6:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+			initialize(2);
+     eea:	82 e0       	ldi	r24, 0x02	; 2
+     eec:	90 e0       	ldi	r25, 0x00	; 0
+     eee:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+			
+			int points_x[10];
+			int points_y[10];
+			printf("\n\rReady to Receive Coordinate.... \n\r");
+     ef2:	89 e6       	ldi	r24, 0x69	; 105
+     ef4:	93 e0       	ldi	r25, 0x03	; 3
+     ef6:	9f 93       	push	r25
+     ef8:	8f 93       	push	r24
+     efa:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			
+			printf("\n \rTotal Number of coordinates =");
+     efe:	8e e8       	ldi	r24, 0x8E	; 142
+     f00:	93 e0       	ldi	r25, 0x03	; 3
+     f02:	9f 93       	push	r25
+     f04:	8f 93       	push	r24
+     f06:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			int n=receive_coordinate();
+     f0a:	0e 94 57 00 	call	0xae	; 0xae <receive_coordinate>
+     f0e:	1c 01       	movw	r2, r24
+			printf("\n\r\n\rSending X-Coordinates...\n\r");
+     f10:	8f ea       	ldi	r24, 0xAF	; 175
+     f12:	93 e0       	ldi	r25, 0x03	; 3
+     f14:	9f 93       	push	r25
+     f16:	8f 93       	push	r24
+     f18:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			points_x[0]=0;
+     f1c:	1c a2       	std	Y+36, r1	; 0x24
+     f1e:	1b a2       	std	Y+35, r1	; 0x23
+			points_y[0]=0;
+     f20:	18 8a       	std	Y+16, r1	; 0x10
+     f22:	1f 86       	std	Y+15, r1	; 0x0f
+			for(int i=1;i<=n;i++)
+     f24:	0f 90       	pop	r0
+     f26:	0f 90       	pop	r0
+     f28:	0f 90       	pop	r0
+     f2a:	0f 90       	pop	r0
+     f2c:	0f 90       	pop	r0
+     f2e:	0f 90       	pop	r0
+     f30:	12 14       	cp	r1, r2
+     f32:	13 04       	cpc	r1, r3
+     f34:	0c f0       	brlt	.+2      	; 0xf38 <main+0x10e>
+     f36:	f0 c0       	rjmp	.+480    	; 0x1118 <main+0x2ee>
+     f38:	ce 01       	movw	r24, r28
+     f3a:	85 96       	adiw	r24, 0x25	; 37
+     f3c:	6c 01       	movw	r12, r24
+     f3e:	01 e0       	ldi	r16, 0x01	; 1
+     f40:	10 e0       	ldi	r17, 0x00	; 0
+			{
+				printf("x=");	
+     f42:	ff 92       	push	r15
+     f44:	ef 92       	push	r14
+     f46:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+				points_x[i]=receive_coordinate();
+     f4a:	0e 94 57 00 	call	0xae	; 0xae <receive_coordinate>
+     f4e:	d6 01       	movw	r26, r12
+     f50:	8d 93       	st	X+, r24
+     f52:	9d 93       	st	X+, r25
+     f54:	6d 01       	movw	r12, r26
+			printf("\n \rTotal Number of coordinates =");
+			int n=receive_coordinate();
+			printf("\n\r\n\rSending X-Coordinates...\n\r");
+			points_x[0]=0;
+			points_y[0]=0;
+			for(int i=1;i<=n;i++)
+     f56:	0f 5f       	subi	r16, 0xFF	; 255
+     f58:	1f 4f       	sbci	r17, 0xFF	; 255
+     f5a:	0f 90       	pop	r0
+     f5c:	0f 90       	pop	r0
+     f5e:	20 16       	cp	r2, r16
+     f60:	31 06       	cpc	r3, r17
+     f62:	7c f7       	brge	.-34     	; 0xf42 <main+0x118>
+     f64:	c8 c0       	rjmp	.+400    	; 0x10f6 <main+0x2cc>
+			
+			
+			printf("\n\r\n\rSending Y-Coordinates...\n\r");
+			for(int i=1;i<=n;i++)
+			{
+				printf("y=");
+     f66:	a1 ed       	ldi	r26, 0xD1	; 209
+     f68:	b3 e0       	ldi	r27, 0x03	; 3
+     f6a:	bf 93       	push	r27
+     f6c:	af 93       	push	r26
+     f6e:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+				points_y[i]=receive_coordinate();
+     f72:	0e 94 57 00 	call	0xae	; 0xae <receive_coordinate>
+     f76:	d8 01       	movw	r26, r16
+     f78:	8d 93       	st	X+, r24
+     f7a:	9d 93       	st	X+, r25
+     f7c:	8d 01       	movw	r16, r26
+				
+			}
+			
+			
+			printf("\n\r\n\rSending Y-Coordinates...\n\r");
+			for(int i=1;i<=n;i++)
+     f7e:	0f 90       	pop	r0
+     f80:	0f 90       	pop	r0
+     f82:	ac 15       	cp	r26, r12
+     f84:	bd 05       	cpc	r27, r13
+     f86:	79 f7       	brne	.-34     	; 0xf66 <main+0x13c>
+     f88:	d8 c0       	rjmp	.+432    	; 0x113a <main+0x310>
+     f8a:	26 01       	movw	r4, r12
+			}
+			printf("\n \rDrilling Process has been started......");
+			
+			for(int i=0;i<n;i++)
+			{
+				printf("\n\r Currently Processing Point=(%d,%d)\n\r",points_x[i+1],points_y[i+1]);
+     f8c:	f6 01       	movw	r30, r12
+     f8e:	a2 80       	ldd	r10, Z+2	; 0x02
+     f90:	b3 80       	ldd	r11, Z+3	; 0x03
+     f92:	d8 01       	movw	r26, r16
+     f94:	12 96       	adiw	r26, 0x02	; 2
+     f96:	8d 90       	ld	r8, X+
+     f98:	9c 90       	ld	r9, X
+     f9a:	13 97       	sbiw	r26, 0x03	; 3
+     f9c:	bf 92       	push	r11
+     f9e:	af 92       	push	r10
+     fa0:	9f 92       	push	r9
+     fa2:	8f 92       	push	r8
+     fa4:	a4 ed       	ldi	r26, 0xD4	; 212
+     fa6:	b3 e0       	ldi	r27, 0x03	; 3
+     fa8:	bf 93       	push	r27
+     faa:	af 93       	push	r26
+     fac:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+				int diffx=points_x[i+1]-points_x[i];
+     fb0:	f8 01       	movw	r30, r16
+     fb2:	80 81       	ld	r24, Z
+     fb4:	91 81       	ldd	r25, Z+1	; 0x01
+     fb6:	0e 5f       	subi	r16, 0xFE	; 254
+     fb8:	1f 4f       	sbci	r17, 0xFF	; 255
+     fba:	94 01       	movw	r18, r8
+     fbc:	28 1b       	sub	r18, r24
+     fbe:	39 0b       	sbc	r19, r25
+     fc0:	c9 01       	movw	r24, r18
+				if(diffx>=0)
+     fc2:	0f 90       	pop	r0
+     fc4:	0f 90       	pop	r0
+     fc6:	0f 90       	pop	r0
+     fc8:	0f 90       	pop	r0
+     fca:	0f 90       	pop	r0
+     fcc:	0f 90       	pop	r0
+     fce:	99 23       	and	r25, r25
+     fd0:	1c f0       	brlt	.+6      	; 0xfd8 <main+0x1ae>
+				forwardx(diffx);
+     fd2:	0e 94 2f 02 	call	0x45e	; 0x45e <forwardx>
+     fd6:	05 c0       	rjmp	.+10     	; 0xfe2 <main+0x1b8>
+				else
+				reverse_x(-diffx);
+     fd8:	91 95       	neg	r25
+     fda:	81 95       	neg	r24
+     fdc:	91 09       	sbc	r25, r1
+     fde:	0e 94 df 03 	call	0x7be	; 0x7be <reverse_x>
+     fe2:	32 e0       	ldi	r19, 0x02	; 2
+     fe4:	c3 0e       	add	r12, r19
+     fe6:	d1 1c       	adc	r13, r1
+				
+				int diffy=(points_y[i+1]-points_y[i]);
+     fe8:	d2 01       	movw	r26, r4
+     fea:	8d 91       	ld	r24, X+
+     fec:	9c 91       	ld	r25, X
+     fee:	f5 01       	movw	r30, r10
+     ff0:	e8 1b       	sub	r30, r24
+     ff2:	f9 0b       	sbc	r31, r25
+     ff4:	cf 01       	movw	r24, r30
+				if(diffy>=0)
+     ff6:	1a f0       	brmi	.+6      	; 0xffe <main+0x1d4>
+				forwardy(diffy);
+     ff8:	0e 94 07 03 	call	0x60e	; 0x60e <forwardy>
+     ffc:	05 c0       	rjmp	.+10     	; 0x1008 <main+0x1de>
+				else
+				reverse_y(-diffy);
+     ffe:	91 95       	neg	r25
+    1000:	81 95       	neg	r24
+    1002:	91 09       	sbc	r25, r1
+    1004:	0e 94 b4 04 	call	0x968	; 0x968 <reverse_y>
+				
+				initialize(3);
+    1008:	83 e0       	ldi	r24, 0x03	; 3
+    100a:	90 e0       	ldi	r25, 0x00	; 0
+    100c:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+				
+				drill_z(35,1);
+    1010:	61 e0       	ldi	r22, 0x01	; 1
+    1012:	70 e0       	ldi	r23, 0x00	; 0
+    1014:	83 e2       	ldi	r24, 0x23	; 35
+    1016:	90 e0       	ldi	r25, 0x00	; 0
+    1018:	0e 94 9e 05 	call	0xb3c	; 0xb3c <drill_z>
+				
+				initialize(3);
+    101c:	83 e0       	ldi	r24, 0x03	; 3
+    101e:	90 e0       	ldi	r25, 0x00	; 0
+    1020:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+				
+				
+			}
+			printf("\n \rDrilling Process has been started......");
+			
+			for(int i=0;i<n;i++)
+    1024:	02 15       	cp	r16, r2
+    1026:	13 05       	cpc	r17, r3
+    1028:	09 f0       	breq	.+2      	; 0x102c <main+0x202>
+    102a:	af cf       	rjmp	.-162    	; 0xf8a <main+0x160>
+    102c:	32 cf       	rjmp	.-412    	; 0xe92 <main+0x68>
+			
+			
+			
+		}
+		
+		else if(mode_select=='s')
+    102e:	83 37       	cpi	r24, 0x73	; 115
+    1030:	09 f0       	breq	.+2      	; 0x1034 <main+0x20a>
+    1032:	3f c0       	rjmp	.+126    	; 0x10b2 <main+0x288>
+		{
+			initialize(3);
+    1034:	83 e0       	ldi	r24, 0x03	; 3
+    1036:	90 e0       	ldi	r25, 0x00	; 0
+    1038:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+			initialize(1);
+    103c:	81 e0       	ldi	r24, 0x01	; 1
+    103e:	90 e0       	ldi	r25, 0x00	; 0
+    1040:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+			initialize(2);
+    1044:	82 e0       	ldi	r24, 0x02	; 2
+    1046:	90 e0       	ldi	r25, 0x00	; 0
+    1048:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+			
+			printf("\n\rSemi Manual Mode\n \r");
+    104c:	8c ef       	ldi	r24, 0xFC	; 252
+    104e:	93 e0       	ldi	r25, 0x03	; 3
+    1050:	9f 93       	push	r25
+    1052:	8f 93       	push	r24
+    1054:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			printf("enter the x coordinate: ");
+    1058:	82 e1       	ldi	r24, 0x12	; 18
+    105a:	94 e0       	ldi	r25, 0x04	; 4
+    105c:	9f 93       	push	r25
+    105e:	8f 93       	push	r24
+    1060:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			int x=receive_coordinate();
+    1064:	0e 94 57 00 	call	0xae	; 0xae <receive_coordinate>
+    1068:	8c 01       	movw	r16, r24
+			printf("enter the y coordinate: ");
+    106a:	8b e2       	ldi	r24, 0x2B	; 43
+    106c:	94 e0       	ldi	r25, 0x04	; 4
+    106e:	9f 93       	push	r25
+    1070:	8f 93       	push	r24
+    1072:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			int y=receive_coordinate();
+    1076:	0e 94 57 00 	call	0xae	; 0xae <receive_coordinate>
+    107a:	6c 01       	movw	r12, r24
+			forwardx(x);
+    107c:	c8 01       	movw	r24, r16
+    107e:	0e 94 2f 02 	call	0x45e	; 0x45e <forwardx>
+			forwardy(y);
+    1082:	c6 01       	movw	r24, r12
+    1084:	0e 94 07 03 	call	0x60e	; 0x60e <forwardy>
+			
+			initialize(3);
+    1088:	83 e0       	ldi	r24, 0x03	; 3
+    108a:	90 e0       	ldi	r25, 0x00	; 0
+    108c:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+			drill_z(35,1);
+    1090:	61 e0       	ldi	r22, 0x01	; 1
+    1092:	70 e0       	ldi	r23, 0x00	; 0
+    1094:	83 e2       	ldi	r24, 0x23	; 35
+    1096:	90 e0       	ldi	r25, 0x00	; 0
+    1098:	0e 94 9e 05 	call	0xb3c	; 0xb3c <drill_z>
+			initialize(3);
+    109c:	83 e0       	ldi	r24, 0x03	; 3
+    109e:	90 e0       	ldi	r25, 0x00	; 0
+    10a0:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+    10a4:	0f 90       	pop	r0
+    10a6:	0f 90       	pop	r0
+    10a8:	0f 90       	pop	r0
+    10aa:	0f 90       	pop	r0
+    10ac:	0f 90       	pop	r0
+    10ae:	0f 90       	pop	r0
+    10b0:	f0 ce       	rjmp	.-544    	; 0xe92 <main+0x68>
+			
+			
+			
+		}
+		
+		else if(mode_select=='m')
+    10b2:	8d 36       	cpi	r24, 0x6D	; 109
+    10b4:	b9 f4       	brne	.+46     	; 0x10e4 <main+0x2ba>
+		{
+			initialize(3);
+    10b6:	83 e0       	ldi	r24, 0x03	; 3
+    10b8:	90 e0       	ldi	r25, 0x00	; 0
+    10ba:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+			initialize(1);
+    10be:	81 e0       	ldi	r24, 0x01	; 1
+    10c0:	90 e0       	ldi	r25, 0x00	; 0
+    10c2:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+			initialize(2);
+    10c6:	82 e0       	ldi	r24, 0x02	; 2
+    10c8:	90 e0       	ldi	r25, 0x00	; 0
+    10ca:	0e 94 8d 00 	call	0x11a	; 0x11a <initialize>
+			printf("Manual Mode: \n \r");
+    10ce:	84 e4       	ldi	r24, 0x44	; 68
+    10d0:	94 e0       	ldi	r25, 0x04	; 4
+    10d2:	9f 93       	push	r25
+    10d4:	8f 93       	push	r24
+    10d6:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+			
+			
+			manual();
+    10da:	0e 94 49 06 	call	0xc92	; 0xc92 <manual>
+    10de:	0f 90       	pop	r0
+    10e0:	0f 90       	pop	r0
+    10e2:	d7 ce       	rjmp	.-594    	; 0xe92 <main+0x68>
+			
+		}
+		
+		else
+		{
+			printf("Invalid Mode");
+    10e4:	85 e5       	ldi	r24, 0x55	; 85
+    10e6:	94 e0       	ldi	r25, 0x04	; 4
+    10e8:	9f 93       	push	r25
+    10ea:	8f 93       	push	r24
+    10ec:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+    10f0:	0f 90       	pop	r0
+    10f2:	0f 90       	pop	r0
+    10f4:	ce ce       	rjmp	.-612    	; 0xe92 <main+0x68>
+				
+				
+			}
+			
+			
+			printf("\n\r\n\rSending Y-Coordinates...\n\r");
+    10f6:	82 e6       	ldi	r24, 0x62	; 98
+    10f8:	94 e0       	ldi	r25, 0x04	; 4
+    10fa:	9f 93       	push	r25
+    10fc:	8f 93       	push	r24
+    10fe:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+    1102:	8e 01       	movw	r16, r28
+    1104:	0f 5e       	subi	r16, 0xEF	; 239
+    1106:	1f 4f       	sbci	r17, 0xFF	; 255
+    1108:	22 0c       	add	r2, r2
+    110a:	33 1c       	adc	r3, r3
+    110c:	68 01       	movw	r12, r16
+    110e:	c2 0c       	add	r12, r2
+    1110:	d3 1c       	adc	r13, r3
+    1112:	0f 90       	pop	r0
+    1114:	0f 90       	pop	r0
+    1116:	27 cf       	rjmp	.-434    	; 0xf66 <main+0x13c>
+    1118:	82 e6       	ldi	r24, 0x62	; 98
+    111a:	94 e0       	ldi	r25, 0x04	; 4
+    111c:	9f 93       	push	r25
+    111e:	8f 93       	push	r24
+    1120:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+				points_y[i]=receive_coordinate();
+				
+				
+				
+			}
+			printf("\n \rDrilling Process has been started......");
+    1124:	81 e8       	ldi	r24, 0x81	; 129
+    1126:	94 e0       	ldi	r25, 0x04	; 4
+    1128:	9f 93       	push	r25
+    112a:	8f 93       	push	r24
+    112c:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+    1130:	0f 90       	pop	r0
+    1132:	0f 90       	pop	r0
+    1134:	0f 90       	pop	r0
+    1136:	0f 90       	pop	r0
+    1138:	ac ce       	rjmp	.-680    	; 0xe92 <main+0x68>
+    113a:	81 e8       	ldi	r24, 0x81	; 129
+    113c:	94 e0       	ldi	r25, 0x04	; 4
+    113e:	9f 93       	push	r25
+    1140:	8f 93       	push	r24
+    1142:	0e 94 af 08 	call	0x115e	; 0x115e <printf>
+    1146:	8e 01       	movw	r16, r28
+    1148:	0d 5d       	subi	r16, 0xDD	; 221
+    114a:	1f 4f       	sbci	r17, 0xFF	; 255
+    114c:	9e 01       	movw	r18, r28
+    114e:	21 5f       	subi	r18, 0xF1	; 241
+    1150:	3f 4f       	sbci	r19, 0xFF	; 255
+    1152:	69 01       	movw	r12, r18
+    1154:	20 0e       	add	r2, r16
+    1156:	31 1e       	adc	r3, r17
+    1158:	0f 90       	pop	r0
+    115a:	0f 90       	pop	r0
+    115c:	16 cf       	rjmp	.-468    	; 0xf8a <main+0x160>
+
+0000115e <printf>:
+    115e:	a0 e0       	ldi	r26, 0x00	; 0
+    1160:	b0 e0       	ldi	r27, 0x00	; 0
+    1162:	e5 eb       	ldi	r30, 0xB5	; 181
+    1164:	f8 e0       	ldi	r31, 0x08	; 8
+    1166:	0c 94 78 0b 	jmp	0x16f0	; 0x16f0 <__prologue_saves__+0x20>
+    116a:	fe 01       	movw	r30, r28
+    116c:	35 96       	adiw	r30, 0x05	; 5
+    116e:	61 91       	ld	r22, Z+
+    1170:	71 91       	ld	r23, Z+
+    1172:	af 01       	movw	r20, r30
+    1174:	80 91 af 04 	lds	r24, 0x04AF
+    1178:	90 91 b0 04 	lds	r25, 0x04B0
+    117c:	0e 94 f0 08 	call	0x11e0	; 0x11e0 <vfprintf>
+    1180:	e2 e0       	ldi	r30, 0x02	; 2
+    1182:	0c 94 94 0b 	jmp	0x1728	; 0x1728 <__epilogue_restores__+0x20>
+
+00001186 <puts>:
+    1186:	0f 93       	push	r16
+    1188:	1f 93       	push	r17
+    118a:	cf 93       	push	r28
+    118c:	df 93       	push	r29
+    118e:	e0 91 af 04 	lds	r30, 0x04AF
+    1192:	f0 91 b0 04 	lds	r31, 0x04B0
+    1196:	23 81       	ldd	r18, Z+3	; 0x03
+    1198:	21 ff       	sbrs	r18, 1
+    119a:	1b c0       	rjmp	.+54     	; 0x11d2 <puts+0x4c>
+    119c:	ec 01       	movw	r28, r24
+    119e:	00 e0       	ldi	r16, 0x00	; 0
+    11a0:	10 e0       	ldi	r17, 0x00	; 0
+    11a2:	89 91       	ld	r24, Y+
+    11a4:	60 91 af 04 	lds	r22, 0x04AF
+    11a8:	70 91 b0 04 	lds	r23, 0x04B0
+    11ac:	db 01       	movw	r26, r22
+    11ae:	18 96       	adiw	r26, 0x08	; 8
+    11b0:	ed 91       	ld	r30, X+
+    11b2:	fc 91       	ld	r31, X
+    11b4:	19 97       	sbiw	r26, 0x09	; 9
+    11b6:	88 23       	and	r24, r24
+    11b8:	31 f0       	breq	.+12     	; 0x11c6 <puts+0x40>
+    11ba:	09 95       	icall
+    11bc:	89 2b       	or	r24, r25
+    11be:	89 f3       	breq	.-30     	; 0x11a2 <puts+0x1c>
+    11c0:	0f ef       	ldi	r16, 0xFF	; 255
+    11c2:	1f ef       	ldi	r17, 0xFF	; 255
+    11c4:	ee cf       	rjmp	.-36     	; 0x11a2 <puts+0x1c>
+    11c6:	8a e0       	ldi	r24, 0x0A	; 10
+    11c8:	09 95       	icall
+    11ca:	89 2b       	or	r24, r25
+    11cc:	11 f4       	brne	.+4      	; 0x11d2 <puts+0x4c>
+    11ce:	c8 01       	movw	r24, r16
+    11d0:	02 c0       	rjmp	.+4      	; 0x11d6 <puts+0x50>
+    11d2:	8f ef       	ldi	r24, 0xFF	; 255
+    11d4:	9f ef       	ldi	r25, 0xFF	; 255
+    11d6:	df 91       	pop	r29
+    11d8:	cf 91       	pop	r28
+    11da:	1f 91       	pop	r17
+    11dc:	0f 91       	pop	r16
+    11de:	08 95       	ret
+
+000011e0 <vfprintf>:
+    11e0:	ac e0       	ldi	r26, 0x0C	; 12
+    11e2:	b0 e0       	ldi	r27, 0x00	; 0
+    11e4:	e6 ef       	ldi	r30, 0xF6	; 246
+    11e6:	f8 e0       	ldi	r31, 0x08	; 8
+    11e8:	0c 94 68 0b 	jmp	0x16d0	; 0x16d0 <__prologue_saves__>
+    11ec:	7c 01       	movw	r14, r24
+    11ee:	6b 01       	movw	r12, r22
+    11f0:	8a 01       	movw	r16, r20
+    11f2:	fc 01       	movw	r30, r24
+    11f4:	17 82       	std	Z+7, r1	; 0x07
+    11f6:	16 82       	std	Z+6, r1	; 0x06
+    11f8:	83 81       	ldd	r24, Z+3	; 0x03
+    11fa:	81 ff       	sbrs	r24, 1
+    11fc:	bd c1       	rjmp	.+890    	; 0x1578 <vfprintf+0x398>
+    11fe:	ce 01       	movw	r24, r28
+    1200:	01 96       	adiw	r24, 0x01	; 1
+    1202:	4c 01       	movw	r8, r24
+    1204:	f7 01       	movw	r30, r14
+    1206:	93 81       	ldd	r25, Z+3	; 0x03
+    1208:	f6 01       	movw	r30, r12
+    120a:	93 fd       	sbrc	r25, 3
+    120c:	85 91       	lpm	r24, Z+
+    120e:	93 ff       	sbrs	r25, 3
+    1210:	81 91       	ld	r24, Z+
+    1212:	6f 01       	movw	r12, r30
+    1214:	88 23       	and	r24, r24
+    1216:	09 f4       	brne	.+2      	; 0x121a <vfprintf+0x3a>
+    1218:	ab c1       	rjmp	.+854    	; 0x1570 <vfprintf+0x390>
+    121a:	85 32       	cpi	r24, 0x25	; 37
+    121c:	39 f4       	brne	.+14     	; 0x122c <vfprintf+0x4c>
+    121e:	93 fd       	sbrc	r25, 3
+    1220:	85 91       	lpm	r24, Z+
+    1222:	93 ff       	sbrs	r25, 3
+    1224:	81 91       	ld	r24, Z+
+    1226:	6f 01       	movw	r12, r30
+    1228:	85 32       	cpi	r24, 0x25	; 37
+    122a:	29 f4       	brne	.+10     	; 0x1236 <vfprintf+0x56>
+    122c:	b7 01       	movw	r22, r14
+    122e:	90 e0       	ldi	r25, 0x00	; 0
+    1230:	0e 94 d8 0a 	call	0x15b0	; 0x15b0 <fputc>
+    1234:	e7 cf       	rjmp	.-50     	; 0x1204 <vfprintf+0x24>
+    1236:	51 2c       	mov	r5, r1
+    1238:	31 2c       	mov	r3, r1
+    123a:	20 e0       	ldi	r18, 0x00	; 0
+    123c:	20 32       	cpi	r18, 0x20	; 32
+    123e:	a0 f4       	brcc	.+40     	; 0x1268 <vfprintf+0x88>
+    1240:	8b 32       	cpi	r24, 0x2B	; 43
+    1242:	69 f0       	breq	.+26     	; 0x125e <vfprintf+0x7e>
+    1244:	30 f4       	brcc	.+12     	; 0x1252 <vfprintf+0x72>
+    1246:	80 32       	cpi	r24, 0x20	; 32
+    1248:	59 f0       	breq	.+22     	; 0x1260 <vfprintf+0x80>
+    124a:	83 32       	cpi	r24, 0x23	; 35
+    124c:	69 f4       	brne	.+26     	; 0x1268 <vfprintf+0x88>
+    124e:	20 61       	ori	r18, 0x10	; 16
+    1250:	2c c0       	rjmp	.+88     	; 0x12aa <vfprintf+0xca>
+    1252:	8d 32       	cpi	r24, 0x2D	; 45
+    1254:	39 f0       	breq	.+14     	; 0x1264 <vfprintf+0x84>
+    1256:	80 33       	cpi	r24, 0x30	; 48
+    1258:	39 f4       	brne	.+14     	; 0x1268 <vfprintf+0x88>
+    125a:	21 60       	ori	r18, 0x01	; 1
+    125c:	26 c0       	rjmp	.+76     	; 0x12aa <vfprintf+0xca>
+    125e:	22 60       	ori	r18, 0x02	; 2
+    1260:	24 60       	ori	r18, 0x04	; 4
+    1262:	23 c0       	rjmp	.+70     	; 0x12aa <vfprintf+0xca>
+    1264:	28 60       	ori	r18, 0x08	; 8
+    1266:	21 c0       	rjmp	.+66     	; 0x12aa <vfprintf+0xca>
+    1268:	27 fd       	sbrc	r18, 7
+    126a:	27 c0       	rjmp	.+78     	; 0x12ba <vfprintf+0xda>
+    126c:	30 ed       	ldi	r19, 0xD0	; 208
+    126e:	38 0f       	add	r19, r24
+    1270:	3a 30       	cpi	r19, 0x0A	; 10
+    1272:	78 f4       	brcc	.+30     	; 0x1292 <vfprintf+0xb2>
+    1274:	26 ff       	sbrs	r18, 6
+    1276:	06 c0       	rjmp	.+12     	; 0x1284 <vfprintf+0xa4>
+    1278:	fa e0       	ldi	r31, 0x0A	; 10
+    127a:	5f 9e       	mul	r5, r31
+    127c:	30 0d       	add	r19, r0
+    127e:	11 24       	eor	r1, r1
+    1280:	53 2e       	mov	r5, r19
+    1282:	13 c0       	rjmp	.+38     	; 0x12aa <vfprintf+0xca>
+    1284:	8a e0       	ldi	r24, 0x0A	; 10
+    1286:	38 9e       	mul	r3, r24
+    1288:	30 0d       	add	r19, r0
+    128a:	11 24       	eor	r1, r1
+    128c:	33 2e       	mov	r3, r19
+    128e:	20 62       	ori	r18, 0x20	; 32
+    1290:	0c c0       	rjmp	.+24     	; 0x12aa <vfprintf+0xca>
+    1292:	8e 32       	cpi	r24, 0x2E	; 46
+    1294:	21 f4       	brne	.+8      	; 0x129e <vfprintf+0xbe>
+    1296:	26 fd       	sbrc	r18, 6
+    1298:	6b c1       	rjmp	.+726    	; 0x1570 <vfprintf+0x390>
+    129a:	20 64       	ori	r18, 0x40	; 64
+    129c:	06 c0       	rjmp	.+12     	; 0x12aa <vfprintf+0xca>
+    129e:	8c 36       	cpi	r24, 0x6C	; 108
+    12a0:	11 f4       	brne	.+4      	; 0x12a6 <vfprintf+0xc6>
+    12a2:	20 68       	ori	r18, 0x80	; 128
+    12a4:	02 c0       	rjmp	.+4      	; 0x12aa <vfprintf+0xca>
+    12a6:	88 36       	cpi	r24, 0x68	; 104
+    12a8:	41 f4       	brne	.+16     	; 0x12ba <vfprintf+0xda>
+    12aa:	f6 01       	movw	r30, r12
+    12ac:	93 fd       	sbrc	r25, 3
+    12ae:	85 91       	lpm	r24, Z+
+    12b0:	93 ff       	sbrs	r25, 3
+    12b2:	81 91       	ld	r24, Z+
+    12b4:	6f 01       	movw	r12, r30
+    12b6:	81 11       	cpse	r24, r1
+    12b8:	c1 cf       	rjmp	.-126    	; 0x123c <vfprintf+0x5c>
+    12ba:	98 2f       	mov	r25, r24
+    12bc:	9f 7d       	andi	r25, 0xDF	; 223
+    12be:	95 54       	subi	r25, 0x45	; 69
+    12c0:	93 30       	cpi	r25, 0x03	; 3
+    12c2:	28 f4       	brcc	.+10     	; 0x12ce <vfprintf+0xee>
+    12c4:	0c 5f       	subi	r16, 0xFC	; 252
+    12c6:	1f 4f       	sbci	r17, 0xFF	; 255
+    12c8:	ff e3       	ldi	r31, 0x3F	; 63
+    12ca:	f9 83       	std	Y+1, r31	; 0x01
+    12cc:	0d c0       	rjmp	.+26     	; 0x12e8 <vfprintf+0x108>
+    12ce:	83 36       	cpi	r24, 0x63	; 99
+    12d0:	31 f0       	breq	.+12     	; 0x12de <vfprintf+0xfe>
+    12d2:	83 37       	cpi	r24, 0x73	; 115
+    12d4:	71 f0       	breq	.+28     	; 0x12f2 <vfprintf+0x112>
+    12d6:	83 35       	cpi	r24, 0x53	; 83
+    12d8:	09 f0       	breq	.+2      	; 0x12dc <vfprintf+0xfc>
+    12da:	5b c0       	rjmp	.+182    	; 0x1392 <vfprintf+0x1b2>
+    12dc:	22 c0       	rjmp	.+68     	; 0x1322 <vfprintf+0x142>
+    12de:	f8 01       	movw	r30, r16
+    12e0:	80 81       	ld	r24, Z
+    12e2:	89 83       	std	Y+1, r24	; 0x01
+    12e4:	0e 5f       	subi	r16, 0xFE	; 254
+    12e6:	1f 4f       	sbci	r17, 0xFF	; 255
+    12e8:	44 24       	eor	r4, r4
+    12ea:	43 94       	inc	r4
+    12ec:	51 2c       	mov	r5, r1
+    12ee:	54 01       	movw	r10, r8
+    12f0:	15 c0       	rjmp	.+42     	; 0x131c <vfprintf+0x13c>
+    12f2:	38 01       	movw	r6, r16
+    12f4:	f2 e0       	ldi	r31, 0x02	; 2
+    12f6:	6f 0e       	add	r6, r31
+    12f8:	71 1c       	adc	r7, r1
+    12fa:	f8 01       	movw	r30, r16
+    12fc:	a0 80       	ld	r10, Z
+    12fe:	b1 80       	ldd	r11, Z+1	; 0x01
+    1300:	26 ff       	sbrs	r18, 6
+    1302:	03 c0       	rjmp	.+6      	; 0x130a <vfprintf+0x12a>
+    1304:	65 2d       	mov	r22, r5
+    1306:	70 e0       	ldi	r23, 0x00	; 0
+    1308:	02 c0       	rjmp	.+4      	; 0x130e <vfprintf+0x12e>
+    130a:	6f ef       	ldi	r22, 0xFF	; 255
+    130c:	7f ef       	ldi	r23, 0xFF	; 255
+    130e:	c5 01       	movw	r24, r10
+    1310:	2c 87       	std	Y+12, r18	; 0x0c
+    1312:	0e 94 cd 0a 	call	0x159a	; 0x159a <strnlen>
+    1316:	2c 01       	movw	r4, r24
+    1318:	83 01       	movw	r16, r6
+    131a:	2c 85       	ldd	r18, Y+12	; 0x0c
+    131c:	2f 77       	andi	r18, 0x7F	; 127
+    131e:	22 2e       	mov	r2, r18
+    1320:	17 c0       	rjmp	.+46     	; 0x1350 <vfprintf+0x170>
+    1322:	38 01       	movw	r6, r16
+    1324:	f2 e0       	ldi	r31, 0x02	; 2
+    1326:	6f 0e       	add	r6, r31
+    1328:	71 1c       	adc	r7, r1
+    132a:	f8 01       	movw	r30, r16
+    132c:	a0 80       	ld	r10, Z
+    132e:	b1 80       	ldd	r11, Z+1	; 0x01
+    1330:	26 ff       	sbrs	r18, 6
+    1332:	03 c0       	rjmp	.+6      	; 0x133a <vfprintf+0x15a>
+    1334:	65 2d       	mov	r22, r5
+    1336:	70 e0       	ldi	r23, 0x00	; 0
+    1338:	02 c0       	rjmp	.+4      	; 0x133e <vfprintf+0x15e>
+    133a:	6f ef       	ldi	r22, 0xFF	; 255
+    133c:	7f ef       	ldi	r23, 0xFF	; 255
+    133e:	c5 01       	movw	r24, r10
+    1340:	2c 87       	std	Y+12, r18	; 0x0c
+    1342:	0e 94 c2 0a 	call	0x1584	; 0x1584 <strnlen_P>
+    1346:	2c 01       	movw	r4, r24
+    1348:	2c 85       	ldd	r18, Y+12	; 0x0c
+    134a:	20 68       	ori	r18, 0x80	; 128
+    134c:	22 2e       	mov	r2, r18
+    134e:	83 01       	movw	r16, r6
+    1350:	23 fc       	sbrc	r2, 3
+    1352:	1b c0       	rjmp	.+54     	; 0x138a <vfprintf+0x1aa>
+    1354:	83 2d       	mov	r24, r3
+    1356:	90 e0       	ldi	r25, 0x00	; 0
+    1358:	48 16       	cp	r4, r24
+    135a:	59 06       	cpc	r5, r25
+    135c:	b0 f4       	brcc	.+44     	; 0x138a <vfprintf+0x1aa>
+    135e:	b7 01       	movw	r22, r14
+    1360:	80 e2       	ldi	r24, 0x20	; 32
+    1362:	90 e0       	ldi	r25, 0x00	; 0
+    1364:	0e 94 d8 0a 	call	0x15b0	; 0x15b0 <fputc>
+    1368:	3a 94       	dec	r3
+    136a:	f4 cf       	rjmp	.-24     	; 0x1354 <vfprintf+0x174>
+    136c:	f5 01       	movw	r30, r10
+    136e:	27 fc       	sbrc	r2, 7
+    1370:	85 91       	lpm	r24, Z+
+    1372:	27 fe       	sbrs	r2, 7
+    1374:	81 91       	ld	r24, Z+
+    1376:	5f 01       	movw	r10, r30
+    1378:	b7 01       	movw	r22, r14
+    137a:	90 e0       	ldi	r25, 0x00	; 0
+    137c:	0e 94 d8 0a 	call	0x15b0	; 0x15b0 <fputc>
+    1380:	31 10       	cpse	r3, r1
+    1382:	3a 94       	dec	r3
+    1384:	f1 e0       	ldi	r31, 0x01	; 1
+    1386:	4f 1a       	sub	r4, r31
+    1388:	51 08       	sbc	r5, r1
+    138a:	41 14       	cp	r4, r1
+    138c:	51 04       	cpc	r5, r1
+    138e:	71 f7       	brne	.-36     	; 0x136c <vfprintf+0x18c>
+    1390:	e5 c0       	rjmp	.+458    	; 0x155c <vfprintf+0x37c>
+    1392:	84 36       	cpi	r24, 0x64	; 100
+    1394:	11 f0       	breq	.+4      	; 0x139a <vfprintf+0x1ba>
+    1396:	89 36       	cpi	r24, 0x69	; 105
+    1398:	39 f5       	brne	.+78     	; 0x13e8 <vfprintf+0x208>
+    139a:	f8 01       	movw	r30, r16
+    139c:	27 ff       	sbrs	r18, 7
+    139e:	07 c0       	rjmp	.+14     	; 0x13ae <vfprintf+0x1ce>
+    13a0:	60 81       	ld	r22, Z
+    13a2:	71 81       	ldd	r23, Z+1	; 0x01
+    13a4:	82 81       	ldd	r24, Z+2	; 0x02
+    13a6:	93 81       	ldd	r25, Z+3	; 0x03
+    13a8:	0c 5f       	subi	r16, 0xFC	; 252
+    13aa:	1f 4f       	sbci	r17, 0xFF	; 255
+    13ac:	08 c0       	rjmp	.+16     	; 0x13be <vfprintf+0x1de>
+    13ae:	60 81       	ld	r22, Z
+    13b0:	71 81       	ldd	r23, Z+1	; 0x01
+    13b2:	88 27       	eor	r24, r24
+    13b4:	77 fd       	sbrc	r23, 7
+    13b6:	80 95       	com	r24
+    13b8:	98 2f       	mov	r25, r24
+    13ba:	0e 5f       	subi	r16, 0xFE	; 254
+    13bc:	1f 4f       	sbci	r17, 0xFF	; 255
+    13be:	2f 76       	andi	r18, 0x6F	; 111
+    13c0:	b2 2e       	mov	r11, r18
+    13c2:	97 ff       	sbrs	r25, 7
+    13c4:	09 c0       	rjmp	.+18     	; 0x13d8 <vfprintf+0x1f8>
+    13c6:	90 95       	com	r25
+    13c8:	80 95       	com	r24
+    13ca:	70 95       	com	r23
+    13cc:	61 95       	neg	r22
+    13ce:	7f 4f       	sbci	r23, 0xFF	; 255
+    13d0:	8f 4f       	sbci	r24, 0xFF	; 255
+    13d2:	9f 4f       	sbci	r25, 0xFF	; 255
+    13d4:	20 68       	ori	r18, 0x80	; 128
+    13d6:	b2 2e       	mov	r11, r18
+    13d8:	2a e0       	ldi	r18, 0x0A	; 10
+    13da:	30 e0       	ldi	r19, 0x00	; 0
+    13dc:	a4 01       	movw	r20, r8
+    13de:	0e 94 0a 0b 	call	0x1614	; 0x1614 <__ultoa_invert>
+    13e2:	a8 2e       	mov	r10, r24
+    13e4:	a8 18       	sub	r10, r8
+    13e6:	44 c0       	rjmp	.+136    	; 0x1470 <vfprintf+0x290>
+    13e8:	85 37       	cpi	r24, 0x75	; 117
+    13ea:	29 f4       	brne	.+10     	; 0x13f6 <vfprintf+0x216>
+    13ec:	2f 7e       	andi	r18, 0xEF	; 239
+    13ee:	b2 2e       	mov	r11, r18
+    13f0:	2a e0       	ldi	r18, 0x0A	; 10
+    13f2:	30 e0       	ldi	r19, 0x00	; 0
+    13f4:	25 c0       	rjmp	.+74     	; 0x1440 <vfprintf+0x260>
+    13f6:	f2 2f       	mov	r31, r18
+    13f8:	f9 7f       	andi	r31, 0xF9	; 249
+    13fa:	bf 2e       	mov	r11, r31
+    13fc:	8f 36       	cpi	r24, 0x6F	; 111
+    13fe:	c1 f0       	breq	.+48     	; 0x1430 <vfprintf+0x250>
+    1400:	18 f4       	brcc	.+6      	; 0x1408 <vfprintf+0x228>
+    1402:	88 35       	cpi	r24, 0x58	; 88
+    1404:	79 f0       	breq	.+30     	; 0x1424 <vfprintf+0x244>
+    1406:	b4 c0       	rjmp	.+360    	; 0x1570 <vfprintf+0x390>
+    1408:	80 37       	cpi	r24, 0x70	; 112
+    140a:	19 f0       	breq	.+6      	; 0x1412 <vfprintf+0x232>
+    140c:	88 37       	cpi	r24, 0x78	; 120
+    140e:	21 f0       	breq	.+8      	; 0x1418 <vfprintf+0x238>
+    1410:	af c0       	rjmp	.+350    	; 0x1570 <vfprintf+0x390>
+    1412:	2f 2f       	mov	r18, r31
+    1414:	20 61       	ori	r18, 0x10	; 16
+    1416:	b2 2e       	mov	r11, r18
+    1418:	b4 fe       	sbrs	r11, 4
+    141a:	0d c0       	rjmp	.+26     	; 0x1436 <vfprintf+0x256>
+    141c:	8b 2d       	mov	r24, r11
+    141e:	84 60       	ori	r24, 0x04	; 4
+    1420:	b8 2e       	mov	r11, r24
+    1422:	09 c0       	rjmp	.+18     	; 0x1436 <vfprintf+0x256>
+    1424:	24 ff       	sbrs	r18, 4
+    1426:	0a c0       	rjmp	.+20     	; 0x143c <vfprintf+0x25c>
+    1428:	9f 2f       	mov	r25, r31
+    142a:	96 60       	ori	r25, 0x06	; 6
+    142c:	b9 2e       	mov	r11, r25
+    142e:	06 c0       	rjmp	.+12     	; 0x143c <vfprintf+0x25c>
+    1430:	28 e0       	ldi	r18, 0x08	; 8
+    1432:	30 e0       	ldi	r19, 0x00	; 0
+    1434:	05 c0       	rjmp	.+10     	; 0x1440 <vfprintf+0x260>
+    1436:	20 e1       	ldi	r18, 0x10	; 16
+    1438:	30 e0       	ldi	r19, 0x00	; 0
+    143a:	02 c0       	rjmp	.+4      	; 0x1440 <vfprintf+0x260>
+    143c:	20 e1       	ldi	r18, 0x10	; 16
+    143e:	32 e0       	ldi	r19, 0x02	; 2
+    1440:	f8 01       	movw	r30, r16
+    1442:	b7 fe       	sbrs	r11, 7
+    1444:	07 c0       	rjmp	.+14     	; 0x1454 <vfprintf+0x274>
+    1446:	60 81       	ld	r22, Z
+    1448:	71 81       	ldd	r23, Z+1	; 0x01
+    144a:	82 81       	ldd	r24, Z+2	; 0x02
+    144c:	93 81       	ldd	r25, Z+3	; 0x03
+    144e:	0c 5f       	subi	r16, 0xFC	; 252
+    1450:	1f 4f       	sbci	r17, 0xFF	; 255
+    1452:	06 c0       	rjmp	.+12     	; 0x1460 <vfprintf+0x280>
+    1454:	60 81       	ld	r22, Z
+    1456:	71 81       	ldd	r23, Z+1	; 0x01
+    1458:	80 e0       	ldi	r24, 0x00	; 0
+    145a:	90 e0       	ldi	r25, 0x00	; 0
+    145c:	0e 5f       	subi	r16, 0xFE	; 254
+    145e:	1f 4f       	sbci	r17, 0xFF	; 255
+    1460:	a4 01       	movw	r20, r8
+    1462:	0e 94 0a 0b 	call	0x1614	; 0x1614 <__ultoa_invert>
+    1466:	a8 2e       	mov	r10, r24
+    1468:	a8 18       	sub	r10, r8
+    146a:	fb 2d       	mov	r31, r11
+    146c:	ff 77       	andi	r31, 0x7F	; 127
+    146e:	bf 2e       	mov	r11, r31
+    1470:	b6 fe       	sbrs	r11, 6
+    1472:	0b c0       	rjmp	.+22     	; 0x148a <vfprintf+0x2aa>
+    1474:	2b 2d       	mov	r18, r11
+    1476:	2e 7f       	andi	r18, 0xFE	; 254
+    1478:	a5 14       	cp	r10, r5
+    147a:	50 f4       	brcc	.+20     	; 0x1490 <vfprintf+0x2b0>
+    147c:	b4 fe       	sbrs	r11, 4
+    147e:	0a c0       	rjmp	.+20     	; 0x1494 <vfprintf+0x2b4>
+    1480:	b2 fc       	sbrc	r11, 2
+    1482:	08 c0       	rjmp	.+16     	; 0x1494 <vfprintf+0x2b4>
+    1484:	2b 2d       	mov	r18, r11
+    1486:	2e 7e       	andi	r18, 0xEE	; 238
+    1488:	05 c0       	rjmp	.+10     	; 0x1494 <vfprintf+0x2b4>
+    148a:	7a 2c       	mov	r7, r10
+    148c:	2b 2d       	mov	r18, r11
+    148e:	03 c0       	rjmp	.+6      	; 0x1496 <vfprintf+0x2b6>
+    1490:	7a 2c       	mov	r7, r10
+    1492:	01 c0       	rjmp	.+2      	; 0x1496 <vfprintf+0x2b6>
+    1494:	75 2c       	mov	r7, r5
+    1496:	24 ff       	sbrs	r18, 4
+    1498:	0d c0       	rjmp	.+26     	; 0x14b4 <vfprintf+0x2d4>
+    149a:	fe 01       	movw	r30, r28
+    149c:	ea 0d       	add	r30, r10
+    149e:	f1 1d       	adc	r31, r1
+    14a0:	80 81       	ld	r24, Z
+    14a2:	80 33       	cpi	r24, 0x30	; 48
+    14a4:	11 f4       	brne	.+4      	; 0x14aa <vfprintf+0x2ca>
+    14a6:	29 7e       	andi	r18, 0xE9	; 233
+    14a8:	09 c0       	rjmp	.+18     	; 0x14bc <vfprintf+0x2dc>
+    14aa:	22 ff       	sbrs	r18, 2
+    14ac:	06 c0       	rjmp	.+12     	; 0x14ba <vfprintf+0x2da>
+    14ae:	73 94       	inc	r7
+    14b0:	73 94       	inc	r7
+    14b2:	04 c0       	rjmp	.+8      	; 0x14bc <vfprintf+0x2dc>
+    14b4:	82 2f       	mov	r24, r18
+    14b6:	86 78       	andi	r24, 0x86	; 134
+    14b8:	09 f0       	breq	.+2      	; 0x14bc <vfprintf+0x2dc>
+    14ba:	73 94       	inc	r7
+    14bc:	23 fd       	sbrc	r18, 3
+    14be:	13 c0       	rjmp	.+38     	; 0x14e6 <vfprintf+0x306>
+    14c0:	20 ff       	sbrs	r18, 0
+    14c2:	06 c0       	rjmp	.+12     	; 0x14d0 <vfprintf+0x2f0>
+    14c4:	5a 2c       	mov	r5, r10
+    14c6:	73 14       	cp	r7, r3
+    14c8:	18 f4       	brcc	.+6      	; 0x14d0 <vfprintf+0x2f0>
+    14ca:	53 0c       	add	r5, r3
+    14cc:	57 18       	sub	r5, r7
+    14ce:	73 2c       	mov	r7, r3
+    14d0:	73 14       	cp	r7, r3
+    14d2:	68 f4       	brcc	.+26     	; 0x14ee <vfprintf+0x30e>
+    14d4:	b7 01       	movw	r22, r14
+    14d6:	80 e2       	ldi	r24, 0x20	; 32
+    14d8:	90 e0       	ldi	r25, 0x00	; 0
+    14da:	2c 87       	std	Y+12, r18	; 0x0c
+    14dc:	0e 94 d8 0a 	call	0x15b0	; 0x15b0 <fputc>
+    14e0:	73 94       	inc	r7
+    14e2:	2c 85       	ldd	r18, Y+12	; 0x0c
+    14e4:	f5 cf       	rjmp	.-22     	; 0x14d0 <vfprintf+0x2f0>
+    14e6:	73 14       	cp	r7, r3
+    14e8:	10 f4       	brcc	.+4      	; 0x14ee <vfprintf+0x30e>
+    14ea:	37 18       	sub	r3, r7
+    14ec:	01 c0       	rjmp	.+2      	; 0x14f0 <vfprintf+0x310>
+    14ee:	31 2c       	mov	r3, r1
+    14f0:	24 ff       	sbrs	r18, 4
+    14f2:	12 c0       	rjmp	.+36     	; 0x1518 <vfprintf+0x338>
+    14f4:	b7 01       	movw	r22, r14
+    14f6:	80 e3       	ldi	r24, 0x30	; 48
+    14f8:	90 e0       	ldi	r25, 0x00	; 0
+    14fa:	2c 87       	std	Y+12, r18	; 0x0c
+    14fc:	0e 94 d8 0a 	call	0x15b0	; 0x15b0 <fputc>
+    1500:	2c 85       	ldd	r18, Y+12	; 0x0c
+    1502:	22 ff       	sbrs	r18, 2
+    1504:	17 c0       	rjmp	.+46     	; 0x1534 <vfprintf+0x354>
+    1506:	21 ff       	sbrs	r18, 1
+    1508:	03 c0       	rjmp	.+6      	; 0x1510 <vfprintf+0x330>
+    150a:	88 e5       	ldi	r24, 0x58	; 88
+    150c:	90 e0       	ldi	r25, 0x00	; 0
+    150e:	02 c0       	rjmp	.+4      	; 0x1514 <vfprintf+0x334>
+    1510:	88 e7       	ldi	r24, 0x78	; 120
+    1512:	90 e0       	ldi	r25, 0x00	; 0
+    1514:	b7 01       	movw	r22, r14
+    1516:	0c c0       	rjmp	.+24     	; 0x1530 <vfprintf+0x350>
+    1518:	82 2f       	mov	r24, r18
+    151a:	86 78       	andi	r24, 0x86	; 134
+    151c:	59 f0       	breq	.+22     	; 0x1534 <vfprintf+0x354>
+    151e:	21 fd       	sbrc	r18, 1
+    1520:	02 c0       	rjmp	.+4      	; 0x1526 <vfprintf+0x346>
+    1522:	80 e2       	ldi	r24, 0x20	; 32
+    1524:	01 c0       	rjmp	.+2      	; 0x1528 <vfprintf+0x348>
+    1526:	8b e2       	ldi	r24, 0x2B	; 43
+    1528:	27 fd       	sbrc	r18, 7
+    152a:	8d e2       	ldi	r24, 0x2D	; 45
+    152c:	b7 01       	movw	r22, r14
+    152e:	90 e0       	ldi	r25, 0x00	; 0
+    1530:	0e 94 d8 0a 	call	0x15b0	; 0x15b0 <fputc>
+    1534:	a5 14       	cp	r10, r5
+    1536:	38 f4       	brcc	.+14     	; 0x1546 <vfprintf+0x366>
+    1538:	b7 01       	movw	r22, r14
+    153a:	80 e3       	ldi	r24, 0x30	; 48
+    153c:	90 e0       	ldi	r25, 0x00	; 0
+    153e:	0e 94 d8 0a 	call	0x15b0	; 0x15b0 <fputc>
+    1542:	5a 94       	dec	r5
+    1544:	f7 cf       	rjmp	.-18     	; 0x1534 <vfprintf+0x354>
+    1546:	aa 94       	dec	r10
+    1548:	f4 01       	movw	r30, r8
+    154a:	ea 0d       	add	r30, r10
+    154c:	f1 1d       	adc	r31, r1
+    154e:	80 81       	ld	r24, Z
+    1550:	b7 01       	movw	r22, r14
+    1552:	90 e0       	ldi	r25, 0x00	; 0
+    1554:	0e 94 d8 0a 	call	0x15b0	; 0x15b0 <fputc>
+    1558:	a1 10       	cpse	r10, r1
+    155a:	f5 cf       	rjmp	.-22     	; 0x1546 <vfprintf+0x366>
+    155c:	33 20       	and	r3, r3
+    155e:	09 f4       	brne	.+2      	; 0x1562 <vfprintf+0x382>
+    1560:	51 ce       	rjmp	.-862    	; 0x1204 <vfprintf+0x24>
+    1562:	b7 01       	movw	r22, r14
+    1564:	80 e2       	ldi	r24, 0x20	; 32
+    1566:	90 e0       	ldi	r25, 0x00	; 0
+    1568:	0e 94 d8 0a 	call	0x15b0	; 0x15b0 <fputc>
+    156c:	3a 94       	dec	r3
+    156e:	f6 cf       	rjmp	.-20     	; 0x155c <vfprintf+0x37c>
+    1570:	f7 01       	movw	r30, r14
+    1572:	86 81       	ldd	r24, Z+6	; 0x06
+    1574:	97 81       	ldd	r25, Z+7	; 0x07
+    1576:	02 c0       	rjmp	.+4      	; 0x157c <vfprintf+0x39c>
+    1578:	8f ef       	ldi	r24, 0xFF	; 255
+    157a:	9f ef       	ldi	r25, 0xFF	; 255
+    157c:	2c 96       	adiw	r28, 0x0c	; 12
+    157e:	e2 e1       	ldi	r30, 0x12	; 18
+    1580:	0c 94 84 0b 	jmp	0x1708	; 0x1708 <__epilogue_restores__>
+
+00001584 <strnlen_P>:
+    1584:	fc 01       	movw	r30, r24
+    1586:	05 90       	lpm	r0, Z+
+    1588:	61 50       	subi	r22, 0x01	; 1
+    158a:	70 40       	sbci	r23, 0x00	; 0
+    158c:	01 10       	cpse	r0, r1
+    158e:	d8 f7       	brcc	.-10     	; 0x1586 <strnlen_P+0x2>
+    1590:	80 95       	com	r24
+    1592:	90 95       	com	r25
+    1594:	8e 0f       	add	r24, r30
+    1596:	9f 1f       	adc	r25, r31
+    1598:	08 95       	ret
+
+0000159a <strnlen>:
+    159a:	fc 01       	movw	r30, r24
+    159c:	61 50       	subi	r22, 0x01	; 1
+    159e:	70 40       	sbci	r23, 0x00	; 0
+    15a0:	01 90       	ld	r0, Z+
+    15a2:	01 10       	cpse	r0, r1
+    15a4:	d8 f7       	brcc	.-10     	; 0x159c <strnlen+0x2>
+    15a6:	80 95       	com	r24
+    15a8:	90 95       	com	r25
+    15aa:	8e 0f       	add	r24, r30
+    15ac:	9f 1f       	adc	r25, r31
+    15ae:	08 95       	ret
+
+000015b0 <fputc>:
+    15b0:	0f 93       	push	r16
+    15b2:	1f 93       	push	r17
+    15b4:	cf 93       	push	r28
+    15b6:	df 93       	push	r29
+    15b8:	18 2f       	mov	r17, r24
+    15ba:	09 2f       	mov	r16, r25
+    15bc:	eb 01       	movw	r28, r22
+    15be:	8b 81       	ldd	r24, Y+3	; 0x03
+    15c0:	81 fd       	sbrc	r24, 1
+    15c2:	03 c0       	rjmp	.+6      	; 0x15ca <fputc+0x1a>
+    15c4:	8f ef       	ldi	r24, 0xFF	; 255
+    15c6:	9f ef       	ldi	r25, 0xFF	; 255
+    15c8:	20 c0       	rjmp	.+64     	; 0x160a <fputc+0x5a>
+    15ca:	82 ff       	sbrs	r24, 2
+    15cc:	10 c0       	rjmp	.+32     	; 0x15ee <fputc+0x3e>
+    15ce:	4e 81       	ldd	r20, Y+6	; 0x06
+    15d0:	5f 81       	ldd	r21, Y+7	; 0x07
+    15d2:	2c 81       	ldd	r18, Y+4	; 0x04
+    15d4:	3d 81       	ldd	r19, Y+5	; 0x05
+    15d6:	42 17       	cp	r20, r18
+    15d8:	53 07       	cpc	r21, r19
+    15da:	7c f4       	brge	.+30     	; 0x15fa <fputc+0x4a>
+    15dc:	e8 81       	ld	r30, Y
+    15de:	f9 81       	ldd	r31, Y+1	; 0x01
+    15e0:	9f 01       	movw	r18, r30
+    15e2:	2f 5f       	subi	r18, 0xFF	; 255
+    15e4:	3f 4f       	sbci	r19, 0xFF	; 255
+    15e6:	39 83       	std	Y+1, r19	; 0x01
+    15e8:	28 83       	st	Y, r18
+    15ea:	10 83       	st	Z, r17
+    15ec:	06 c0       	rjmp	.+12     	; 0x15fa <fputc+0x4a>
+    15ee:	e8 85       	ldd	r30, Y+8	; 0x08
+    15f0:	f9 85       	ldd	r31, Y+9	; 0x09
+    15f2:	81 2f       	mov	r24, r17
+    15f4:	09 95       	icall
+    15f6:	89 2b       	or	r24, r25
+    15f8:	29 f7       	brne	.-54     	; 0x15c4 <fputc+0x14>
+    15fa:	2e 81       	ldd	r18, Y+6	; 0x06
+    15fc:	3f 81       	ldd	r19, Y+7	; 0x07
+    15fe:	2f 5f       	subi	r18, 0xFF	; 255
+    1600:	3f 4f       	sbci	r19, 0xFF	; 255
+    1602:	3f 83       	std	Y+7, r19	; 0x07
+    1604:	2e 83       	std	Y+6, r18	; 0x06
+    1606:	81 2f       	mov	r24, r17
+    1608:	90 2f       	mov	r25, r16
+    160a:	df 91       	pop	r29
+    160c:	cf 91       	pop	r28
+    160e:	1f 91       	pop	r17
+    1610:	0f 91       	pop	r16
+    1612:	08 95       	ret
+
+00001614 <__ultoa_invert>:
+    1614:	fa 01       	movw	r30, r20
+    1616:	aa 27       	eor	r26, r26
+    1618:	28 30       	cpi	r18, 0x08	; 8
+    161a:	51 f1       	breq	.+84     	; 0x1670 <__ultoa_invert+0x5c>
+    161c:	20 31       	cpi	r18, 0x10	; 16
+    161e:	81 f1       	breq	.+96     	; 0x1680 <__ultoa_invert+0x6c>
+    1620:	e8 94       	clt
+    1622:	6f 93       	push	r22
+    1624:	6e 7f       	andi	r22, 0xFE	; 254
+    1626:	6e 5f       	subi	r22, 0xFE	; 254
+    1628:	7f 4f       	sbci	r23, 0xFF	; 255
+    162a:	8f 4f       	sbci	r24, 0xFF	; 255
+    162c:	9f 4f       	sbci	r25, 0xFF	; 255
+    162e:	af 4f       	sbci	r26, 0xFF	; 255
+    1630:	b1 e0       	ldi	r27, 0x01	; 1
+    1632:	3e d0       	rcall	.+124    	; 0x16b0 <__ultoa_invert+0x9c>
+    1634:	b4 e0       	ldi	r27, 0x04	; 4
+    1636:	3c d0       	rcall	.+120    	; 0x16b0 <__ultoa_invert+0x9c>
+    1638:	67 0f       	add	r22, r23
+    163a:	78 1f       	adc	r23, r24
+    163c:	89 1f       	adc	r24, r25
+    163e:	9a 1f       	adc	r25, r26
+    1640:	a1 1d       	adc	r26, r1
+    1642:	68 0f       	add	r22, r24
+    1644:	79 1f       	adc	r23, r25
+    1646:	8a 1f       	adc	r24, r26
+    1648:	91 1d       	adc	r25, r1
+    164a:	a1 1d       	adc	r26, r1
+    164c:	6a 0f       	add	r22, r26
+    164e:	71 1d       	adc	r23, r1
+    1650:	81 1d       	adc	r24, r1
+    1652:	91 1d       	adc	r25, r1
+    1654:	a1 1d       	adc	r26, r1
+    1656:	20 d0       	rcall	.+64     	; 0x1698 <__ultoa_invert+0x84>
+    1658:	09 f4       	brne	.+2      	; 0x165c <__ultoa_invert+0x48>
+    165a:	68 94       	set
+    165c:	3f 91       	pop	r19
+    165e:	2a e0       	ldi	r18, 0x0A	; 10
+    1660:	26 9f       	mul	r18, r22
+    1662:	11 24       	eor	r1, r1
+    1664:	30 19       	sub	r19, r0
+    1666:	30 5d       	subi	r19, 0xD0	; 208
+    1668:	31 93       	st	Z+, r19
+    166a:	de f6       	brtc	.-74     	; 0x1622 <__ultoa_invert+0xe>
+    166c:	cf 01       	movw	r24, r30
+    166e:	08 95       	ret
+    1670:	46 2f       	mov	r20, r22
+    1672:	47 70       	andi	r20, 0x07	; 7
+    1674:	40 5d       	subi	r20, 0xD0	; 208
+    1676:	41 93       	st	Z+, r20
+    1678:	b3 e0       	ldi	r27, 0x03	; 3
+    167a:	0f d0       	rcall	.+30     	; 0x169a <__ultoa_invert+0x86>
+    167c:	c9 f7       	brne	.-14     	; 0x1670 <__ultoa_invert+0x5c>
+    167e:	f6 cf       	rjmp	.-20     	; 0x166c <__ultoa_invert+0x58>
+    1680:	46 2f       	mov	r20, r22
+    1682:	4f 70       	andi	r20, 0x0F	; 15
+    1684:	40 5d       	subi	r20, 0xD0	; 208
+    1686:	4a 33       	cpi	r20, 0x3A	; 58
+    1688:	18 f0       	brcs	.+6      	; 0x1690 <__ultoa_invert+0x7c>
+    168a:	49 5d       	subi	r20, 0xD9	; 217
+    168c:	31 fd       	sbrc	r19, 1
+    168e:	40 52       	subi	r20, 0x20	; 32
+    1690:	41 93       	st	Z+, r20
+    1692:	02 d0       	rcall	.+4      	; 0x1698 <__ultoa_invert+0x84>
+    1694:	a9 f7       	brne	.-22     	; 0x1680 <__ultoa_invert+0x6c>
+    1696:	ea cf       	rjmp	.-44     	; 0x166c <__ultoa_invert+0x58>
+    1698:	b4 e0       	ldi	r27, 0x04	; 4
+    169a:	a6 95       	lsr	r26
+    169c:	97 95       	ror	r25
+    169e:	87 95       	ror	r24
+    16a0:	77 95       	ror	r23
+    16a2:	67 95       	ror	r22
+    16a4:	ba 95       	dec	r27
+    16a6:	c9 f7       	brne	.-14     	; 0x169a <__ultoa_invert+0x86>
+    16a8:	00 97       	sbiw	r24, 0x00	; 0
+    16aa:	61 05       	cpc	r22, r1
+    16ac:	71 05       	cpc	r23, r1
+    16ae:	08 95       	ret
+    16b0:	9b 01       	movw	r18, r22
+    16b2:	ac 01       	movw	r20, r24
+    16b4:	0a 2e       	mov	r0, r26
+    16b6:	06 94       	lsr	r0
+    16b8:	57 95       	ror	r21
+    16ba:	47 95       	ror	r20
+    16bc:	37 95       	ror	r19
+    16be:	27 95       	ror	r18
+    16c0:	ba 95       	dec	r27
+    16c2:	c9 f7       	brne	.-14     	; 0x16b6 <__ultoa_invert+0xa2>
+    16c4:	62 0f       	add	r22, r18
+    16c6:	73 1f       	adc	r23, r19
+    16c8:	84 1f       	adc	r24, r20
+    16ca:	95 1f       	adc	r25, r21
+    16cc:	a0 1d       	adc	r26, r0
+    16ce:	08 95       	ret
+
+000016d0 <__prologue_saves__>:
+    16d0:	2f 92       	push	r2
+    16d2:	3f 92       	push	r3
+    16d4:	4f 92       	push	r4
+    16d6:	5f 92       	push	r5
+    16d8:	6f 92       	push	r6
+    16da:	7f 92       	push	r7
+    16dc:	8f 92       	push	r8
+    16de:	9f 92       	push	r9
+    16e0:	af 92       	push	r10
+    16e2:	bf 92       	push	r11
+    16e4:	cf 92       	push	r12
+    16e6:	df 92       	push	r13
+    16e8:	ef 92       	push	r14
+    16ea:	ff 92       	push	r15
+    16ec:	0f 93       	push	r16
+    16ee:	1f 93       	push	r17
+    16f0:	cf 93       	push	r28
+    16f2:	df 93       	push	r29
+    16f4:	cd b7       	in	r28, 0x3d	; 61
+    16f6:	de b7       	in	r29, 0x3e	; 62
+    16f8:	ca 1b       	sub	r28, r26
+    16fa:	db 0b       	sbc	r29, r27
+    16fc:	0f b6       	in	r0, 0x3f	; 63
+    16fe:	f8 94       	cli
+    1700:	de bf       	out	0x3e, r29	; 62
+    1702:	0f be       	out	0x3f, r0	; 63
+    1704:	cd bf       	out	0x3d, r28	; 61
+    1706:	09 94       	ijmp
+
+00001708 <__epilogue_restores__>:
+    1708:	2a 88       	ldd	r2, Y+18	; 0x12
+    170a:	39 88       	ldd	r3, Y+17	; 0x11
+    170c:	48 88       	ldd	r4, Y+16	; 0x10
+    170e:	5f 84       	ldd	r5, Y+15	; 0x0f
+    1710:	6e 84       	ldd	r6, Y+14	; 0x0e
+    1712:	7d 84       	ldd	r7, Y+13	; 0x0d
+    1714:	8c 84       	ldd	r8, Y+12	; 0x0c
+    1716:	9b 84       	ldd	r9, Y+11	; 0x0b
+    1718:	aa 84       	ldd	r10, Y+10	; 0x0a
+    171a:	b9 84       	ldd	r11, Y+9	; 0x09
+    171c:	c8 84       	ldd	r12, Y+8	; 0x08
+    171e:	df 80       	ldd	r13, Y+7	; 0x07
+    1720:	ee 80       	ldd	r14, Y+6	; 0x06
+    1722:	fd 80       	ldd	r15, Y+5	; 0x05
+    1724:	0c 81       	ldd	r16, Y+4	; 0x04
+    1726:	1b 81       	ldd	r17, Y+3	; 0x03
+    1728:	aa 81       	ldd	r26, Y+2	; 0x02
+    172a:	b9 81       	ldd	r27, Y+1	; 0x01
+    172c:	ce 0f       	add	r28, r30
+    172e:	d1 1d       	adc	r29, r1
+    1730:	0f b6       	in	r0, 0x3f	; 63
+    1732:	f8 94       	cli
+    1734:	de bf       	out	0x3e, r29	; 62
+    1736:	0f be       	out	0x3f, r0	; 63
+    1738:	cd bf       	out	0x3d, r28	; 61
+    173a:	ed 01       	movw	r28, r26
+    173c:	08 95       	ret
+
+0000173e <_exit>:
+    173e:	f8 94       	cli
+
+00001740 <__stop_program>:
+    1740:	ff cf       	rjmp	.-2      	; 0x1740 <__stop_program>
